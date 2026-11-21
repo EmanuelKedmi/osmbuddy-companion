@@ -22,7 +22,7 @@
     <ApplicationIcon>..\..\app\favicon.ico</ApplicationIcon>
     <ApplicationTitle>Market Notes Companion</ApplicationTitle>
     <Description>Screen share for Old School Maple. FM scanner and Training scanner run in this window. The website is not required.</Description>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <IncludeSourceRevisionInInformationalVersion>true</IncludeSourceRevisionInInformationalVersion>
     <Company>Old School Maple Field Notes</Company>
   </PropertyGroup>
