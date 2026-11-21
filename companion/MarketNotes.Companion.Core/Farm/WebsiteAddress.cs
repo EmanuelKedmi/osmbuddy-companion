@@ -15,6 +15,7 @@ public static class WebsiteAddress
     public const string ReleaseRepository = "EmanuelKedmi/osmbuddy-companion";
     public const string ReleaseAsset = "MarketNotes.Companion.exe";
     public const string ReleaseApiUrl = "https://api.github.com/repos/EmanuelKedmi/osmbuddy-companion/releases/latest";
+    public const string ReleasesApiUrl = "https://api.github.com/repos/EmanuelKedmi/osmbuddy-companion/releases";
     public const string ReleaseDownloadUrl = "https://github.com/EmanuelKedmi/osmbuddy-companion/releases/latest/download/MarketNotes.Companion.exe";
 
     public static string LogsUrl(string? feedUrl) => Sibling(feedUrl, "/api/companion/logs");

@@ -83,7 +83,7 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
         var version = RunningVersion.Label();
-        VersionLabel.Text = version;
+        VersionButton.Content = version;
         Title = "Companion " + version;
         if (DebugLog.DevBuild) BuildSubtitle.Text = "Old School Maple · dev build, always logging";
         LoadWebsiteSettings();
@@ -126,6 +126,12 @@ public partial class MainWindow : Window
                 if (SelectedSource() != null) StartShare_Click(this, new RoutedEventArgs());
             };
         }
+    }
+
+    private void Version_Click(object sender, RoutedEventArgs e)
+    {
+        var window = new ChangelogWindow { Owner = this };
+        window.ShowDialog();
     }
 
     private async Task CheckForUpdateAsync()
