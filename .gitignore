@@ -1,0 +1,4 @@
+companion/**/bin/
+companion/**/obj/
+.vs/
+*.user

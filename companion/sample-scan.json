@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "kind": "store-scan",
+  "stores": [
+    {
+      "owner": "[Sample] Mushmom Shop",
+      "location": "[Sample] FM Channel 1",
+      "scannedAt": "2026-11-02T15:04:00.000Z",
+      "lines": [
+        {
+          "item": "[Sample] Scroll for Gloves for DEX 10%",
+          "quantity": 1,
+          "priceEach": 350000,
+          "slot": 1
+        },
+        {
+          "item": "[Sample] White Scroll",
+          "quantity": 2,
+          "priceEach": 8000000,
+          "slot": 2
+        },
+        {
+          "item": "[Sample] Chaos Scroll 60%",
+          "quantity": 5,
+          "priceEach": 900000,
+          "slot": 3
+        },
+        {
+          "item": "[Sample] Diamond Ore",
+          "quantity": 100,
+          "priceEach": 4000,
+          "slot": 4
+        }
+      ]
+    }
+  ]
+}

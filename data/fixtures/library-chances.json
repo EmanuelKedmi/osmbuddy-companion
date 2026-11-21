@@ -1,0 +1,20 @@
+{
+  "note": "Spawn-weighted library chances for the training sample. Drop chance unit is 1000000, the same unit as data/catalog.json. Kills are split by spawn count on the map. Orange Mushroom Cap is 450000/1000000 on Orange Mushroom, which is 15 of 37 spawns on map 104030001, so 0.45 * 15/37. Red Potion is 22500/1000000 on every spawn of that map, so 0.0225. This file does not replace data/catalog.json.",
+  "maps": [
+    {
+      "mapId": 104030001,
+      "mapName": "Mushroom Garden",
+      "spawnCount": 37,
+      "items": [
+        {
+          "itemName": "Orange Mushroom Cap",
+          "perKill": 0.18243243243243243
+        },
+        {
+          "itemName": "Red Potion",
+          "perKill": 0.0225
+        }
+      ]
+    }
+  ]
+}

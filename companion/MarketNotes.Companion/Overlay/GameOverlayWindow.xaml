@@ -1,0 +1,33 @@
+<Window x:Class="MarketNotes.Companion.Overlay.GameOverlayWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Scanner overlay"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ShowInTaskbar="False"
+        ShowActivated="False"
+        Topmost="True"
+        ResizeMode="NoResize"
+        IsHitTestVisible="False">
+    <Grid IsHitTestVisible="False">
+        <Canvas x:Name="RegionCanvas" IsHitTestVisible="False" />
+        <Border x:Name="SeenHost"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Margin="12,0,0,0"
+                MaxWidth="280"
+                Background="#F2F7F1E4"
+                BorderBrush="#C4A15A"
+                BorderThickness="1"
+                CornerRadius="8"
+                Padding="10"
+                Visibility="Collapsed"
+                IsHitTestVisible="False">
+            <TextBlock x:Name="SeenText"
+                       TextWrapping="Wrap"
+                       Foreground="#5C241C"
+                       FontSize="13" />
+        </Border>
+    </Grid>
+</Window>

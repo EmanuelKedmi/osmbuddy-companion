@@ -1,0 +1,26 @@
+{
+  "note": "Training scanner sample. The battle analysis snippet and the loot lines were not read from a game window. OCR did not run.",
+  "sample": true,
+  "ocr": false,
+  "mapId": 104030001,
+  "mapName": "Mushroom Garden",
+  "battle": {
+    "text": "Battle Analysis\nKills: 120\nTime elapsed: 15:00\nEXP: 53,040\nDamage: 1,844,000\nAttacks: 960"
+  },
+  "frames": [
+    {
+      "regionHash": "train-notice-a",
+      "lines": [
+        "You have gained Orange Mushroom Cap x10.",
+        "You have gained 2 Red Potions."
+      ]
+    },
+    {
+      "regionHash": "train-notice-a",
+      "lines": [
+        "You have gained Orange Mushroom Cap x10.",
+        "You have gained 2 Red Potions."
+      ]
+    }
+  ]
+}

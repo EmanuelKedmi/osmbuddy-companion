@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>12</LangVersion>
+    <RootNamespace>MarketNotes.Companion</RootNamespace>
+    <AssemblyName>MarketNotes.Companion.Core</AssemblyName>
+    <Description>FM scanner and Training scanner decisions for the Windows companion. No UI and no capture.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="..\..\data\fm-maps.json" Link="fixtures\fm-maps.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\..\data\osm-market-prices.json" Link="fixtures\osm-market-prices.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\..\data\catalog.json" Link="fixtures\catalog.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\..\data\item-aliases.json" Link="fixtures\item-aliases.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\..\data\fixtures\fm-shop.json" Link="fixtures\fm-shop.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\..\data\fixtures\training-sample.json" Link="fixtures\training-sample.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\..\data\fixtures\stat-window.json" Link="fixtures\stat-window.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\..\data\fixtures\skill-window.json" Link="fixtures\skill-window.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\..\data\fixtures\library-chances.json" Link="fixtures\library-chances.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,53 @@
+{
+  "note": "FM scanner sample. These frames were not captured from a game window. OCR did not run.",
+  "sample": true,
+  "ocr": false,
+  "frames": [
+    {
+      "mapName": "Mushroom Garden",
+      "owner": "Cap Seller",
+      "shopName": "Caps",
+      "channel": null,
+      "scrollbar": { "position": 0, "first": 0, "visible": 2 },
+      "rows": [
+        { "item": "Orange Mushroom Cap", "quantity": 1, "priceEach": 100, "slot": 0, "row": 0 }
+      ]
+    },
+    {
+      "mapName": "Free Market<1>",
+      "owner": "Sample Seller",
+      "shopName": "Sample Scroll Shelf",
+      "channel": 4,
+      "scrollbar": { "position": 0, "first": 0, "visible": 3 },
+      "rows": [
+        { "item": "Ilbi Throwing-Stars", "quantity": 1, "priceEach": 10000000, "slot": 0, "row": 0 },
+        { "item": "Scroll for Helmet for DEX 30%", "quantity": 1, "priceEach": 750000, "slot": 1, "row": 1 },
+        { "item": "Orange Potion", "quantity": 50, "priceEach": 50, "slot": 2, "row": 2 }
+      ]
+    },
+    {
+      "mapName": "Free Market<1>",
+      "owner": "Sample Seller",
+      "shopName": "Sample Scroll Shelf",
+      "channel": 4,
+      "scrollbar": { "position": 0, "first": 0, "visible": 3 },
+      "rows": [
+        { "item": "Ilbi Throwing-Stars", "quantity": 1, "priceEach": 10000000, "slot": 0, "row": 0 },
+        { "item": "Scroll for Helmet for DEX 30%", "quantity": 1, "priceEach": 750000, "slot": 1, "row": 1 },
+        { "item": "Orange Potion", "quantity": 50, "priceEach": 50, "slot": 2, "row": 2 }
+      ]
+    },
+    {
+      "mapName": "Free Market<1>",
+      "owner": "Sample Seller",
+      "shopName": "Sample Scroll Shelf",
+      "channel": 4,
+      "scrollbar": { "position": 0.25, "first": 2, "visible": 3 },
+      "rows": [
+        { "item": "Orange Potion", "quantity": 50, "priceEach": 50, "slot": 2, "row": 0 },
+        { "item": "Scroll for Earring for LUK 60%", "quantity": 1, "priceEach": 70000, "slot": 3, "row": 1 },
+        { "item": "Cursed Maple Relic", "quantity": 1, "priceEach": 123456, "slot": 4, "row": 2 }
+      ]
+    }
+  ]
+}

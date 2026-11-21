@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>12</LangVersion>
+    <IsPackable>false</IsPackable>
+    <RootNamespace>MarketNotes.Companion.Tests</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+    <PackageReference Include="System.Drawing.Common" Version="8.0.11" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MarketNotes.Companion.Core\MarketNotes.Companion.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Fixtures\battle-window.png" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="Fixtures\loot-pounder.png" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="Fixtures\shop-rows-stack-qty.png" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="Fixtures\shop-rows-scrolls-qty.png" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="Fixtures\shop-rows-ores-qty.png" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

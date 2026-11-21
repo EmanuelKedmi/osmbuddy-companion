@@ -1,0 +1,349 @@
+{
+  "source": "OSM Discord marketplace pastes and a bulk export",
+  "note": "Community asks and solds from pasted OSM Discord marketplace logs. Approximate and volatile, not an official Old School Maple price. A number you type still wins. Classic catalog prices fill everything this list does not name. A second, longer paste was folded in, and a Discord bulk export was folded in too. Items that swung with no stable cluster were left off.",
+  "items": [
+    {
+      "id": 2040030,
+      "name": "Scroll for Helmet for DEX 30%",
+      "meso": 600000,
+      "source": "consensus",
+      "count": 4,
+      "window": "later asks 500k–800k; an earlier seller reported sales at 320–420k",
+      "note": "Sales were reported between 320k and 420k, and another call said around 400k. Later asks and offers sat at 500–800k. Stored the later ask cluster, not a blend with the earlier sales."
+    },
+    {
+      "id": 2040029,
+      "name": "Scroll for Helmet for DEX 60%",
+      "meso": 8200000,
+      "source": "consensus",
+      "count": 8,
+      "window": "latest shop asks about 5–10m; earlier asks were about 1–1.5m, then 4.5–6m",
+      "note": "Early shops asked about 1–1.5m, then a band around 4.5–6m. Six copies sold at 1m before that climb. The latest distinct asks (about 5m, 7m, 7.5m, 8m, 8.4m, 9m, 9.2m, and 10m, leaving out one 15m claim) have median 8.2m. The 1m sale does not replace that later cluster, and shop asks at 1.3–1.5m are the early ones."
+    },
+    {
+      "id": 2044701,
+      "name": "Scroll for Claw for ATT 60%",
+      "meso": 2000000,
+      "source": "sold",
+      "count": 2,
+      "window": "early sales about 400k; a later remembered sale at 2m, with asks at 4–5.5m around it",
+      "note": "Early, a seller had just sold a few for 400k. Later quotes said 4–5.5m, and a price check in that same stretch was answered with a remembered sale at 2m each. Stored that sale, not an average with 400k or with the 4–5.5m asks."
+    },
+    {
+      "id": 2040804,
+      "name": "Scroll for Gloves for ATT 60%",
+      "meso": 1000000,
+      "source": "consensus",
+      "count": 4,
+      "window": "early bulk shops about 170–750k; later calls 500k, 1–1.2m, 2m, and 3m",
+      "note": "No single sold receipt. Early bulk shops clustered near 470k. A comment priced them at 1m or cheaper, later shops asked 1m and 1.2m, and two updates said 2m and 3m. Stored 1m, a figure named on both sides of that drift."
+    },
+    {
+      "id": 2040501,
+      "name": "Scroll for Overall Armor for DEX 60%",
+      "meso": 1500000,
+      "source": "sold",
+      "count": 1,
+      "window": "shops mostly 1–2.5m; one late sold-out listing at 1.5m",
+      "note": "Shops asked about 1–1.8m, then 2–2.5m. A late listing sold out at 1.5m. One aside claimed 9–10m; the shops and the sold-out listing do not support that."
+    },
+    {
+      "id": 2040513,
+      "name": "Scroll for Overall Armor for INT 60%",
+      "meso": 4000000,
+      "source": "consensus",
+      "count": 8,
+      "window": "repeated shops 3–4.5m; one later price-update line said 20m",
+      "note": "The first import stored 20m from one price-update line that said these sold for 20m each. The same scroll's shops repeatedly asked 3m, 3.5m, 4m, and 4.5m. That 20m line sat beside other figures the shops do not support, so it was not kept. Stored 4m, the median of the shop cluster."
+    },
+    {
+      "id": 2040516,
+      "name": "Scroll for Overall Armor for LUK 60%",
+      "meso": 600000,
+      "source": "consensus",
+      "count": 5,
+      "window": "shops at 500–800k",
+      "note": "Shops asked 500k, 600k, 750k, and 800k. Median 600k. No sold line. A later slash-list said about 4m beside other figures the rest of the paste does not support."
+    },
+    {
+      "id": 2040532,
+      "name": "Scroll for Overall for STR 60%",
+      "meso": 17800000,
+      "source": "sold",
+      "count": 1,
+      "window": "a stated sale at 17.8m; a separate purchase at 4.5m each",
+      "note": "A price update said this sold for 17.8m, with a check at 15.5m. Someone else bought two at 4.5m each. Stored the stated 17.8m sale, not a midpoint with 4.5m."
+    },
+    {
+      "id": 2041019,
+      "name": "Scroll for Cape for DEX 60%",
+      "meso": 4500000,
+      "source": "consensus",
+      "count": 3,
+      "window": "asks around 3–6m, repeated at 4.5m",
+      "note": "Shops asked 3m, 3.5m, 4m, 4.5m, and 6m, and one appraisal said about 4–5m. A shop said cape dex sold for 3m without naming 60%. Stored the repeated 4.5m ask."
+    },
+    {
+      "id": 2041016,
+      "name": "Scroll for Cape for INT 60%",
+      "meso": 1300000,
+      "source": "consensus",
+      "count": 6,
+      "window": "shops from 750k to 1.8m, one seller repeating 1.3m",
+      "note": "No sold line. The longest run of asks was 1.3m. Other shops sat at 750k, 900k, 1.5m, and 1.8m."
+    },
+    {
+      "id": 2041022,
+      "name": "Scroll for Cape for LUK 60%",
+      "meso": 500000,
+      "source": "consensus",
+      "count": 4,
+      "window": "repeated shops at 500k; other asks 540k–900k",
+      "note": "Several shops asked 500k. Others asked 540k, 700k, 750k, and 900k. No sold line. A late guess said 200k and was unsure."
+    },
+    {
+      "id": 2040317,
+      "name": "Scroll for Earring for DEX 60%",
+      "meso": 2400000,
+      "source": "consensus",
+      "count": 8,
+      "window": "shops mostly 2.2–2.8m",
+      "note": "No sold line. Numbered shops and price lists ran from 1.4m to a 3m buy, mostly 2.2–2.8m. Median 2.4m. A later comment that priced 60% and 70% both at 4.5m is not folded in."
+    },
+    {
+      "id": 2040301,
+      "name": "Scroll for Earring for INT 60%",
+      "meso": 1500000,
+      "source": "sold",
+      "count": 1,
+      "window": "an earlier sale at 2.7m; a later sold-out listing at 1.5m",
+      "note": "A seller said theirs had sold for 2.7m. Shops asked about 2–2.7m. A later listing that paired this scroll with overall dex 60% sold out at 1.5m each. Stored that later sale."
+    },
+    {
+      "id": 2040705,
+      "name": "Scroll for Shoes for Jump 10%",
+      "meso": 1000000,
+      "source": "consensus",
+      "count": 5,
+      "window": "early talk of 300–500k; later shops 800k–1.5m",
+      "note": "No single sold receipt. The longer paste shows the same split: shops at 300k, 300k, 400–500k, 500k, and 600k come first. Later shops asked 800k, 1m, 1.2m, and 1.5m. Stored 1m, the middle of that later cluster, not the earlier 300–600k run."
+    },
+    {
+      "id": 2043801,
+      "name": "Scroll for Staff for Magic Att. 60%",
+      "meso": 420000,
+      "source": "consensus",
+      "count": 1,
+      "window": "mid shops 700–850k; the latest shop asked 420k for a stack of 21",
+      "note": "An early shop asked 80k. A mid cluster asked 700–850k, mostly one seller repeating 800k. The latest shop asked 420k each for 21. Stored that later ask."
+    },
+    {
+      "id": 2043701,
+      "name": "Scroll for Wand for Magic Att. 60%",
+      "meso": 100000,
+      "source": "consensus",
+      "count": 2,
+      "window": "early shops 125–200k; later shops at 100k",
+      "note": "No sold line. Early shops asked 125k and 200k. Two later shops asked 100k, one of them for a stack of 45. Stored that later ask."
+    },
+    {
+      "id": 2044501,
+      "name": "Scroll for Bow for ATT 60%",
+      "meso": 1400000,
+      "source": "consensus",
+      "count": 4,
+      "window": "one sale at 3m, then shops at 1.1m, 1.4m, and 1.6m",
+      "note": "Shops before that sat around 1–1.6m, and one appraisal said around 2m. One line said bow 60% sold for 3m. Shops after that sale asked 1.1m, 1.4m, and 1.6m. Stored the median of those later asks, 1.4m."
+    },
+    {
+      "id": 2044001,
+      "name": "Scroll for Two-handed Sword for ATT 60%",
+      "meso": 400000,
+      "source": "consensus",
+      "count": 11,
+      "window": "shops from 150k to 600k, counting a repeated 350k stack once",
+      "note": "No sold line. Distinct shops asked 150k, 200k, 300k, 300k, 350k, 400k, 400k, 500k, 550k, 600k, and 600k. Median 400k. A line that priced three different attack scrolls together at 200k, and one late 100k tag, were left out."
+    },
+    {
+      "id": 2040924,
+      "name": "Scroll for Shield for LUK 60%",
+      "meso": 4500000,
+      "source": "consensus",
+      "count": 2,
+      "window": "early talk of 2–2.5m; later shops at 4.5m, with buys at 3.5m and 5m",
+      "note": "Early on it was called easily 2m, and a shop asked 2.5m. Later the same seller asked 4.5m twice, a buy sat at 3.5m, and another buy offered 5m. A 10m rush bid is not included. Stored the repeated 4.5m ask."
+    },
+    {
+      "id": 2070006,
+      "name": "Ilbi Throwing-Stars",
+      "meso": 12200000,
+      "source": "sold",
+      "count": 3,
+      "window": "early door sale 28m; later sales 10m, 12.2m, and 13.9m",
+      "note": "An early door listing sold at 28m while shops asked 25–32m. Later sales were 13.9m, 12.2m, and 10m. A 7.7m tag was called cheap and is not included. Stored the median of those three later sales.",
+      "kind": "gear"
+    },
+    {
+      "id": 2070005,
+      "name": "Steely Throwing-Knives",
+      "meso": 650000,
+      "source": "sold",
+      "count": 2,
+      "window": "early shops 9–13.5m; later often-sold band 500–800k",
+      "note": "Early shops asked 9–13.5m and one seller said the 13.5m tag was what had sold. Later, sales were described as often 500–800k, with 1.5m called a bit high. Stored the midpoint of that later band, not an average with the early cluster.",
+      "kind": "gear"
+    },
+    {
+      "id": 2070004,
+      "name": "Tobi Throwing-Stars",
+      "meso": 200000,
+      "source": "consensus",
+      "count": 4,
+      "window": "a long shop cluster at 350–450k, then around 200k",
+      "note": "Most of the paste had shops and buys at 350–450k. A later summary said around 200k, with shops near it at 150–250k. Clearance posts at 50–100k are not averaged in.",
+      "kind": "gear"
+    },
+    {
+      "id": 2070007,
+      "name": "Hwabi Throwing-Stars",
+      "meso": 15000000,
+      "source": "consensus",
+      "count": 6,
+      "window": "early asks about 35–60m; later calls mostly 14–17m, one shop at 9m",
+      "note": "Early shops asked roughly 35–60m. After they fell, calls sat at 14m, 15m, 15m, 15m, and 17m, with one shop at 9m and a last call at 12m. No clean sold line. Median of that later cluster is 15m.",
+      "kind": "gear"
+    },
+    {
+      "id": 2290011,
+      "name": "[Mastery Book] Brandish 30",
+      "meso": 37500000,
+      "source": "consensus",
+      "count": 4,
+      "window": "September forum sales at 60m and 75m; later marketplace asks 33–40m",
+      "note": "A forum thread on 22–23 Sep 2026 said one had just sold for 60m and another sold for 75m, and someone put a fair price at 50–70m. The marketplace paste's later asks were an auto-win at 40m, a seller taking 40m, a buy at 35m, and a call at 33m. Stored the median of that later ask window, 37.5m, not a blend with the September sales.",
+      "kind": "gear"
+    },
+    {
+      "id": 2290033,
+      "name": "[Mastery Book] Chain Lightning 30",
+      "meso": 50000000,
+      "source": "sold",
+      "count": 1,
+      "window": "early asks about 90–150m; a sale at 50m",
+      "note": "Early tags ran from about 90m to 150m, with one 200m post. A later line said CL 30 sold for 50m. Stored that sale.",
+      "kind": "gear"
+    },
+    {
+      "id": 2290084,
+      "name": "[Mastery Book] Triple Throw 20",
+      "meso": 72500000,
+      "source": "sold",
+      "count": 5,
+      "window": "4–5 books sold at 65–80m; 35–40m had been called normal just before",
+      "note": "The same stretch said 4–5 books sold at 65–80m and that 35–40m had been normal a couple of weeks earlier. Later bids were 5m and 100m, with one guess around 10m and no new sold price. Stored the midpoint of the 65–80m sold band.",
+      "kind": "gear"
+    },
+    {
+      "id": 2044901,
+      "name": "Scroll for Gun for Attack 60%",
+      "meso": 250000,
+      "source": "consensus",
+      "count": 12,
+      "window": "shops from 120k to 425k, mostly 150k–300k",
+      "note": "No sold line. Shops asked 120k, 150k, 150k, 200k, 200k, 250k, 250k, 300k, 300k, 300k, 300k, and 425k. Median 250k."
+    },
+    {
+      "id": 2044904,
+      "name": "Scroll for Gun for Attack 30%",
+      "meso": 250000,
+      "source": "consensus",
+      "count": 7,
+      "window": "shops from 190k to 500k",
+      "note": "No sold line. Distinct shops asked 190k, 200k, 200k, 250k, 300k, 450k, and 500k. Median 250k. Repeated reposts of the same tag were counted once."
+    },
+    {
+      "id": 2040307,
+      "name": "Dark scroll for Earring for DEX 30%",
+      "meso": 8000000,
+      "source": "consensus",
+      "count": 3,
+      "window": "shops at 8m and 10m; one later shop at 17.3m",
+      "note": "A line said 11 had been bought out at 6.5m, then took that back and said nobody was really buying them. Shops later asked 8m, 10m, and 8m again, with a 10m bid beside them. One shop at 17.3m is left out. Stored the median of the 8–10m asks."
+    },
+    {
+      "id": 2040425,
+      "name": "Scroll for Topwear for LUK 60%",
+      "meso": 400000,
+      "source": "consensus",
+      "count": 6,
+      "window": "shops at 300k–400k; two lists at 775k and 790k, one shop at 950k",
+      "note": "No sold line. After collapsing a shop that refreshed the same tag, asks sat at 300k, 350k, 400k, 400k, and 400k, including a bulk stack posted at 400k. Median 400k. The 775k, 790k, and 950k posts are outside that run."
+    },
+    {
+      "id": 2040514,
+      "name": "Scroll for Overall Armor for INT 10%",
+      "meso": 500000,
+      "source": "consensus",
+      "count": 5,
+      "window": "shops from 450k to 600k; a buyer repeating 200k",
+      "note": "No sold line. Shops asked 450k, then a stack of 11 at 480k, 500k, and 550k, then 600k. Median 500k. Repeated buy offers at 200k are not the shop price."
+    },
+    {
+      "id": 2040931,
+      "name": "Scroll for Shield for STR 60%",
+      "meso": 200000,
+      "source": "consensus",
+      "count": 4,
+      "window": "shops at 200k; one shop at 1m and one at 50k",
+      "note": "No sold line. Four shops asked 200k. A 50k tag and a 1m tag are outside that cluster. Median of the 200k shops is 200k."
+    },
+    {
+      "id": 2044804,
+      "name": "Scroll for Knuckler for Attack 30%",
+      "meso": 1000000,
+      "source": "consensus",
+      "count": 3,
+      "window": "three shops at 1m",
+      "note": "No sold line. Three shops asked 1m each. A dark-scroll tag at 750k and a 500k bid are not folded in."
+    },
+    {
+      "id": 2040509,
+      "name": "Dark scroll for Overall Armor for DEX 30%",
+      "meso": 3500000,
+      "source": "sold",
+      "count": 1,
+      "window": "a stated sale at 3.5m on 20 Sep 2026",
+      "note": "The seller marked the 30% dark overall dex scroll sold, then said it went for 3.5m. One sale. No other shop in this export."
+    },
+    {
+      "id": 2000004,
+      "name": "Elixir",
+      "meso": 9000,
+      "source": "consensus",
+      "count": 10,
+      "window": "shops from 5k to 10k; clearance posts at 1.8k and 3k",
+      "note": "No single sold receipt. Independent shops asked 5k, 6k, 8k, 8k, 9k, 9k, 9k, 9.5k, 10k, and 10k. Median 9k. Posts at 1.8k and 3k, and pink or power elixirs, are separate.",
+      "kind": "gear"
+    },
+    {
+      "id": 2000005,
+      "name": "Power Elixir",
+      "meso": 12000,
+      "source": "consensus",
+      "count": 4,
+      "window": "shops from 9k to 14k; buys at 12k and 15k",
+      "note": "No sold receipt. Shops asked 9k, 11k, 12k, and 14k. Buys at 12k and 15k sit on that band. Median of the shops is 12k.",
+      "kind": "gear"
+    },
+    {
+      "id": 4004004,
+      "name": "Dark Crystal Ore",
+      "meso": 3500,
+      "source": "consensus",
+      "count": 3,
+      "window": "one shop repeating 4k, another at 3k then 3.5k",
+      "note": "No sold line. One merchant kept posting 4k. Another shop asked 3k, then 3.5k. Median 3.5k. A 40–60k remark in the same stretch is about refined crystals, not this ore. Repeated copies of the 4k ad are one listing.",
+      "kind": "gear"
+    }
+  ]
+}

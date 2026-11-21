@@ -1,0 +1,43 @@
+# Copied to .github/workflows/release.yml in EmanuelKedmi/osmbuddy-companion.
+# A tag v1.2.3 builds the Windows exe on GitHub and attaches it to that release.
+name: Release
+on:
+  push:
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+"
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - name: Check the tag matches the project version
+        shell: pwsh
+        run: |
+          $tag = "${{ github.ref_name }}"
+          if ($tag -notmatch '^v(\d+\.\d+\.\d+)$') { throw "Tag must be vMAJOR.MINOR.PATCH." }
+          $version = $Matches[1]
+          $csproj = Get-Content companion/MarketNotes.Companion/MarketNotes.Companion.csproj -Raw
+          if ($csproj -notmatch "<Version>$([regex]::Escape($version))</Version>") {
+            throw "Tag $tag does not match the Version in the companion project."
+          }
+      - name: Publish the single-file executable
+        run: dotnet publish companion/MarketNotes.Companion/MarketNotes.Companion.csproj -c Release -r win-x64 --self-contained true -p:DevBuild=false -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true -p:DebugType=none -p:DebugSymbols=false
+      - name: Stage the release asset
+        shell: pwsh
+        run: |
+          $exe = Get-ChildItem -Recurse -Filter MarketNotes.Companion.exe companion/MarketNotes.Companion/bin/Release |
+            Where-Object { $_.FullName -match '\\publish\\' } |
+            Select-Object -First 1
+          if (-not $exe) { throw "Release executable was not produced." }
+          New-Item -ItemType Directory -Force -Path dist | Out-Null
+          Copy-Item $exe.FullName dist/MarketNotes.Companion.exe
+      - name: Attach the executable to the release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/MarketNotes.Companion.exe
+          fail_on_unmatched_files: true

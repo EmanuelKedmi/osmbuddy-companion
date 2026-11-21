@@ -1,0 +1,301 @@
+{
+  "source": "maplestory.io GMS/62 map list, the same client the catalog was built from",
+  "note": "data/catalog.json only keeps maps that spawn monsters, so it has no Free Market rooms. These are the Free Market maps from that client: the hidden-street Free Market, plus the Henesys, Perion, El Nath, and Ludibrium rooms.",
+  "maps": [
+    {
+      "id": 100000110,
+      "name": "Henesys Free Market Entrance",
+      "street": "Victoria Road"
+    },
+    {
+      "id": 100000111,
+      "name": "Henesys Free Market <1>",
+      "street": "Victoria Road"
+    },
+    {
+      "id": 100000112,
+      "name": "Henesys Free Market <2>",
+      "street": "Victoria Road"
+    },
+    {
+      "id": 100000113,
+      "name": "Henesys Free Market <3>",
+      "street": "Victoria Road"
+    },
+    {
+      "id": 100000114,
+      "name": "Henesys Free Market <4>",
+      "street": "Victoria Road"
+    },
+    {
+      "id": 100000115,
+      "name": "Henesys Free Market <5>",
+      "street": "Victoria Road"
+    },
+    {
+      "id": 100000116,
+      "name": "Henesys Free Market <6>",
+      "street": "Victoria Road"
+    },
+    {
+      "id": 100000117,
+      "name": "Henesys Free Market <7>",
+      "street": "Victoria Road"
+    },
+    {
+      "id": 100000118,
+      "name": "Henesys Free Market <8>",
+      "street": "Victoria Road"
+    },
+    {
+      "id": 100000119,
+      "name": "Henesys Free Market <9>",
+      "street": "Victoria Road"
+    },
+    {
+      "id": 102000100,
+      "name": "Entrance of Perion Free Market",
+      "street": "Victoria Road"
+    },
+    {
+      "id": 102000101,
+      "name": "Perion Free Market <1>",
+      "street": "Victoria Road"
+    },
+    {
+      "id": 102000102,
+      "name": "Perion Free Market <2>",
+      "street": "Victoria Road"
+    },
+    {
+      "id": 102000103,
+      "name": "Perion Free Market <3>",
+      "street": "Victoria Road"
+    },
+    {
+      "id": 102000104,
+      "name": "Perion Free Market <4>",
+      "street": "Victoria Road"
+    },
+    {
+      "id": 102000105,
+      "name": "Perion Free Market <5>",
+      "street": "Victoria Road"
+    },
+    {
+      "id": 102000106,
+      "name": "Perion Free Market <6>",
+      "street": "Victoria Road"
+    },
+    {
+      "id": 102000107,
+      "name": "Perion Free Market <7>",
+      "street": "Victoria Road"
+    },
+    {
+      "id": 102000108,
+      "name": "Perion Free Market <8>",
+      "street": "Victoria Road"
+    },
+    {
+      "id": 102000109,
+      "name": "Perion Free Market <9>",
+      "street": "Victoria Road"
+    },
+    {
+      "id": 211000110,
+      "name": "Entrance to El Nath Free Market",
+      "street": "El Nath"
+    },
+    {
+      "id": 211000111,
+      "name": "El Nath Free Market <1>",
+      "street": "El Nath"
+    },
+    {
+      "id": 211000112,
+      "name": "El Nath Free Market <2>",
+      "street": "El Nath"
+    },
+    {
+      "id": 211000113,
+      "name": "El Nath Free Market <3>",
+      "street": "El Nath"
+    },
+    {
+      "id": 211000114,
+      "name": "El Nath Free Market <4>",
+      "street": "El Nath"
+    },
+    {
+      "id": 211000115,
+      "name": "El Nath Free Market <5>",
+      "street": "El Nath"
+    },
+    {
+      "id": 220000200,
+      "name": "Free Market Entrance",
+      "street": "Ludibrium"
+    },
+    {
+      "id": 220000201,
+      "name": "Free Market<1>",
+      "street": "Ludibrium"
+    },
+    {
+      "id": 220000202,
+      "name": "Free Market<2>",
+      "street": "Ludibrium"
+    },
+    {
+      "id": 220000203,
+      "name": "Free Market<3>",
+      "street": "Ludibrium"
+    },
+    {
+      "id": 220000204,
+      "name": "Free Market<4>",
+      "street": "Ludibrium"
+    },
+    {
+      "id": 220000205,
+      "name": "Free Market<5>",
+      "street": "Ludibrium"
+    },
+    {
+      "id": 220000206,
+      "name": "Free Market<6>",
+      "street": "Ludibrium"
+    },
+    {
+      "id": 220000207,
+      "name": "Free Market<7>",
+      "street": "Ludibrium"
+    },
+    {
+      "id": 220000208,
+      "name": "Free Market<8>",
+      "street": "Ludibrium"
+    },
+    {
+      "id": 220000209,
+      "name": "Free Market<9>",
+      "street": "Ludibrium"
+    },
+    {
+      "id": 910000000,
+      "name": "Free Market Entrance",
+      "street": "Hidden Street"
+    },
+    {
+      "id": 910000001,
+      "name": "Free Market<1>",
+      "street": "Hidden Street"
+    },
+    {
+      "id": 910000002,
+      "name": "Free Market<2>",
+      "street": "Hidden Street"
+    },
+    {
+      "id": 910000003,
+      "name": "Free Market<3>",
+      "street": "Hidden Street"
+    },
+    {
+      "id": 910000004,
+      "name": "Free Market<4>",
+      "street": "Hidden Street"
+    },
+    {
+      "id": 910000005,
+      "name": "Free Market<5>",
+      "street": "Hidden Street"
+    },
+    {
+      "id": 910000006,
+      "name": "Free Market<6>",
+      "street": "Hidden Street"
+    },
+    {
+      "id": 910000007,
+      "name": "Free Market<7>",
+      "street": "Hidden Street"
+    },
+    {
+      "id": 910000008,
+      "name": "Free Market<8>",
+      "street": "Hidden Street"
+    },
+    {
+      "id": 910000009,
+      "name": "Free Market<9>",
+      "street": "Hidden Street"
+    },
+    {
+      "id": 910000010,
+      "name": "Free Market<10>",
+      "street": "Hidden Street"
+    },
+    {
+      "id": 910000011,
+      "name": "Free Market<11>",
+      "street": "Hidden Street"
+    },
+    {
+      "id": 910000012,
+      "name": "Free Market<12>",
+      "street": "Hidden Street"
+    },
+    {
+      "id": 910000013,
+      "name": "Free Market<13>",
+      "street": "Hidden Street"
+    },
+    {
+      "id": 910000014,
+      "name": "Free Market<14>",
+      "street": "Hidden Street"
+    },
+    {
+      "id": 910000015,
+      "name": "Free Market<15>",
+      "street": "Hidden Street"
+    },
+    {
+      "id": 910000016,
+      "name": "Free Market<16>",
+      "street": "Hidden Street"
+    },
+    {
+      "id": 910000017,
+      "name": "Free Market<17>",
+      "street": "Hidden Street"
+    },
+    {
+      "id": 910000018,
+      "name": "Free Market<18>",
+      "street": "Hidden Street"
+    },
+    {
+      "id": 910000019,
+      "name": "Free Market<19>",
+      "street": "Hidden Street"
+    },
+    {
+      "id": 910000020,
+      "name": "Free Market<20>",
+      "street": "Hidden Street"
+    },
+    {
+      "id": 910000021,
+      "name": "Free Market<21>",
+      "street": "Hidden Street"
+    },
+    {
+      "id": 910000022,
+      "name": "Free Market<22>",
+      "street": "Hidden Street"
+    }
+  ]
+}

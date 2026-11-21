@@ -1,0 +1,7 @@
+{
+  "note": "Skill window sample. The skill window does not print the character name, so characterName is the name this fixture belongs to. The text was not read from a game window. OCR did not run.",
+  "sample": true,
+  "ocr": false,
+  "characterName": "Aran",
+  "text": "Skill\nPower Strike\n20 / 20\nSlash Blast\n10 / 20\nSword Mastery\n20 / 20\nBooster\n16 / 20\nRage\n12 / 20\nFinal Attack\n20 / 30\nHaste\n10 / 20\n"
+}

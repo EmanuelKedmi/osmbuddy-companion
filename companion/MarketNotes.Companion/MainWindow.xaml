@@ -1,0 +1,724 @@
+<Window x:Class="MarketNotes.Companion.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:shell="clr-namespace:System.Windows.Shell;assembly=PresentationFramework"
+        Title="Companion"
+        Icon="favicon.ico"
+        Height="900"
+        Width="1080"
+        MinHeight="680"
+        MinWidth="880"
+        WindowStyle="None"
+        ResizeMode="CanResize"
+        Background="#F7F1E4"
+        FontFamily="Segoe UI"
+        FontSize="14"
+        Foreground="#3F2E27"
+        UseLayoutRounding="True"
+        SnapsToDevicePixels="True"
+        WindowStartupLocation="CenterScreen">
+    <shell:WindowChrome.WindowChrome>
+        <shell:WindowChrome CaptionHeight="48"
+                            ResizeBorderThickness="6"
+                            GlassFrameThickness="0"
+                            CornerRadius="0"
+                            UseAeroCaptionButtons="False" />
+    </shell:WindowChrome.WindowChrome>
+    <Border BorderBrush="#E4D3B8" BorderThickness="1" Background="#F7F1E4">
+        <Grid>
+            <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="48" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Background="#F7F1E4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="14,0,0,0">
+                    <Border Width="28" Height="28" CornerRadius="8" Background="#F3E6CC" Margin="0,0,10,0">
+                        <Viewbox Margin="3">
+                            <Canvas Width="32" Height="32">
+                                <Canvas>
+                                    <Canvas.RenderTransform>
+                                        <TransformGroup>
+                                            <TranslateTransform X="-16" Y="-15" />
+                                            <ScaleTransform ScaleX="0.76" ScaleY="0.84" />
+                                            <RotateTransform Angle="110" />
+                                            <TranslateTransform X="16.4" Y="15" />
+                                            <ScaleTransform ScaleX="-1" />
+                                            <TranslateTransform X="32" />
+                                        </TransformGroup>
+                                    </Canvas.RenderTransform>
+                                    <Path Stroke="#9E342C"
+                                          StrokeThickness="1"
+                                          StrokeStartLineCap="Round"
+                                          Data="M16 23c-.4 3.4-2.4 6.4-5.8 8.6" />
+                                    <Path Fill="#9E342C"
+                                          Data="M16 2 18 5.4 20.2 4.6 20.4 8.2Q20.6 10.4 21.4 10.8L24.2 8.4 25 10.4 29.4 10 27.6 13.6 29 15.2 25.2 17Q23.8 17.8 24 19L25.4 21.6 20.6 21.6Q18 21.8 16.6 23.6H15.4Q14 21.8 11.4 21.6L6.6 21.6 8 19Q8.2 17.8 6.8 17L3 15.2 4.4 13.6 2.6 10 7 10.4 7.8 8.4 10.6 10.8Q11.4 10.4 11.6 8.2L11.8 4.6 14 5.4Z" />
+                                    <Path Fill="#6E211C"
+                                          Data="M21.4 10.4c2.8.6 5 2.4 5.8 5L32 16V8Z">
+                                        <Path.Clip>
+                                            <PathGeometry Figures="M16 2 18 5.4 20.2 4.6 20.4 8.2Q20.6 10.4 21.4 10.8L24.2 8.4 25 10.4 29.4 10 27.6 13.6 29 15.2 25.2 17Q23.8 17.8 24 19L25.4 21.6 20.6 21.6Q18 21.8 16.6 23.6H15.4Q14 21.8 11.4 21.6L6.6 21.6 8 19Q8.2 17.8 6.8 17L3 15.2 4.4 13.6 2.6 10 7 10.4 7.8 8.4 10.6 10.8Q11.4 10.4 11.6 8.2L11.8 4.6 14 5.4Z" />
+                                        </Path.Clip>
+                                    </Path>
+                                </Canvas>
+                            </Canvas>
+                        </Viewbox>
+                    </Border>
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="Companion" FontFamily="Georgia" FontSize="16" Foreground="#5C241C" />
+                        <TextBlock x:Name="BuildSubtitle" Text="Old School Maple" FontSize="11" Foreground="#6B5344" Margin="0,-1,0,0" />
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
+                    <TextBlock x:Name="VersionLabel"
+                               VerticalAlignment="Center"
+                               Margin="0,0,12,0"
+                               FontSize="12"
+                               Foreground="#6B5344"
+                               Text="1.0.0" />
+                    <Button x:Name="UpdateButton"
+                            Content="Update"
+                            Visibility="Collapsed"
+                            ToolTip="Download the newer companion and restart"
+                            Style="{StaticResource OutlineButton}"
+                            Padding="10,4"
+                            Margin="0,0,8,0"
+                            shell:WindowChrome.IsHitTestVisibleInChrome="True"
+                            Click="Update_Click" />
+                    <ToggleButton x:Name="BugButton"
+                                  Style="{StaticResource BugToggle}"
+                                  shell:WindowChrome.IsHitTestVisibleInChrome="True"
+                                  Checked="BugToggle_Changed"
+                                  Unchecked="BugToggle_Changed">
+                        <Path Width="15"
+                              Height="15"
+                              Stretch="Uniform"
+                              Fill="Transparent"
+                              Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}}"
+                              StrokeThickness="1.6"
+                              StrokeStartLineCap="Round"
+                              StrokeEndLineCap="Round"
+                              StrokeLineJoin="Round"
+                              Data="M8,2 L9.9,3.9 M14.1,3.9 L16,2 M9,7.1 V6.1 A3,3 0 1 1 15,6.1 V7.1 M6,14 V11 A4,4 0 0 1 10,7 H14 A4,4 0 0 1 18,11 V14 A6,6 0 0 1 6,14 M12,11 V20 M6.5,9 C4.6,8.8 3,7.1 3,5 M6,13 H2 M3,21 C3,18.9 4.7,17.1 6.8,17 M17.5,9 C19.4,8.8 21,7.1 21,5 M18,13 H22 M21,21 C21,18.9 19.3,17.1 17.2,17" />
+                    </ToggleButton>
+                    <Button Style="{StaticResource CaptionButton}"
+                            shell:WindowChrome.IsHitTestVisibleInChrome="True"
+                            ToolTip="Minimize"
+                            Click="Minimize_Click">
+                        <Path Width="12" Height="12" Stretch="None" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}" StrokeThickness="1.4" Data="M1,8 H11" />
+                    </Button>
+                    <Button Style="{StaticResource CaptionButton}"
+                            shell:WindowChrome.IsHitTestVisibleInChrome="True"
+                            ToolTip="Maximize"
+                            Click="Maximize_Click">
+                        <Path Width="11" Height="11" Stretch="Uniform" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}" StrokeThickness="1.4" Fill="Transparent" Data="M1,1 H10 V10 H1 Z" />
+                    </Button>
+                    <Button Style="{StaticResource CloseButton}"
+                            shell:WindowChrome.IsHitTestVisibleInChrome="True"
+                            ToolTip="Close"
+                            Click="CloseWindow_Click">
+                        <Path Width="11" Height="11" Stretch="Uniform" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}" StrokeThickness="1.4" StrokeStartLineCap="Round" Data="M1,1 L10,10 M10,1 L1,10" />
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+            <Border Grid.Row="1" Background="#E4D3B8" Height="1" VerticalAlignment="Top" />
+
+            <Border Grid.Row="1" Margin="16,12,16,8" Background="#FFFBF6" BorderBrush="#E4D3B8" BorderThickness="1" CornerRadius="12" Padding="12">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="260" />
+                    </Grid.ColumnDefinitions>
+                <StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Border Background="#F0E6D4" CornerRadius="16" Padding="3" VerticalAlignment="Center">
+                            <StackPanel Orientation="Horizontal">
+                                <RadioButton x:Name="WindowSourceButton"
+                                             GroupName="ShareSource"
+                                             Content="Window"
+                                             IsChecked="True"
+                                             Style="{StaticResource PillRadio}"
+                                             Checked="SourceKind_Checked" />
+                                <RadioButton x:Name="ScreenSourceButton"
+                                             GroupName="ShareSource"
+                                             Content="Screen"
+                                             Style="{StaticResource PillRadio}"
+                                             Checked="SourceKind_Checked" />
+                            </StackPanel>
+                        </Border>
+                        <ComboBox x:Name="SourceList"
+                                  Grid.Column="1"
+                                  DisplayMemberPath="Display"
+                                  MinHeight="34"
+                                  Margin="10,0"
+                                  VerticalContentAlignment="Center"
+                                  SelectionChanged="SourceList_SelectionChanged" />
+                        <Button Grid.Column="2"
+                                Content="Refresh"
+                                Style="{StaticResource OutlineButton}"
+                                Click="Refresh_Click" />
+                    </Grid>
+                    <Grid Margin="0,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock x:Name="ModeStatus"
+                                   VerticalAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   Margin="0,0,12,0"
+                                   Foreground="#6B5344"
+                                   Text="The map chooses the scanner." />
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                            <Button x:Name="StartShareButton"
+                                    Content="Start share"
+                                    Style="{StaticResource PrimaryButton}"
+                                    Margin="0,0,8,0"
+                                    Click="StartShare_Click" />
+                            <Button x:Name="StopShareButton"
+                                    Content="Stop"
+                                    Style="{StaticResource OutlineButton}"
+                                    IsEnabled="False"
+                                    Click="StopShare_Click" />
+                        </StackPanel>
+                    </Grid>
+                    <Grid Margin="0,12,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Margin="0,0,8,0">
+                            <TextBlock Text="Website" Foreground="#6B5344" FontSize="12" Margin="0,0,0,4" />
+                            <TextBox x:Name="FeedUrlBox"
+                                     Text="https://osmbuddy.duckdns.org/api/farm/feed"
+                                     ToolTip="Both scanners send a copy here. Leave blank to keep results on this PC. FM reports use the same host with /api/fm/feed."
+                                     TextChanged="WebsiteSettings_Changed" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Margin="8,0,0,0">
+                            <TextBlock Text="Companion token" Foreground="#6B5344" FontSize="12" Margin="0,0,0,4" />
+                            <TextBox x:Name="FeedTokenBox"
+                                     ToolTip="Paste the token from the website account page. It is saved on this PC and sent with FM and training reports."
+                                     TextChanged="WebsiteSettings_Changed" />
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+                    <Border Grid.Column="1"
+                            Margin="12,0,0,0"
+                            Height="140"
+                            VerticalAlignment="Center"
+                            Background="#241910"
+                            CornerRadius="10"
+                            ClipToBounds="True">
+                        <Viewbox Stretch="Uniform">
+                            <Grid Width="960" Height="540">
+                                <Image x:Name="PreviewImage" Stretch="Fill" />
+                                <TextBlock x:Name="PreviewHint"
+                                           Margin="48"
+                                           TextWrapping="Wrap"
+                                           TextAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"
+                                           Foreground="#F7F1E4"
+                                           FontSize="22"
+                                           Text="Choose a window or a screen, then start the share." />
+                                <Canvas>
+                                    <Border x:Name="SampleBadge"
+                                            Canvas.Left="16"
+                                            Canvas.Top="16"
+                                            Background="#F4E1B5"
+                                            BorderBrush="#C4A15A"
+                                            BorderThickness="1"
+                                            CornerRadius="8"
+                                            Padding="8,4"
+                                            Visibility="Collapsed">
+                                        <TextBlock Text="Sample" FontWeight="SemiBold" Foreground="#5C241C" />
+                                    </Border>
+                                    <Border x:Name="ShopOverlay"
+                                            Canvas.Left="173"
+                                            Canvas.Top="151"
+                                            Width="560"
+                                            Background="#F7F1E4"
+                                            BorderBrush="#C4A15A"
+                                            BorderThickness="1"
+                                            CornerRadius="8"
+                                            Padding="10"
+                                            Opacity="0.96"
+                                            Visibility="Collapsed">
+                                        <DockPanel>
+                                            <TextBlock DockPanel.Dock="Top"
+                                                       TextWrapping="Wrap"
+                                                       Margin="0,0,0,6"
+                                                       Foreground="#6B5344"
+                                                       Text="Shop rows. Hover a row for the shop price, the database price, and the gap." />
+                                            <StackPanel x:Name="ShopOverlayRows" />
+                                        </DockPanel>
+                                    </Border>
+                                </Canvas>
+                            </Grid>
+                        </Viewbox>
+                    </Border>
+                </Grid>
+            </Border>
+
+            <StackPanel Grid.Row="2" Margin="20,0,20,8">
+                <TextBlock x:Name="ShareStatus"
+                           TextWrapping="Wrap"
+                           Foreground="#6B5344"
+                           FontSize="13"
+                           Text="Share is off." />
+                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                    <StackPanel Margin="0,0,12,0">
+                        <Grid Width="200">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Battle isolation" Foreground="#6B5344" FontSize="12" VerticalAlignment="Center" />
+                            <Button x:Name="BattleEnlargeButton"
+                                    Grid.Column="1"
+                                    Content="Enlarge"
+                                    FontSize="11"
+                                    Padding="8,2"
+                                    IsEnabled="False"
+                                    Style="{StaticResource OutlineButton}"
+                                    ToolTip="Open the isolated battle panel crop, large enough to judge the ink."
+                                    Click="BattleEnlarge_Click" />
+                        </Grid>
+                        <Border Width="200"
+                                Height="56"
+                                Margin="0,2,0,0"
+                                Background="#FFFFFF"
+                                BorderBrush="#E4D3B8"
+                                BorderThickness="1"
+                                CornerRadius="6"
+                                ClipToBounds="True"
+                                Cursor="Hand"
+                                ToolTip="Isolated battle panel only. Click to enlarge this crop."
+                                MouseLeftButtonUp="BattleEnlarge_Click">
+                            <Grid>
+                                <TextBlock x:Name="BattleIsolationHint"
+                                           Margin="8"
+                                           Text="Waiting for a changed window"
+                                           TextWrapping="Wrap"
+                                           TextAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"
+                                           Foreground="#6B5344"
+                                           FontSize="11" />
+                                <Image x:Name="BattleIsolationImage"
+                                       Stretch="Uniform"
+                                       RenderOptions.BitmapScalingMode="NearestNeighbor" />
+                            </Grid>
+                        </Border>
+                    </StackPanel>
+                    <StackPanel>
+                        <Grid Width="240">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Loot isolation" Foreground="#6B5344" FontSize="12" VerticalAlignment="Center" />
+                            <Button x:Name="LootEnlargeButton"
+                                    Grid.Column="1"
+                                    Content="Enlarge"
+                                    FontSize="11"
+                                    Padding="8,2"
+                                    IsEnabled="False"
+                                    Style="{StaticResource OutlineButton}"
+                                    ToolTip="Open the isolated loot-corner crop, large enough to judge the ink."
+                                    Click="LootEnlarge_Click" />
+                        </Grid>
+                        <Border Width="240"
+                                Height="56"
+                                Margin="0,2,0,0"
+                                Background="#241910"
+                                BorderBrush="#E4D3B8"
+                                BorderThickness="1"
+                                CornerRadius="6"
+                                ClipToBounds="True"
+                                Cursor="Hand"
+                                ToolTip="Isolated loot corner only. Click to enlarge this crop."
+                                MouseLeftButtonUp="LootEnlarge_Click">
+                            <Grid>
+                                <TextBlock x:Name="LootIsolationHint"
+                                           Margin="8"
+                                           Text="Waiting for a changed crop"
+                                           TextWrapping="Wrap"
+                                           TextAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"
+                                           Foreground="#F7F1E4"
+                                           FontSize="11" />
+                                <Image x:Name="LootIsolationImage"
+                                       Stretch="Uniform"
+                                       RenderOptions.BitmapScalingMode="NearestNeighbor" />
+                            </Grid>
+                        </Border>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel x:Name="BattleValueCells" Orientation="Horizontal" Margin="0,4,0,0" Visibility="Collapsed" />
+                <Border x:Name="CropExpandHost"
+                        Margin="0,8,0,0"
+                        Visibility="Collapsed"
+                        HorizontalAlignment="Left"
+                        Background="#FFFBF6"
+                        BorderBrush="#E4D3B8"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Padding="8">
+                    <DockPanel>
+                        <DockPanel DockPanel.Dock="Top" Margin="0,0,0,6" LastChildFill="True">
+                            <Button DockPanel.Dock="Right"
+                                    Content="Close"
+                                    FontSize="11"
+                                    Padding="8,2"
+                                    Margin="8,0,0,0"
+                                    Style="{StaticResource OutlineButton}"
+                                    Click="CloseCropExpand_Click" />
+                            <TextBlock x:Name="CropExpandTitle"
+                                       VerticalAlignment="Center"
+                                       TextWrapping="Wrap"
+                                       Foreground="#5C241C"
+                                       FontSize="13" />
+                        </DockPanel>
+                        <ScrollViewer x:Name="CropExpandScroll"
+                                      HorizontalScrollBarVisibility="Auto"
+                                      VerticalScrollBarVisibility="Disabled"
+                                      HorizontalAlignment="Left"
+                                      MaxHeight="480">
+                            <Border x:Name="CropExpandFrame"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Top"
+                                    BorderBrush="#E4D3B8"
+                                    BorderThickness="1"
+                                    CornerRadius="6"
+                                    ClipToBounds="True">
+                                <Image x:Name="CropExpandImage"
+                                       Stretch="Fill"
+                                       RenderOptions.BitmapScalingMode="NearestNeighbor" />
+                            </Border>
+                        </ScrollViewer>
+                    </DockPanel>
+                </Border>
+            </StackPanel>
+
+            <Grid Grid.Row="3" Margin="16,0,16,12">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                <Grid x:Name="FmPanel">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <DockPanel Margin="0,0,0,8" LastChildFill="False">
+                        <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                            <Button x:Name="ExportButton"
+                                    Content="Export JSON"
+                                    Style="{StaticResource OutlineButton}"
+                                    IsEnabled="False"
+                                    Click="Export_Click" />
+                        </StackPanel>
+                        <StackPanel>
+                            <TextBlock Text="Shop" FontFamily="Georgia" FontSize="20" Foreground="#5C241C" />
+                            <TextBlock x:Name="ShopStateText" TextWrapping="Wrap" Margin="0,2,12,0" Foreground="#6B5344" Text="No shop yet." />
+                        </StackPanel>
+                    </DockPanel>
+                    <DockPanel Grid.Row="1">
+                        <Border x:Name="SampleBanner"
+                                DockPanel.Dock="Top"
+                                Visibility="Collapsed"
+                                Background="#F4E1B5"
+                                BorderBrush="#C4A15A"
+                                BorderThickness="1"
+                                CornerRadius="8"
+                                Padding="10,8"
+                                Margin="0,0,0,8">
+                            <TextBlock Text="Sample. These rows were not read from the game."
+                                       TextWrapping="Wrap"
+                                       FontWeight="SemiBold"
+                                       Foreground="#5C241C" />
+                        </Border>
+                        <DataGrid x:Name="LinesGrid">
+                            <DataGrid.RowStyle>
+                                <Style TargetType="DataGridRow">
+                                    <EventSetter Event="MouseEnter" Handler="ShopRow_MouseEnter" />
+                                    <EventSetter Event="MouseLeave" Handler="ShopRow_MouseLeave" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Sold}" Value="True">
+                                            <Setter Property="Background" Value="#F4E1B5" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGrid.RowStyle>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Slot" Binding="{Binding Slot}" Width="70" />
+                                <DataGridTextColumn Header="Sold" Binding="{Binding SoldLabel}" Width="70" />
+                                <DataGridTextColumn Header="Item" Binding="{Binding Item}" Width="*" />
+                                <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" Width="90" />
+                                <DataGridTextColumn Header="Shop price" Binding="{Binding PriceEach}" Width="110" />
+                                <DataGridTextColumn Header="Database" Binding="{Binding DbPrice}" Width="110" />
+                                <DataGridTextColumn Header="Source" Binding="{Binding DbLabel}" Width="170" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </DockPanel>
+                </Grid>
+
+                <Grid x:Name="TrainingPanel" Visibility="Collapsed">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Training" FontFamily="Georgia" FontSize="20" Foreground="#5C241C" Margin="0,0,0,8" />
+                    <Grid Grid.Row="1" Margin="0,0,0,8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Margin="0,0,8,0">
+                            <TextBlock Text="Character" Foreground="#6B5344" FontSize="12" Margin="0,0,0,4" />
+                            <TextBox x:Name="CharacterNameBox" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Margin="8,0">
+                            <TextBlock Text="Map" Foreground="#6B5344" FontSize="12" Margin="0,0,0,4" />
+                            <TextBox x:Name="FarmMapNameBox" Text="Mushroom Garden" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="2" Margin="8,0,0,0">
+                            <TextBlock Text="Map id" Foreground="#6B5344" FontSize="12" Margin="0,0,0,4" />
+                            <TextBox x:Name="FarmMapIdBox" Text="104030001" />
+                        </StackPanel>
+                    </Grid>
+                    <DockPanel Grid.Row="2">
+                        <TextBlock x:Name="TrainingKills"
+                                   DockPanel.Dock="Top"
+                                   Margin="0,0,0,8"
+                                   TextWrapping="Wrap"
+                                   Foreground="#5C241C"
+                                   Text="0 kills this session" />
+                        <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <DataGrid x:Name="DropGrid" Margin="0,0,0,8">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Item" Binding="{Binding Item}" Width="*" />
+                                <DataGridTextColumn Header="Count" Binding="{Binding Count}" Width="90" />
+                                <DataGridTextColumn Header="Session kills / drop" Binding="{Binding SessionRate}" SortMemberPath="SessionKillsPerDrop" Width="160" />
+                                <DataGridTextColumn Header="Total kills / drop" Binding="{Binding TotalRate}" SortMemberPath="TotalKillsPerDrop" Width="150" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <Border x:Name="TrainingOverlay"
+                                Grid.Column="1"
+                                Width="320"
+                                Margin="12,0,0,8"
+                                Background="#FFFBF6"
+                                BorderBrush="#E4D3B8"
+                                BorderThickness="1"
+                                CornerRadius="12"
+                                Padding="12"
+                                Visibility="Collapsed">
+                            <DockPanel>
+                                <TextBlock DockPanel.Dock="Top"
+                                           Text="Reading"
+                                           FontFamily="Georgia"
+                                           FontSize="18"
+                                           Foreground="#5C241C"
+                                           Margin="0,0,0,8" />
+                                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                                    <TextBlock x:Name="TrainingOverlayText"
+                                               TextWrapping="Wrap"
+                                               Foreground="#5C241C" />
+                                </ScrollViewer>
+                            </DockPanel>
+                        </Border>
+                        </Grid>
+                    </DockPanel>
+                    <TextBlock x:Name="FarmStatus"
+                               Grid.Row="3"
+                               TextWrapping="Wrap"
+                               Foreground="#5C241C"
+                               Text="Training scanner is idle." />
+                </Grid>
+            <Border x:Name="DebugPanel"
+                    Grid.Column="1"
+                    Visibility="Collapsed"
+                    Width="340"
+                    Margin="12,0,0,0"
+                    Background="#FFFBF6"
+                    BorderBrush="#E4D3B8"
+                    BorderThickness="1"
+                    CornerRadius="12"
+                    Padding="12">
+                <DockPanel>
+                    <TextBlock DockPanel.Dock="Top" Text="Debug" FontFamily="Georgia" FontSize="18" Foreground="#5C241C" />
+                    <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="0,4,0,8" Foreground="#6B5344" FontSize="12"
+                               Text="While this panel is open, loot reads and visit changes are kept on this PC. Upload logs sends that text to the website. Paste a companion token first." />
+                    <Button x:Name="UploadLogsButton"
+                            DockPanel.Dock="Top"
+                            Content="Upload logs"
+                            Style="{StaticResource OutlineButton}"
+                            HorizontalAlignment="Left"
+                            Margin="0,0,0,8"
+                            Click="UploadLogs_Click" />
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                    <StackPanel>
+                        <TextBlock Text="Battle isolation" Foreground="#6B5344" FontSize="12" />
+                        <Border Height="96"
+                                Margin="0,2,0,4"
+                                Background="#FFFFFF"
+                                BorderBrush="#E4D3B8"
+                                BorderThickness="1"
+                                CornerRadius="6"
+                                ClipToBounds="True"
+                                Cursor="Hand"
+                                ToolTip="Isolated battle panel only. Click to enlarge this crop."
+                                MouseLeftButtonUp="BattleEnlarge_Click">
+                            <Grid>
+                                <TextBlock x:Name="DebugBattleIsolationHint"
+                                           Margin="8"
+                                           Text="Waiting for a changed window"
+                                           TextWrapping="Wrap"
+                                           TextAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Foreground="#6B5344"
+                                           FontSize="11" />
+                                <Image x:Name="DebugBattleIsolationImage"
+                                       Stretch="Uniform"
+                                       RenderOptions.BitmapScalingMode="NearestNeighbor" />
+                            </Grid>
+                        </Border>
+                        <WrapPanel x:Name="DebugBattleValueCells" Margin="0,0,0,6" Visibility="Collapsed" />
+                        <TextBlock Text="Loot isolation" Foreground="#6B5344" FontSize="12" />
+                        <Border Height="72"
+                                Margin="0,2,0,4"
+                                Background="#241910"
+                                BorderBrush="#E4D3B8"
+                                BorderThickness="1"
+                                CornerRadius="6"
+                                ClipToBounds="True"
+                                Cursor="Hand"
+                                ToolTip="Isolated loot corner only. Click to enlarge this crop."
+                                MouseLeftButtonUp="LootEnlarge_Click">
+                            <Grid>
+                                <TextBlock x:Name="DebugLootIsolationHint"
+                                           Margin="8"
+                                           Text="Waiting for a changed crop"
+                                           TextWrapping="Wrap"
+                                           TextAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Foreground="#F7F1E4"
+                                           FontSize="11" />
+                                <Image x:Name="DebugLootIsolationImage"
+                                       Stretch="Uniform"
+                                       RenderOptions.BitmapScalingMode="NearestNeighbor" />
+                            </Grid>
+                        </Border>
+                        <TextBlock TextWrapping="Wrap"
+                                   Margin="0,0,0,10"
+                                   Foreground="#6B5344"
+                                   FontSize="11"
+                                   Text="Enlarge shows that crop only. battle.png and loot.png in %LOCALAPPDATA%\MarketNotes.Companion\preview are the same crops, overwritten when a crop changes." />
+                        <TextBlock x:Name="SourceDescription"
+                                   TextWrapping="Wrap"
+                                   Margin="0,0,0,8"
+                                   Foreground="#6B5344"
+                                   Text="Choose a window. The list shows the title and the process." />
+                        <TextBlock Text="Seen state" Foreground="#6B5344" FontSize="12" Margin="0,0,0,4" />
+                        <TextBox x:Name="SeenStateBox"
+                                 IsReadOnly="True"
+                                 AcceptsReturn="True"
+                                 TextWrapping="Wrap"
+                                 VerticalScrollBarVisibility="Auto"
+                                 MinHeight="160"
+                                 FontFamily="Consolas"
+                                 FontSize="12"
+                                 VerticalContentAlignment="Top" />
+                        <TextBlock Text="Scanner log" Foreground="#6B5344" FontSize="12" Margin="0,8,0,4" />
+                        <TextBlock x:Name="StatusText" TextWrapping="Wrap" Foreground="#5C241C" />
+                        <StackPanel Margin="0,10,0,0">
+                            <Button Content="Load FM sample"
+                                    Style="{StaticResource OutlineButton}"
+                                    HorizontalAlignment="Left"
+                                    Margin="0,0,0,8"
+                                    Click="LoadFmSample_Click" />
+                            <Button Content="Send training sample"
+                                    Style="{StaticResource OutlineButton}"
+                                    HorizontalAlignment="Left"
+                                    Click="SendTrainingSample_Click" />
+                        </StackPanel>
+                        <Grid Margin="0,10,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Margin="0,0,8,0">
+                                <TextBlock Text="Fallback kills" Foreground="#6B5344" FontSize="12" Margin="0,0,0,4" />
+                                <TextBox x:Name="FarmKillsBox" Text="0" ToolTip="Used only when a battle window was read and it had no kill count." />
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Margin="8,0,0,0">
+                                <TextBlock Text="Fallback minutes" Foreground="#6B5344" FontSize="12" Margin="0,0,0,4" />
+                                <TextBox x:Name="FarmMinutesBox" Text="0" ToolTip="Used only when a battle window was read and it had no time." />
+                            </StackPanel>
+                        </Grid>
+                        <TextBox x:Name="CharacterIdBox" Visibility="Collapsed" />
+                        <TextBlock Text="Character scanner" FontFamily="Georgia" FontSize="18" Foreground="#5C241C" Margin="0,12,0,0" />
+                        <TextBlock TextWrapping="Wrap" Foreground="#6B5344" Margin="0,4,0,8"
+                                   Text="Runs on the same share. A readable stat window or skill window fills the character sheet. A frame that cannot be read adds nothing." />
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                            <Button Content="Load stat sample"
+                                    Style="{StaticResource OutlineButton}"
+                                    Margin="0,0,8,0"
+                                    Click="LoadStatSample_Click" />
+                            <Button Content="Load skill sample"
+                                    Style="{StaticResource OutlineButton}"
+                                    Click="LoadSkillSample_Click" />
+                        </StackPanel>
+                        <TextBlock x:Name="CharacterStatus" TextWrapping="Wrap" Foreground="#5C241C" />
+                    </StackPanel>
+                    </ScrollViewer>
+                </DockPanel>
+            </Border>
+            </Grid>
+
+        </Grid>
+        <Popup x:Name="PricePopup"
+               Placement="Top"
+               StaysOpen="True"
+               AllowsTransparency="True"
+               PopupAnimation="Fade">
+            <Border Background="#FFFBF6"
+                    BorderBrush="#E4D3B8"
+                    BorderThickness="1"
+                    CornerRadius="10"
+                    Padding="10"
+                    MaxWidth="320">
+                <StackPanel>
+                    <TextBlock x:Name="OverlayItem" FontWeight="SemiBold" TextWrapping="Wrap" Foreground="#5C241C" />
+                    <TextBlock x:Name="OverlayShop" Margin="0,4,0,0" TextWrapping="Wrap" />
+                    <TextBlock x:Name="OverlayDb" TextWrapping="Wrap" />
+                    <TextBlock x:Name="OverlayGap" TextWrapping="Wrap" Foreground="#5C241C" />
+                </StackPanel>
+            </Border>
+        </Popup>
+        </Grid>
+        </Grid>
+    </Border>
+</Window>

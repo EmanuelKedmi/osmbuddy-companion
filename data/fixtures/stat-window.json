@@ -1,0 +1,6 @@
+{
+  "note": "Stat window sample. This text was not read from a game window. OCR did not run.",
+  "sample": true,
+  "ocr": false,
+  "text": "Stat\nAran\nWarrior\nLevel 47\nHP 2,450 / 2,450\nMP 820 / 820\nSTR 185\nDEX 42\nINT 20\nLUK 18\nAP 0\nFame 5\nWeapon Attack 112\nMagic Attack 15\nAccuracy 148\nAvoidability 22\nWeapon Def 86\nMagic Def 31\n"
+}

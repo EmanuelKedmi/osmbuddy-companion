@@ -1,0 +1,92 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Windows desktop app. Build on Windows with the .NET 8 SDK:
+      dotnet build companion/MarketNotes.Companion.sln -c Release
+    UseWPF requires the Windows desktop pack, which this Linux checkout does not have.
+  -->
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <!--
+      Lets dotnet build typecheck this Windows project on a non-Windows SDK.
+      The executable still runs only on Windows.
+    -->
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <LangVersion>12</LangVersion>
+    <RootNamespace>MarketNotes.Companion</RootNamespace>
+    <AssemblyName>MarketNotes.Companion</AssemblyName>
+    <ApplicationIcon>..\..\app\favicon.ico</ApplicationIcon>
+    <ApplicationTitle>Market Notes Companion</ApplicationTitle>
+    <Description>Screen share for Old School Maple. FM scanner and Training scanner run in this window. The website is not required.</Description>
+    <Version>1.0.2</Version>
+    <IncludeSourceRevisionInInformationalVersion>true</IncludeSourceRevisionInInformationalVersion>
+    <Company>Old School Maple Field Notes</Company>
+  </PropertyGroup>
+
+  <Target Name="StampGitRevision" BeforeTargets="CoreGenerateAssemblyInfo">
+    <Exec Command="git rev-parse --short=7 HEAD"
+          WorkingDirectory="$(MSBuildProjectDirectory)"
+          ConsoleToMSBuild="true"
+          IgnoreExitCode="true"
+          StandardOutputImportance="low">
+      <Output TaskParameter="ConsoleOutput" PropertyName="_GitShortRaw" />
+    </Exec>
+    <PropertyGroup>
+      <_GitShort>$([System.Text.RegularExpressions.Regex]::Match($(_GitShortRaw), '[0-9a-fA-F]{7}').Value)</_GitShort>
+      <SourceRevisionId Condition="'$(_GitShort)' != ''">$(_GitShort)</SourceRevisionId>
+    </PropertyGroup>
+  </Target>
+
+  <!--
+    DevBuild always writes the loot, battle, and visit logs and the ink samples.
+    It is on for Debug, and for a local Release publish with -p:DevBuild=true.
+    The deploy build (deploy/publish.ps1) passes -p:DevBuild=false, so players
+    only get logs while the debug panel is open.
+  -->
+  <PropertyGroup>
+    <DevBuild Condition="'$(DevBuild)' == '' and '$(Configuration)' == 'Debug'">true</DevBuild>
+    <DevBuild Condition="'$(DevBuild)' == ''">false</DevBuild>
+    <DefineConstants Condition="'$(DevBuild)' == 'true'">$(DefineConstants);DEV_BUILD</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Drawing.Common" Version="8.0.11" />
+    <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="8.0.0" />
+    <PackageReference Include="RapidOcrNet" Version="4.2.0" />
+  </ItemGroup>
+
+  <!--
+    PaddleOCR v5 models for the loot corner. The single-file exe has no folder
+    next to it, so they ride inside the assembly and PaddleOcr unpacks them to
+    %LOCALAPPDATA%\MarketNotes.Companion\ocr-models\paddle-v5 on first use.
+  -->
+  <ItemGroup>
+    <EmbeddedResource Include="$(NuGetPackageRoot)rapidocrnet\4.2.0\models\v5\*" LogicalName="paddle-v5/%(Filename)%(Extension)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MarketNotes.Companion.Core\MarketNotes.Companion.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="..\..\app\favicon.ico" Link="favicon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\..\data\fixtures\drop-notices.json" Link="fixtures\drop-notices.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\..\data\fixtures\fm-shop.json" Link="fixtures\fm-shop.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\..\data\fixtures\training-sample.json" Link="fixtures\training-sample.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\..\data\fixtures\stat-window.json" Link="fixtures\stat-window.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\..\data\fixtures\skill-window.json" Link="fixtures\skill-window.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\..\data\fixtures\library-chances.json" Link="fixtures\library-chances.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\..\data\fm-maps.json" Link="fixtures\fm-maps.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\..\data\osm-market-prices.json" Link="fixtures\osm-market-prices.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\..\data\catalog.json" Link="fixtures\catalog.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\..\data\item-aliases.json" Link="fixtures\item-aliases.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

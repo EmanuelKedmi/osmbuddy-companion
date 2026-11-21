@@ -1,0 +1,66 @@
+{
+  "note": "Saved drop-notice lines for the farm pipeline. These were not read by OCR and they are not a capture of a game window.",
+  "mapId": 104030001,
+  "mapName": "Mushroom Garden",
+  "kills": 200,
+  "durationMs": 1800000,
+  "frames": [
+    {
+      "regionHash": "notice-a",
+      "lines": [
+        "You have gained Orange Mushroom Cap x40.",
+        "You have gained 4 Red Potions.",
+        "You have gained 1,500 mesos.",
+        "The shop is closed."
+      ]
+    },
+    {
+      "regionHash": "notice-a",
+      "lines": [
+        "You have gained Orange Mushroom Cap x40.",
+        "You have gained 4 Red Potions.",
+        "You have gained 1,500 mesos.",
+        "The shop is closed.",
+        "You have gained a Scroll for Shoes for Jump."
+      ]
+    },
+    {
+      "regionHash": "notice-b",
+      "lines": [
+        "You have gained Orange Mushroom Cap x40.",
+        "You have gained 4 Red Potions.",
+        "You have gained 1,500 mesos.",
+        "You have gained a Scroll for Shoes for Jump."
+      ]
+    },
+    {
+      "regionHash": "notice-c",
+      "lines": [
+        "You have gained 15 EXP.",
+        "You have gained experience.",
+        "You have gained 2,500 mesos.",
+        "Congratulations on leveling up!"
+      ]
+    },
+    {
+      "regionHash": "notice-d",
+      "lines": [
+        "You have gained 2,500 mesos.",
+        "You have gained Orange Mushroom Cap x40.",
+        "You have gained 2 Red Potions."
+      ]
+    },
+    {
+      "regionHash": "notice-d",
+      "lines": [
+        "You have gained 2,500 mesos.",
+        "You have gained Orange Mushroom Cap x40.",
+        "You have gained 2 Red Potions."
+      ]
+    },
+    {
+      "regionHash": "notice-e",
+      "error": "The drop notice changed, but the lines could not be read."
+    }
+  ]
+}

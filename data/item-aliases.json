@@ -1,0 +1,989 @@
+{
+  "note": "Names the Old School Maple library shows when the GMS v62 string leaves them off. Shop OCR reads these. A 20 or 30 mastery book, and a scroll percent, are separate items. A name already used by a different catalog or Discord row is left out.",
+  "items": [
+    {
+      "id": 1002357,
+      "name": "Zakum Helmet"
+    },
+    {
+      "id": 1092047,
+      "name": "Maple Thief shield"
+    },
+    {
+      "id": 1472051,
+      "name": "Dragon Green Sleeve"
+    },
+    {
+      "id": 1472052,
+      "name": "Dragon Purple Sleeve"
+    },
+    {
+      "id": 1492002,
+      "name": "The Negotiator"
+    },
+    {
+      "id": 1492020,
+      "name": "Maple Gun"
+    },
+    {
+      "id": 1492021,
+      "name": "Maple Storm Pistol"
+    },
+    {
+      "id": 1492022,
+      "name": "Maple Canon Shooter"
+    },
+    {
+      "id": 2010009,
+      "name": "Green Apple"
+    },
+    {
+      "id": 2040001,
+      "name": "Scroll for Helmet for DEF 60%"
+    },
+    {
+      "id": 2040002,
+      "name": "Scroll for Helmet for DEF 10%"
+    },
+    {
+      "id": 2040004,
+      "name": "Scroll for Helmet for HP 60%"
+    },
+    {
+      "id": 2040005,
+      "name": "Scroll for Helmet for HP 10%"
+    },
+    {
+      "id": 2040104,
+      "name": "Dark Scroll for Face Accessory for HP 70%"
+    },
+    {
+      "id": 2040106,
+      "name": "Scroll for Face Accessory for Avoidability 60%"
+    },
+    {
+      "id": 2040107,
+      "name": "Scroll for Face Accessory for Avoidability 100%"
+    },
+    {
+      "id": 2040109,
+      "name": "Dark Scroll for Face Accessory for Avoidability 70%"
+    },
+    {
+      "id": 2040200,
+      "name": "Scroll for Eye Accessory for Accuracy 10%"
+    },
+    {
+      "id": 2040202,
+      "name": "Scroll for Eye Accessory for Accuracy 100%"
+    },
+    {
+      "id": 2040207,
+      "name": "Scroll for Eye Accessory for INT 100%"
+    },
+    {
+      "id": 2040301,
+      "name": "Scroll for Earring for INT 60%"
+    },
+    {
+      "id": 2040304,
+      "name": "Dark scroll for Earring for INT 70%"
+    },
+    {
+      "id": 2040305,
+      "name": "Dark scroll for Earring for INT 30%"
+    },
+    {
+      "id": 2040306,
+      "name": "Dark scroll for Earring for DEX 70%"
+    },
+    {
+      "id": 2040401,
+      "name": "Scroll for Topwear for DEF 60%"
+    },
+    {
+      "id": 2040402,
+      "name": "Scroll for Topwear for DEF 10%"
+    },
+    {
+      "id": 2040406,
+      "name": "Dark scroll for Topwear for STR 70%"
+    },
+    {
+      "id": 2040424,
+      "name": "Dark Scroll for Topwear for LUK 70%"
+    },
+    {
+      "id": 2040501,
+      "name": "Scroll for Overall Armor for DEX 60%"
+    },
+    {
+      "id": 2040502,
+      "name": "Scroll for Overall Armor for DEX 10%"
+    },
+    {
+      "id": 2040504,
+      "name": "Scroll for Overall Armor for DEF 60%"
+    },
+    {
+      "id": 2040505,
+      "name": "Scroll for Overall Armor for DEF 10%"
+    },
+    {
+      "id": 2040509,
+      "name": "Dark scroll for Overall Armor for DEX 30%"
+    },
+    {
+      "id": 2040512,
+      "name": "Scroll for Overall Armor for INT 100%"
+    },
+    {
+      "id": 2040513,
+      "name": "Scroll for Overall Armor for INT 60%"
+    },
+    {
+      "id": 2040514,
+      "name": "Scroll for Overall Armor for INT 10%"
+    },
+    {
+      "id": 2040515,
+      "name": "Scroll for Overall Armor for LUK 100%"
+    },
+    {
+      "id": 2040516,
+      "name": "Scroll for Overall Armor for LUK 60%"
+    },
+    {
+      "id": 2040517,
+      "name": "Scroll for Overall Armor for LUK 10%"
+    },
+    {
+      "id": 2040518,
+      "name": "Dark scroll for Overall Armor for INT 70%"
+    },
+    {
+      "id": 2040519,
+      "name": "Dark scroll for Overall Armor for INT 30%"
+    },
+    {
+      "id": 2040600,
+      "name": "Scroll for Bottomwear for DEF 100%"
+    },
+    {
+      "id": 2040601,
+      "name": "Scroll for Bottomwear for DEF 60%"
+    },
+    {
+      "id": 2040602,
+      "name": "Scroll for Bottomwear for DEF 10%"
+    },
+    {
+      "id": 2040624,
+      "name": "Dark Scroll for Bottomwear for DEX 70%"
+    },
+    {
+      "id": 2040701,
+      "name": "Scroll for Shoes for DEX 60%"
+    },
+    {
+      "id": 2040702,
+      "name": "Scroll for Shoes for DEX 10%"
+    },
+    {
+      "id": 2040703,
+      "name": "Scroll for Shoes for Jump 100%"
+    },
+    {
+      "id": 2040704,
+      "name": "Scroll for Shoes for Jump 60%"
+    },
+    {
+      "id": 2040705,
+      "name": "Scroll for Shoes for Jump 10%"
+    },
+    {
+      "id": 2040707,
+      "name": "Scroll for Shoes for Speed 60%"
+    },
+    {
+      "id": 2040801,
+      "name": "Scroll for Gloves for DEX 60%"
+    },
+    {
+      "id": 2040802,
+      "name": "Scroll for Gloves for DEX 10%"
+    },
+    {
+      "id": 2040804,
+      "name": "Scroll for Gloves for ATT 60%"
+    },
+    {
+      "id": 2040805,
+      "name": "Scroll for Gloves for ATT 10%"
+    },
+    {
+      "id": 2040810,
+      "name": "Dark scroll for Gloves for ATT 70%"
+    },
+    {
+      "id": 2040813,
+      "name": "Dark scroll for Gloves for HP 30%"
+    },
+    {
+      "id": 2040814,
+      "name": "Dark Scroll for Gloves for Magic Att. 70%"
+    },
+    {
+      "id": 2040815,
+      "name": "Dark Scroll for Gloves for Magic Att. 30%"
+    },
+    {
+      "id": 2040900,
+      "name": "Scroll for Shield for DEF 100%"
+    },
+    {
+      "id": 2040901,
+      "name": "Scroll for Shield for DEF 60%"
+    },
+    {
+      "id": 2040902,
+      "name": "Scroll for Shield for DEF 10%"
+    },
+    {
+      "id": 2040906,
+      "name": "Dark scroll for Shield for LUK 70%"
+    },
+    {
+      "id": 2041001,
+      "name": "Scroll for Cape for Magic Def. 60%"
+    },
+    {
+      "id": 2041002,
+      "name": "Scroll for Cape for Magic Def. 10%"
+    },
+    {
+      "id": 2041004,
+      "name": "Scroll for Cape for Weapon Def. 60%"
+    },
+    {
+      "id": 2041005,
+      "name": "Scroll for Cape for Weapon Def. 10%"
+    },
+    {
+      "id": 2041006,
+      "name": "Scroll for Cape for HP 100%"
+    },
+    {
+      "id": 2041007,
+      "name": "Scroll for Cape for HP 60%"
+    },
+    {
+      "id": 2041008,
+      "name": "Scroll for Cape for HP 10%"
+    },
+    {
+      "id": 2041009,
+      "name": "Scroll for Cape for MP 100%"
+    },
+    {
+      "id": 2041010,
+      "name": "Scroll for Cape for MP 60%"
+    },
+    {
+      "id": 2041011,
+      "name": "Scroll for Cape for MP 10%"
+    },
+    {
+      "id": 2041012,
+      "name": "Scroll for Cape for STR 100%"
+    },
+    {
+      "id": 2041013,
+      "name": "Scroll for Cape for STR 60%"
+    },
+    {
+      "id": 2041014,
+      "name": "Scroll for Cape for STR 10%"
+    },
+    {
+      "id": 2041015,
+      "name": "Scroll for Cape for INT 100%"
+    },
+    {
+      "id": 2041016,
+      "name": "Scroll for Cape for INT 60%"
+    },
+    {
+      "id": 2041017,
+      "name": "Scroll for Cape for INT 10%"
+    },
+    {
+      "id": 2041018,
+      "name": "Scroll for Cape for DEX 100%"
+    },
+    {
+      "id": 2041019,
+      "name": "Scroll for Cape for DEX 60%"
+    },
+    {
+      "id": 2041020,
+      "name": "Scroll for Cape for DEX 10%"
+    },
+    {
+      "id": 2041021,
+      "name": "Scroll for Cape for LUK 100%"
+    },
+    {
+      "id": 2041022,
+      "name": "Scroll for Cape for LUK 60%"
+    },
+    {
+      "id": 2041023,
+      "name": "Scroll for Cape for LUK 10%"
+    },
+    {
+      "id": 2043001,
+      "name": "Scroll for One-Handed Sword for ATT 60%"
+    },
+    {
+      "id": 2043002,
+      "name": "Scroll for One-Handed Sword for ATT 10%"
+    },
+    {
+      "id": 2043101,
+      "name": "Scroll for One-Handed Axe for ATT 60%"
+    },
+    {
+      "id": 2043102,
+      "name": "Scroll for One-Handed Axe for ATT 10%"
+    },
+    {
+      "id": 2043200,
+      "name": "Scroll for One-Handed BW for ATT 100%"
+    },
+    {
+      "id": 2043201,
+      "name": "Scroll for One-Handed BW for ATT 60%"
+    },
+    {
+      "id": 2043202,
+      "name": "Scroll for One-Handed BW for ATT 10%"
+    },
+    {
+      "id": 2043301,
+      "name": "Scroll for Dagger for ATT 60%"
+    },
+    {
+      "id": 2043302,
+      "name": "Scroll for Dagger for ATT 10%"
+    },
+    {
+      "id": 2043701,
+      "name": "Scroll for Wand for Magic Att. 60%"
+    },
+    {
+      "id": 2043702,
+      "name": "Scroll for Wand for Magic Att. 10%"
+    },
+    {
+      "id": 2043801,
+      "name": "Scroll for Staff for Magic Att. 60%"
+    },
+    {
+      "id": 2043802,
+      "name": "Scroll for Staff for Magic Att. 10%"
+    },
+    {
+      "id": 2044001,
+      "name": "Scroll for Two-handed Sword for ATT 60%"
+    },
+    {
+      "id": 2044002,
+      "name": "Scroll for Two-handed Sword for ATT 10%"
+    },
+    {
+      "id": 2044101,
+      "name": "Scroll for Two-handed Axe for ATT 60%"
+    },
+    {
+      "id": 2044102,
+      "name": "Scroll for Two-handed Axe for ATT 10%"
+    },
+    {
+      "id": 2044201,
+      "name": "Scroll for Two-handed BW for ATT 60%"
+    },
+    {
+      "id": 2044202,
+      "name": "Scroll for Two-handed BW for ATT 10%"
+    },
+    {
+      "id": 2044301,
+      "name": "Scroll for Spear for ATT 60%"
+    },
+    {
+      "id": 2044302,
+      "name": "Scroll for Spear for ATT 10%"
+    },
+    {
+      "id": 2044401,
+      "name": "Scroll for Pole Arm for ATT 60%"
+    },
+    {
+      "id": 2044402,
+      "name": "Scroll for Pole Arm for ATT 10%"
+    },
+    {
+      "id": 2044501,
+      "name": "Scroll for Bow for ATT 60%"
+    },
+    {
+      "id": 2044502,
+      "name": "Scroll for Bow for ATT 10%"
+    },
+    {
+      "id": 2044601,
+      "name": "Scroll for Crossbow for ATT 60%"
+    },
+    {
+      "id": 2044602,
+      "name": "Scroll for Crossbow for ATT 10%"
+    },
+    {
+      "id": 2044701,
+      "name": "Scroll for Claw for ATT 60%"
+    },
+    {
+      "id": 2044702,
+      "name": "Scroll for Claw for ATT 10%"
+    },
+    {
+      "id": 2044705,
+      "name": "Dark scroll for Claw for ATT 30%"
+    },
+    {
+      "id": 2044801,
+      "name": "Scroll for Knuckler for ATT 60%"
+    },
+    {
+      "id": 2044802,
+      "name": "Scroll for Knuckler for ATT 10%"
+    },
+    {
+      "id": 2044803,
+      "name": "Dark Scroll for Knuckler for ATT 70%"
+    },
+    {
+      "id": 2044804,
+      "name": "Dark Scroll for Knuckler for ATT 30%"
+    },
+    {
+      "id": 2044901,
+      "name": "Scroll for Gun for ATT 60%"
+    },
+    {
+      "id": 2044902,
+      "name": "Scroll for Gun for ATT 10%"
+    },
+    {
+      "id": 2044904,
+      "name": "Dark Scroll for Gun for ATT 30%"
+    },
+    {
+      "id": 2290000,
+      "name": "[Mastery Book] Monster Magnet 20"
+    },
+    {
+      "id": 2290001,
+      "name": "[Mastery Book] Monster Magnet 30"
+    },
+    {
+      "id": 2290002,
+      "name": "[Mastery Book] Achilles 20"
+    },
+    {
+      "id": 2290003,
+      "name": "[Mastery Book] Achilles 30"
+    },
+    {
+      "id": 2290004,
+      "name": "[Mastery Book] Rush 20"
+    },
+    {
+      "id": 2290005,
+      "name": "[Mastery Book] Rush 30"
+    },
+    {
+      "id": 2290006,
+      "name": "[Mastery Book] Power Stance 20"
+    },
+    {
+      "id": 2290007,
+      "name": "[Mastery Book] Power Stance 30"
+    },
+    {
+      "id": 2290008,
+      "name": "[Mastery Book] Advanced Combo Attack 20"
+    },
+    {
+      "id": 2290009,
+      "name": "[Mastery Book] Advanced Combo Attack 30"
+    },
+    {
+      "id": 2290010,
+      "name": "[Mastery Book] Brandish 20"
+    },
+    {
+      "id": 2290011,
+      "name": "[Mastery Book] Brandish 30"
+    },
+    {
+      "id": 2290012,
+      "name": "[Mastery Book] Blast 20"
+    },
+    {
+      "id": 2290013,
+      "name": "[Mastery Book] Blast 30"
+    },
+    {
+      "id": 2290014,
+      "name": "[Mastery Book] Guardian 20"
+    },
+    {
+      "id": 2290015,
+      "name": "[Mastery Book] Guardian 30"
+    },
+    {
+      "id": 2290016,
+      "name": "[Mastery Book] Enrage 20"
+    },
+    {
+      "id": 2290017,
+      "name": "[Mastery Book] Enrage 30"
+    },
+    {
+      "id": 2290018,
+      "name": "[Mastery Book] Holy Charge 20"
+    },
+    {
+      "id": 2290019,
+      "name": "[Mastery Book] Divine Charge 20"
+    },
+    {
+      "id": 2290020,
+      "name": "[Mastery Book] Heaven's Hammer 20"
+    },
+    {
+      "id": 2290021,
+      "name": "[Mastery Book] Heaven's Hammer 30"
+    },
+    {
+      "id": 2290022,
+      "name": "[Mastery Book] Berserk 20"
+    },
+    {
+      "id": 2290023,
+      "name": "[Mastery Book] Berserk 30"
+    },
+    {
+      "id": 2290024,
+      "name": "[Mastery Book] Mana Reflection 20"
+    },
+    {
+      "id": 2290025,
+      "name": "[Mastery Book] Mana Reflection 30"
+    },
+    {
+      "id": 2290026,
+      "name": "[Mastery Book] Big Bang 20"
+    },
+    {
+      "id": 2290027,
+      "name": "[Mastery Book] Big Bang 30"
+    },
+    {
+      "id": 2290028,
+      "name": "[Mastery Book] Infinity 20"
+    },
+    {
+      "id": 2290029,
+      "name": "[Mastery Book] Infinity 30"
+    },
+    {
+      "id": 2290030,
+      "name": "[Mastery Book] Paralyze 20"
+    },
+    {
+      "id": 2290031,
+      "name": "[Mastery Book] Paralyze 30"
+    },
+    {
+      "id": 2290032,
+      "name": "[Mastery Book] Chain Lightning 20"
+    },
+    {
+      "id": 2290033,
+      "name": "[Mastery Book] Chain Lightning 30"
+    },
+    {
+      "id": 2290034,
+      "name": "[Mastery Book] Holy Shield 20"
+    },
+    {
+      "id": 2290035,
+      "name": "[Mastery Book] Holy Shield 30"
+    },
+    {
+      "id": 2290036,
+      "name": "[Mastery Book] Fire Demon 20"
+    },
+    {
+      "id": 2290037,
+      "name": "[Mastery Book] Fire Demon 30"
+    },
+    {
+      "id": 2290038,
+      "name": "[Mastery Book] Elquines 20"
+    },
+    {
+      "id": 2290040,
+      "name": "[Mastery Book] Meteor Shower 20"
+    },
+    {
+      "id": 2290041,
+      "name": "[Mastery Book] Meteor Shower 30"
+    },
+    {
+      "id": 2290042,
+      "name": "[Mastery Book] Ice Demon 20"
+    },
+    {
+      "id": 2290043,
+      "name": "[Mastery Book] Ice Demon 30"
+    },
+    {
+      "id": 2290044,
+      "name": "[Mastery Book] Ifrit 20"
+    },
+    {
+      "id": 2290046,
+      "name": "[Mastery Book] Blizzard 20"
+    },
+    {
+      "id": 2290047,
+      "name": "[Mastery Book] Blizzard 30"
+    },
+    {
+      "id": 2290048,
+      "name": "[Mastery Book] Genesis 20"
+    },
+    {
+      "id": 2290049,
+      "name": "[Mastery Book] Genesis 30"
+    },
+    {
+      "id": 2290050,
+      "name": "[Mastery Book] Angel Ray 20"
+    },
+    {
+      "id": 2290051,
+      "name": "[Mastery Book] Angel Ray 30"
+    },
+    {
+      "id": 2290052,
+      "name": "[Mastery Book] Sharp Eyes 20"
+    },
+    {
+      "id": 2290053,
+      "name": "[Mastery Book] Sharp Eyes 30"
+    },
+    {
+      "id": 2290054,
+      "name": "[Mastery Book] Dragon's Breath 20"
+    },
+    {
+      "id": 2290055,
+      "name": "[Mastery Book] Dragon's Breath 30"
+    },
+    {
+      "id": 2290056,
+      "name": "[Mastery Book] Bow Expert 20"
+    },
+    {
+      "id": 2290057,
+      "name": "[Mastery Book] Bow Expert 30"
+    },
+    {
+      "id": 2290058,
+      "name": "[Mastery Book] Hamstring Shot 20"
+    },
+    {
+      "id": 2290059,
+      "name": "[Mastery Book] Hamstring Shot 30"
+    },
+    {
+      "id": 2290060,
+      "name": "[Mastery Book] Hurricane 20"
+    },
+    {
+      "id": 2290061,
+      "name": "[Mastery Book] Hurricane 30"
+    },
+    {
+      "id": 2290062,
+      "name": "[Mastery Book] Phoenix 20"
+    },
+    {
+      "id": 2290063,
+      "name": "[Mastery Book] Phoenix 30"
+    },
+    {
+      "id": 2290064,
+      "name": "[Mastery Book] Concentrate 20"
+    },
+    {
+      "id": 2290065,
+      "name": "[Mastery Book] Concentrate 30"
+    },
+    {
+      "id": 2290066,
+      "name": "[Mastery Book] Marksman Boost 20"
+    },
+    {
+      "id": 2290067,
+      "name": "[Mastery Book] Marksman Boost 30"
+    },
+    {
+      "id": 2290068,
+      "name": "[Mastery Book] Blind 20"
+    },
+    {
+      "id": 2290069,
+      "name": "[Mastery Book] Blind 30"
+    },
+    {
+      "id": 2290070,
+      "name": "[Mastery Book] Piercing Arrow 20"
+    },
+    {
+      "id": 2290071,
+      "name": "[Mastery Book] Piercing Arrow 30"
+    },
+    {
+      "id": 2290072,
+      "name": "[Mastery Book] Frostprey 20"
+    },
+    {
+      "id": 2290074,
+      "name": "[Mastery Book] Snipe 20"
+    },
+    {
+      "id": 2290075,
+      "name": "[Mastery Book] Snipe 30"
+    },
+    {
+      "id": 2290076,
+      "name": "[Mastery Book] Shadow Shifter 20"
+    },
+    {
+      "id": 2290077,
+      "name": "[Mastery Book] Shadow Shifter 30"
+    },
+    {
+      "id": 2290078,
+      "name": "[Mastery Book] Venomous Star/Venomous Stab 20"
+    },
+    {
+      "id": 2290079,
+      "name": "[Mastery Book] Venomous Star/Venomous Stab 30"
+    },
+    {
+      "id": 2290080,
+      "name": "[Mastery Book] Taunt 20"
+    },
+    {
+      "id": 2290081,
+      "name": "[Mastery Book] Taunt 30"
+    },
+    {
+      "id": 2290082,
+      "name": "[Mastery Book] Ninja Ambush 20"
+    },
+    {
+      "id": 2290083,
+      "name": "[Mastery Book] Ninja Ambush 30"
+    },
+    {
+      "id": 2290084,
+      "name": "[Mastery Book] Triple Throw 20"
+    },
+    {
+      "id": 2290085,
+      "name": "[Mastery Book] Triple Throw 30"
+    },
+    {
+      "id": 2290086,
+      "name": "[Mastery Book] Ninja Storm 20"
+    },
+    {
+      "id": 2290087,
+      "name": "[Mastery Book] Ninja Storm 30"
+    },
+    {
+      "id": 2290088,
+      "name": "[Mastery Book] Shadow Claw 20"
+    },
+    {
+      "id": 2290089,
+      "name": "[Mastery Book] Shadow Claw 30"
+    },
+    {
+      "id": 2290090,
+      "name": "[Mastery Book] Boomerang Step 20"
+    },
+    {
+      "id": 2290091,
+      "name": "[Mastery Book] Boomerang Step 30"
+    },
+    {
+      "id": 2290092,
+      "name": "[Mastery Book] Assassinate 20"
+    },
+    {
+      "id": 2290094,
+      "name": "[Mastery Book] Smokescreen 20"
+    },
+    {
+      "id": 2290095,
+      "name": "[Mastery Book] Smokescreen 30"
+    },
+    {
+      "id": 2290096,
+      "name": "[Mastery Book] Maple Warrior 20"
+    },
+    {
+      "id": 2290097,
+      "name": "[Mastery Book] Dragon Strike 20"
+    },
+    {
+      "id": 2290098,
+      "name": "[Mastery Book] Dragon Strike 30"
+    },
+    {
+      "id": 2290099,
+      "name": "[Mastery Book] Energy Orb 20"
+    },
+    {
+      "id": 2290100,
+      "name": "[Mastery Book] Energy Orb 30"
+    },
+    {
+      "id": 2290101,
+      "name": "[Mastery Book] Super Transformation 20"
+    },
+    {
+      "id": 2290102,
+      "name": "[Mastery Book] Demolition 20"
+    },
+    {
+      "id": 2290103,
+      "name": "[Mastery Book] Demolition 30"
+    },
+    {
+      "id": 2290104,
+      "name": "[Mastery Book] Snatch 20"
+    },
+    {
+      "id": 2290105,
+      "name": "[Mastery Book] Snatch 30"
+    },
+    {
+      "id": 2290106,
+      "name": "[Mastery Book] Barrage 20"
+    },
+    {
+      "id": 2290107,
+      "name": "[Mastery Book] Barrage 30"
+    },
+    {
+      "id": 2290108,
+      "name": "[Mastery Book] Speed Infusion 20"
+    },
+    {
+      "id": 2290110,
+      "name": "[Mastery Book] Time Leap 20"
+    },
+    {
+      "id": 2290111,
+      "name": "[Mastery Book] Time Leap 30"
+    },
+    {
+      "id": 2290112,
+      "name": "[Mastery Book] Elemental Boost 20"
+    },
+    {
+      "id": 2290113,
+      "name": "[Mastery Book] Elemental Boost 30"
+    },
+    {
+      "id": 2290114,
+      "name": "[Mastery Book] Wrath of the Octopi 20"
+    },
+    {
+      "id": 2290115,
+      "name": "[Mastery Book] Air Strike 20"
+    },
+    {
+      "id": 2290116,
+      "name": "[Mastery Book] Air Strike 30"
+    },
+    {
+      "id": 2290117,
+      "name": "[Mastery Book] Rapid Fire 20"
+    },
+    {
+      "id": 2290118,
+      "name": "[Mastery Book] Rapid Fire 30"
+    },
+    {
+      "id": 2290119,
+      "name": "[Mastery Book] Battleship Cannon 20"
+    },
+    {
+      "id": 2290120,
+      "name": "[Mastery Book] Battleship Cannon 30"
+    },
+    {
+      "id": 2290121,
+      "name": "[Mastery Book] Battleship Torpedo 20"
+    },
+    {
+      "id": 2290122,
+      "name": "[Mastery Book] Battleship Torpedo 30"
+    },
+    {
+      "id": 2290123,
+      "name": "[Mastery Book] Hypnotize 20"
+    },
+    {
+      "id": 2290124,
+      "name": "[Mastery Book] Bullseye 20"
+    },
+    {
+      "id": 2388009,
+      "name": "Nine-Tailed Fox Card"
+    },
+    {
+      "id": 2388013,
+      "name": "King Sage Cat Card"
+    },
+    {
+      "id": 4000175,
+      "name": "Miniature Pianus"
+    },
+    {
+      "id": 4000355,
+      "name": "Homunculus's Sand"
+    }
+  ]
+}
