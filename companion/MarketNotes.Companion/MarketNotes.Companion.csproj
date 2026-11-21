@@ -74,6 +74,7 @@
 
   <ItemGroup>
     <Resource Include="..\..\app\favicon.ico" Link="favicon.ico" />
+    <EmbeddedResource Include="..\..\CHANGELOG.md" LogicalName="MarketNotes.Companion.CHANGELOG.md" />
   </ItemGroup>
 
   <ItemGroup>
