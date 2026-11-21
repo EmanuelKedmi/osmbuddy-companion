@@ -2,7 +2,7 @@
 
 Windows app for [osmbuddy](https://osmbuddy.apps.grok.bot). Public releases are [EmanuelKedmi/osmbuddy-companion](https://github.com/EmanuelKedmi/osmbuddy-companion). GitHub serves `MarketNotes.Companion.exe` from the latest release. The website only redirects there, and the file is not hosted on OCI.
 
-A tag `v1.2.3` whose number matches `<Version>` in the WPF project builds that executable on GitHub Actions and attaches it to the release.
+A `feat` or `fix` commit on `main` creates the next `vMAJOR.MINOR.PATCH` tag. GitHub Actions stamps that version onto `MarketNotes.Companion.exe` and attaches it to the release.
 
 A Windows app you run beside Old School Maple. It owns the screen share, the FM scanner, the training scanner, and the stat and skill window scans. The website can be closed. `/market/fm`, `/farm`, and the Characters page are optional viewers of a copy the companion may send after the local result is already on screen.
 

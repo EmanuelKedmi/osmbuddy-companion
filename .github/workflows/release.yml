@@ -1,31 +1,62 @@
-# A tag v1.2.3 builds the Windows exe on GitHub and attaches it to that release.
+# A feat or fix commit on main creates vMAJOR.MINOR.PATCH.
+# The executable is built here, in the same workflow. A tag created with the
+# default GITHUB_TOKEN does not start a second workflow.
 name: Release
 on:
   push:
+    branches:
+      - main
     tags:
       - "v[0-9]+.[0-9]+.[0-9]+"
 permissions:
   contents: write
 jobs:
+  release:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    outputs:
+      published: ${{ steps.semantic.outputs.new_release_published }}
+      version: ${{ steps.semantic.outputs.new_release_version }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: cycjimmy/semantic-release-action@v8.1.4
+        id: semantic
+        with:
+          semantic_version: 25
+          skip_npm_plugin: true
+          branches: |
+            ['main']
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   publish:
+    needs: release
+    if: >-
+      always() &&
+      (needs.release.result == 'success' || needs.release.result == 'skipped') &&
+      (needs.release.outputs.published == 'true' || startsWith(github.ref, 'refs/tags/v'))
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x
-      - name: Check the tag matches the project version
+      - name: Resolve the release version
+        id: version
         shell: pwsh
         run: |
-          $tag = "${{ github.ref_name }}"
-          if ($tag -notmatch '^v(\d+\.\d+\.\d+)$') { throw "Tag must be vMAJOR.MINOR.PATCH." }
-          $version = $Matches[1]
-          $csproj = Get-Content companion/MarketNotes.Companion/MarketNotes.Companion.csproj -Raw
-          if ($csproj -notmatch "<Version>$([regex]::Escape($version))</Version>") {
-            throw "Tag $tag does not match the Version in the companion project."
+          $version = "${{ needs.release.outputs.version }}".Trim()
+          if (-not $version) {
+            $tag = "${{ github.ref_name }}"
+            if ($tag -notmatch '^v(\d+\.\d+\.\d+)$') { throw "Tag must be vMAJOR.MINOR.PATCH." }
+            $version = $Matches[1]
           }
+          if ($version -notmatch '^\d+\.\d+\.\d+$') { throw "Release version must be MAJOR.MINOR.PATCH." }
+          "version=$version" >> $env:GITHUB_OUTPUT
       - name: Publish the single-file executable
-        run: dotnet publish companion/MarketNotes.Companion/MarketNotes.Companion.csproj -c Release -r win-x64 --self-contained true -p:DevBuild=false -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true -p:DebugType=none -p:DebugSymbols=false
+        run: dotnet publish companion/MarketNotes.Companion/MarketNotes.Companion.csproj -c Release -r win-x64 --self-contained true -p:DevBuild=false -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true -p:DebugType=none -p:DebugSymbols=false -p:Version=${{ steps.version.outputs.version }}
       - name: Stage the release asset
         shell: pwsh
         run: |
@@ -38,5 +69,6 @@ jobs:
       - name: Attach the executable to the release
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: v${{ steps.version.outputs.version }}
           files: dist/MarketNotes.Companion.exe
           fail_on_unmatched_files: true
