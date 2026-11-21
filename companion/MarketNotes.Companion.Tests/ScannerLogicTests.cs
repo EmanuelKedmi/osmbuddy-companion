@@ -1131,6 +1131,34 @@ public class ScannerLogicTests
     }
 
     [Fact]
+    public void Name_and_loot_drop_below_the_chat_field_on_a_tall_window()
+    {
+        const int width = 800;
+        const int height = 1400;
+        var pixels = new byte[width * height * 4];
+        for (var y = 0; y < height; y++)
+        {
+            for (var x = 0; x < width; x++)
+            {
+                byte r = 24, g = 28, b = 22;
+                if (y >= 1288 && y <= 1332) { r = 248; g = 248; b = 248; }
+                else if (y >= 1333) { r = 90; g = 96; b = 102; }
+                Set(pixels, width, x, y, r, g, b);
+            }
+        }
+
+        var bar = BottomBarFinder.Measure(pixels, width, height, width * 4);
+        Assert.True(bar.Measured);
+        Assert.Equal(1333, bar.Top);
+        Assert.Equal(1288, bar.ChromeTop);
+        var name = CharacterNameRegion.Place(width, height, bar);
+        var loot = LootRegion.Place(width, height, bar);
+        Assert.True(name.Y >= bar.Top && name.Bottom <= bar.Bottom);
+        Assert.True(loot.Bottom <= bar.ChromeTop);
+        Assert.True(loot.Bottom > bar.ChromeTop - 8);
+    }
+
+    [Fact]
     public void Battle_window_follows_the_green_cancel_button()
     {
         var placed = PaintBattle(640, 420, 280, 36, 16, cancel: true);

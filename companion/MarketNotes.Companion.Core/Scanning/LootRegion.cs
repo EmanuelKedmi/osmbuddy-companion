@@ -30,9 +30,12 @@ public static class LootRegion
     public static PixelRect Place(int width, int height, BottomBar bar)
     {
         if (!bar.Measured) return Bounds(width, height);
-        var gap = Math.Max(2, (int)(bar.Height * 0.20));
-        var band = Math.Max(bar.Height, (int)(bar.Height * 2.0));
-        var bottom = bar.Top - gap;
+        var edge = bar.ChromeTop;
+        // The input row already separates the notices from the plate.
+        // A gap the size of the plate would sit above the lowest line.
+        var gap = edge < bar.Top ? 2 : Math.Max(2, (int)(bar.Height * 0.20));
+        var band = Math.Max(bar.Height * 2, (int)(height * 0.20));
+        var bottom = edge - gap;
         var top = bottom - band;
         if (top < 0) top = 0;
         if (bottom <= top) bottom = Math.Min(height, top + 1);

@@ -23,9 +23,9 @@ public static class BattleDebugLog
         return Path.Combine(root, "MarketNotes.Companion", "battle-debug.log");
     }
 
-    public static void Skipped()
+    public static void Skipped(string? why = null)
     {
-        Write(Stamp() + " skipped");
+        Write(Stamp() + " skipped" + (string.IsNullOrWhiteSpace(why) ? "" : " " + why));
     }
 
     public static void Read(IReadOnlyList<string> lines, BattleSnapshot? parsed, string? mapName, int? shownKills, string use, bool fromColumns = false)

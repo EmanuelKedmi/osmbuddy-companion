@@ -707,7 +707,10 @@ public partial class MainWindow : Window
         TrainingSessionLog.Append(_watch.DrainTrace());
         if (!battle.RegionChanged)
         {
-            BattleDebugLog.Skipped();
+            var whereBox = battle.Window is { } box
+                ? $" box={box.X},{box.Y} {box.Width}x{box.Height} {battle.Button}"
+                : "";
+            BattleDebugLog.Skipped(battle.Status + whereBox);
         }
         else
         {
