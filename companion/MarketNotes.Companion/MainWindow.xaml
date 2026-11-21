@@ -213,6 +213,24 @@
                                      TextChanged="WebsiteSettings_Changed" />
                         </StackPanel>
                     </Grid>
+                    <Grid Margin="0,12,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock x:Name="NgmHijackStatus"
+                                   VerticalAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   Margin="0,0,12,0"
+                                   Foreground="#6B5344"
+                                   Text="ngm:// hijack is off. Play opens Nexon Game Manager directly." />
+                        <Button x:Name="NgmHijackButton"
+                                Grid.Column="1"
+                                Content="Install ngm:// hijack"
+                                Style="{StaticResource OutlineButton}"
+                                ToolTip="When installed, Play opens this companion and then Nexon Game Manager. Off by default."
+                                Click="NgmHijack_Click" />
+                    </Grid>
                 </StackPanel>
                     <Border Grid.Column="1"
                             Margin="12,0,0,0"

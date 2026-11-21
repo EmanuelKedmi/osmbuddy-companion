@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using MarketNotes.Companion.Capture;
+using MarketNotes.Companion.Launch;
 using MarketNotes.Companion.Export;
 using MarketNotes.Companion.Farm;
 using MarketNotes.Companion.Modes;
@@ -110,9 +111,8 @@ public partial class MainWindow : Window
             PersistWebsiteSettings();
             _overlay.Close();
         };
-        _ngmRegister = new DispatcherTimer { Interval = TimeSpan.FromSeconds(30) };
-        _ngmRegister.Tick += (_, _) => NgmProtocol.EnsureRegistered();
-        _ngmRegister.Start();
+        if (NgmHijackPreference.IsEnabled()) StartNgmRegisterTimer();
+        RefreshNgmHijack();
         _updateTimer = new DispatcherTimer { Interval = TimeSpan.FromMinutes(10) };
         _updateTimer.Tick += (_, _) => _ = CheckForUpdateAsync();
         _updateTimer.Start();
@@ -155,6 +155,59 @@ public partial class MainWindow : Window
         }
 
         Application.Current.Shutdown();
+    }
+
+    private void StartNgmRegisterTimer()
+    {
+        if (_ngmRegister == null)
+        {
+            _ngmRegister = new DispatcherTimer { Interval = TimeSpan.FromSeconds(30) };
+            _ngmRegister.Tick += (_, _) => NgmProtocol.EnsureRegistered();
+        }
+
+        _ngmRegister.Start();
+    }
+
+    private void NgmHijack_Click(object sender, RoutedEventArgs e)
+    {
+        if (NgmProtocol.IsInstalled())
+        {
+            if (!NgmProtocol.Uninstall())
+            {
+                RefreshNgmHijack("The ngm:// hijack could not be removed.");
+                return;
+            }
+
+            NgmHijackPreference.SetEnabled(false);
+            _ngmRegister?.Stop();
+            RefreshNgmHijack();
+            return;
+        }
+
+        if (!NgmProtocol.Install())
+        {
+            RefreshNgmHijack("NGM was not found, so the ngm:// hijack stays off.");
+            return;
+        }
+
+        if (!NgmHijackPreference.SetEnabled(true))
+        {
+            NgmProtocol.Uninstall();
+            RefreshNgmHijack("The ngm:// hijack could not be saved, so it stays off.");
+            return;
+        }
+
+        StartNgmRegisterTimer();
+        RefreshNgmHijack();
+    }
+
+    private void RefreshNgmHijack(string? note = null)
+    {
+        var installed = NgmProtocol.IsInstalled();
+        NgmHijackButton.Content = installed ? "Uninstall ngm:// hijack" : "Install ngm:// hijack";
+        NgmHijackStatus.Text = note ?? (installed
+            ? "ngm:// hijack is on. Play opens this companion, then Nexon Game Manager."
+            : "ngm:// hijack is off. Play opens Nexon Game Manager directly.");
     }
 
     /// <summary>

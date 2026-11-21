@@ -8,7 +8,10 @@ public partial class App : Application
     private void OnStartup(object sender, StartupEventArgs e)
     {
         var launch = LaunchArgument(e.Args);
-        NgmProtocol.EnsureRegistered();
+        if (NgmHijackPreference.IsEnabled())
+            NgmProtocol.EnsureRegistered();
+        else
+            NgmProtocol.Uninstall();
         var primary = SingleInstance.TryBecomePrimary();
         var handedToNgm = launch != null && NgmProtocol.TryForward(launch);
         if (!primary)

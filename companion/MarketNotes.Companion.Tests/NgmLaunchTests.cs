@@ -74,6 +74,26 @@ public class NgmLaunchTests
     }
 
     [Fact]
+    public void Hijack_preference_is_off_until_it_is_turned_on()
+    {
+        var path = Path.Combine(Path.GetTempPath(), "ngm-hijack-" + Guid.NewGuid().ToString("N") + ".txt");
+        try
+        {
+            Assert.False(NgmHijackPreference.IsEnabled(path));
+            Assert.True(NgmHijackPreference.SetEnabled(true, path));
+            Assert.True(NgmHijackPreference.IsEnabled(path));
+            Assert.True(NgmHijackPreference.SetEnabled(false, path));
+            Assert.False(NgmHijackPreference.IsEnabled(path));
+            File.WriteAllText(path, "yes");
+            Assert.False(NgmHijackPreference.IsEnabled(path));
+        }
+        finally
+        {
+            if (File.Exists(path)) File.Delete(path);
+        }
+    }
+
+    [Fact]
     public void Nothing_to_forward_to_leaves_the_handler_alone()
     {
         var plan = NgmLaunch.Decide(null, null, null, Ours);

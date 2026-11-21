@@ -6,14 +6,55 @@ using Microsoft.Win32;
 namespace MarketNotes.Companion;
 
 /// <summary>
-/// Registers this exe as the current user's ngm:// handler and starts the
-/// real NGM executable with the same argument. The argument is not written,
-/// logged, or parsed.
+/// Optionally registers this exe as the current user's ngm:// handler and
+/// starts the real NGM executable with the same argument. The argument is
+/// not written, logged, or parsed. Registration stays off unless the user
+/// installs it.
 /// </summary>
 public static class NgmProtocol
 {
     private const string CommandKey = @"Software\Classes\ngm\shell\open\command";
     private const string WowCommandKey = @"Software\WOW6432Node\Classes\ngm\shell\open\command";
+
+    public static bool IsInstalled()
+    {
+        try
+        {
+            var ours = OurExecutable();
+            if (ours == null) return false;
+            return NgmLaunch.SameExecutable(NgmLaunch.ExecutableFromCommand(ReadUserCommand()), ours);
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    /// <summary>Claims ngm:// for this exe. Returns false when NGM cannot be found.</summary>
+    public static bool Install()
+    {
+        EnsureRegistered();
+        return IsInstalled();
+    }
+
+    /// <summary>
+    /// Removes this exe from the current-user ngm:// key so Windows uses the
+    /// machine handler again. A handler owned by something else is left alone.
+    /// </summary>
+    public static bool Uninstall()
+    {
+        try
+        {
+            if (!IsInstalled()) return true;
+            using var hive = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry64);
+            hive.DeleteSubKeyTree(@"Software\Classes\ngm", false);
+            return !IsInstalled();
+        }
+        catch
+        {
+            return false;
+        }
+    }
 
     public static void EnsureRegistered()
     {
