@@ -590,8 +590,8 @@ public static class BattleWindowFinder
     }
 
     /// <summary>
-    /// Opaque title strip: light gray through near-white, almost no chroma.
-    /// The live bar is often brighter than 230, which the old window missed.
+    /// Opaque title strip: flat gray through near-white, almost no chroma.
+    /// The live bar sits around 165. A floor of 185 only saw the brightest row.
     /// </summary>
     private static bool IsTitle(byte r, byte g, byte b)
     {
@@ -602,6 +602,6 @@ public static class BattleWindowFinder
             return false;
         }
 
-        return (r + g + b) / 3 >= 185;
+        return (r + g + b) / 3 >= 148;
     }
 }

@@ -1071,6 +1071,21 @@ public class ScannerLogicTests
     }
 
     [Fact]
+    public void Battle_window_finds_a_gray_title_bar()
+    {
+        var placed = PaintBattle(640, 420, 280, 36, 16, cancel: true);
+        PaintRect(placed.Pixels, placed.Width, placed.PanelX, placed.PanelY, placed.PanelW, 16, 166, 166, 166);
+        var inkTop = placed.PanelY + 3;
+        for (var col = placed.PanelX + 6; col < placed.PanelX + placed.PanelW - 6; col += 7)
+        {
+            PaintRect(placed.Pixels, placed.Width, col, inkTop, 2, 8, 20, 20, 20);
+        }
+
+        var window = BattleWindowFinder.Find(placed.Pixels, placed.Width, placed.Height, placed.Width * 4);
+        AssertOnPanel(window, placed);
+    }
+
+    [Fact]
     public void Battle_window_finds_a_panel_on_the_left()
     {
         var placed = PaintBattle(640, 420, 24, 40, 16, cancel: true);
