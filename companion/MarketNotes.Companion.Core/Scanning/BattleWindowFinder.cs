@@ -19,11 +19,10 @@ public readonly record struct BattleSight(PixelRect? Window, BattleButton Button
 
 /// <summary>
 /// The battle analysis panel is translucent, so its fill is not a color
-/// we can match. The solid control at its bottom-right is the anchor:
-/// orange START while analysis is stopped, lime CANCEL while it is running.
-/// The opaque title strip ("Battle Analysis") then supplies the real edges.
-/// Search distances scale with the button and the frame, so a resized
-/// client does not keep one screenshot's pixel size.
+/// we can match. The opaque title strip ("Battle Analysis") is the anchor:
+/// a light bar with dark lettering. A START or CANCEL control then has to
+/// sit at that strip's bottom-right. A lime or orange blob with no title
+/// is not the window, which is how the chat corner used to win.
 /// </summary>
 public static class BattleWindowFinder
 {
@@ -37,20 +36,59 @@ public static class BattleWindowFinder
             return null;
         }
 
-        var button = FindButton(bgra, width, height, stride);
-        if (button == null)
+        BattleHit? best = null;
+        var bestArea = 0;
+        foreach (var button in FindButtons(bgra, width, height, stride))
         {
-            return null;
+            var window = TitleWindow(bgra, width, height, stride, button);
+            if (window == null)
+            {
+                continue;
+            }
+
+            var area = window.Value.Width * window.Value.Height;
+            if (area <= bestArea)
+            {
+                continue;
+            }
+
+            bestArea = area;
+            best = new BattleHit(window.Value, button.Kind);
         }
 
-        var titled = TitleWindow(bgra, width, height, stride, button.Value);
-        var window = titled ?? BoxFromButton(width, height, button.Value);
-        if (window == null)
+        return best;
+    }
+
+    /// <summary>
+    /// Text from the crop is the battle panel when it names the window or one
+    /// of its rows. Chat ("TRADE") and loot lines are not.
+    /// </summary>
+    public static bool LooksLikePanel(IReadOnlyList<string> lines)
+    {
+        var text = string.Join(' ', lines).ToLowerInvariant();
+        if (text.Contains("battle", StringComparison.Ordinal)
+            || text.Contains("elapsed", StringComparison.Ordinal)
+            || text.Contains("dmg", StringComparison.Ordinal)
+            || text.Contains("mob", StringComparison.Ordinal)
+            || text.Contains("exp", StringComparison.Ordinal)
+            || text.Contains("meso", StringComparison.Ordinal)
+            || text.Contains("cancel", StringComparison.Ordinal)
+            || text.Contains("start", StringComparison.Ordinal)
+            || text.Contains("/m", StringComparison.Ordinal)
+            || text.Contains("/s", StringComparison.Ordinal))
         {
-            return null;
+            return true;
         }
 
-        return new BattleHit(window.Value, button.Value.Kind);
+        for (var i = 0; i + 3 < text.Length; i++)
+        {
+            if (char.IsDigit(text[i]) && text[i + 1] == ':' && char.IsDigit(text[i + 2]) && char.IsDigit(text[i + 3]))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /// <summary>
@@ -65,9 +103,11 @@ public static class BattleWindowFinder
 
         private PixelRect? _window;
         private PixelRect? _candidate;
+        private PixelRect? _dismissed;
         private BattleButton _button;
         private bool _lost;
         private int _misses;
+        private int _dismissLeft;
         private int _width;
         private int _height;
 
@@ -75,11 +115,30 @@ public static class BattleWindowFinder
         {
             _window = null;
             _candidate = null;
+            _dismissed = null;
             _button = BattleButton.None;
             _lost = false;
             _misses = 0;
+            _dismissLeft = 0;
             _width = 0;
             _height = 0;
+        }
+
+        /// <summary>
+        /// Drops a rectangle whose read was not the battle panel, and ignores
+        /// that same place for a few frames so the guide does not stick there.
+        /// </summary>
+        public void Dismiss(PixelRect window)
+        {
+            _dismissed = window;
+            _dismissLeft = 12;
+            if (_window is { } current && (Overlaps(current, window) || SamePlace(current, window)))
+            {
+                _window = null;
+                _candidate = null;
+                _button = BattleButton.None;
+                _misses = 0;
+            }
         }
 
         public PixelRect? Observe(byte[] bgra, int width, int height, int stride) =>
@@ -99,6 +158,19 @@ public static class BattleWindowFinder
             }
 
             var found = FindHit(bgra, width, height, stride);
+            if (found is { } bannedHit
+                && _dismissLeft > 0
+                && _dismissed is { } banned
+                && (Overlaps(banned, bannedHit.Window) || SamePlace(banned, bannedHit.Window)))
+            {
+                _dismissLeft--;
+                found = null;
+            }
+            else if (_dismissLeft > 0)
+            {
+                _dismissLeft--;
+            }
+
             if (found is { } next)
             {
                 _lost = false;
@@ -166,7 +238,7 @@ public static class BattleWindowFinder
 
     private readonly record struct ButtonBox(int X, int Y, int Right, int Bottom, BattleButton Kind);
 
-    private static ButtonBox? FindButton(byte[] bgra, int width, int height, int stride)
+    private static List<ButtonBox> FindButtons(byte[] bgra, int width, int height, int stride)
     {
         var minWidth = Math.Max(12, width / 120);
         var maxWidth = Math.Max(minWidth + 8, width / 4);
@@ -201,8 +273,7 @@ public static class BattleWindowFinder
             }
         }
 
-        ButtonBox? best = null;
-        var bestArea = 0;
+        var found = new List<ButtonBox>();
         var used = new bool[runs.Count];
         for (var i = 0; i < runs.Count; i++)
         {
@@ -256,27 +327,17 @@ public static class BattleWindowFinder
                 continue;
             }
 
-            var center = x0 + blobWidth / 2;
-            if (center < width / 2)
-            {
-                continue;
-            }
-
             var area = blobWidth * blobHeight;
             if (pixels * 5 < area * 2)
             {
                 continue;
             }
 
-            if (area > bestArea)
-            {
-                bestArea = area;
-                best = new ButtonBox(x0, y0, x1, y1, BattleButton.None);
-            }
+            var box = new ButtonBox(x0, y0, x1, y1, BattleButton.None);
+            found.Add(box with { Kind = KindOf(bgra, stride, box) });
         }
 
-        if (best == null) return null;
-        return best.Value with { Kind = KindOf(bgra, stride, best.Value) };
+        return found;
 
         void KeepRun(int y, int x0, int x1)
         {
@@ -379,7 +440,29 @@ public static class BattleWindowFinder
             return null;
         }
 
+        if (CountInk(bgra, stride, top, bottomRow, left, rightEdge) < Math.Max(4, (rightEdge - left) / 30))
+        {
+            return null;
+        }
+
         return new PixelRect(windowLeft, windowTop, winWidth, winHeight);
+    }
+
+    private static int CountInk(byte[] bgra, int stride, int top, int bottom, int left, int right)
+    {
+        var ink = 0;
+        for (var y = top; y <= bottom; y++)
+        {
+            var row = y * stride;
+            for (var x = left; x <= right; x++)
+            {
+                var i = row + x * 4;
+                if ((uint)i + 2 >= (uint)bgra.Length) continue;
+                if (IsInk(bgra[i + 2], bgra[i + 1], bgra[i])) ink++;
+            }
+        }
+
+        return ink;
     }
 
     private static (int X0, int X1)? BestTitleRun(
@@ -395,21 +478,32 @@ public static class BattleWindowFinder
     {
         (int X0, int X1)? best = null;
         var run = -1;
+        var gap = 0;
+        var gapMax = Math.Max(4, needed / 8);
         var row = y * stride;
         for (var x = xFrom; x <= xTo; x++)
         {
             var i = row + x * 4;
-            if (IsTitle(bgra[i + 2], bgra[i + 1], bgra[i]))
+            var r = bgra[i + 2];
+            var g = bgra[i + 1];
+            var b = bgra[i];
+            if (IsTitle(r, g, b))
             {
+                gap = 0;
                 if (run < 0)
                 {
                     run = x;
                 }
             }
+            else if (run >= 0 && gap < gapMax && IsInk(r, g, b))
+            {
+                gap++;
+            }
             else if (run >= 0)
             {
                 Consider(run, x - 1);
                 run = -1;
+                gap = 0;
             }
         }
 
@@ -433,24 +527,6 @@ public static class BattleWindowFinder
                 best = (x0, x1);
             }
         }
-    }
-
-    private static PixelRect? BoxFromButton(int width, int height, ButtonBox button)
-    {
-        var buttonWidth = button.Right - button.X + 1;
-        var buttonHeight = Math.Max(1, button.Bottom - button.Y + 1);
-        var right = Math.Min(width, button.Right + 1 + Math.Max(4, buttonWidth / 5));
-        var bottom = Math.Min(height, button.Bottom + 1 + Math.Max(3, buttonHeight / 2));
-        var winWidth = Math.Min(width, Math.Max(buttonWidth * 4, buttonWidth + 20));
-        var winHeight = Math.Min(height, Math.Max(buttonHeight * 8, winWidth * 2 / 3));
-        var left = Math.Max(0, right - winWidth);
-        var top = Math.Max(0, bottom - winHeight);
-        if (right - left < 20 || bottom - top < 20)
-        {
-            return null;
-        }
-
-        return new PixelRect(left, top, right - left, bottom - top);
     }
 
     /// <summary>
@@ -504,6 +580,13 @@ public static class BattleWindowFinder
         }
 
         return true;
+    }
+
+    /// <summary>Dark title lettering. A blank light bar is not the window name.</summary>
+    private static bool IsInk(byte r, byte g, byte b)
+    {
+        var max = Math.Max(r, Math.Max(g, b));
+        return max < 110;
     }
 
     /// <summary>

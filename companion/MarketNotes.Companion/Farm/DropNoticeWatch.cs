@@ -199,8 +199,9 @@ public sealed class DropNoticeWatch
                 }
                 else
                 {
-                    var crop = DropRegion.CropBitmap(frame);
-                    if (crop.Ok && Cover is { } cover) Blank(crop, LootRegion.Bounds(frame.Width, frame.Height), cover);
+                    var box = DropRegion.Box(frame);
+                    var crop = RegionCrop.CropRect(frame, box.X, box.Y, box.Width, box.Height);
+                    if (crop.Ok && Cover is { } cover) Blank(crop, box, cover);
                     if (!crop.Ok)
                     {
                         note = "The drop-notice crop was empty.";

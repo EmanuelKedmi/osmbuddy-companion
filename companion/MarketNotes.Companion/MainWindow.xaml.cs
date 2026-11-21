@@ -927,6 +927,28 @@ public partial class MainWindow : Window
         return _mirrorNote == null ? line : $"{line} {_mirrorNote}";
     }
 
+    private static SeenRegion Fraction(
+        CapturedFrame frame,
+        string name,
+        PixelRect? box,
+        double left,
+        double top,
+        double right,
+        double bottom)
+    {
+        if (box is { IsEmpty: false } rect && frame.Width > 0 && frame.Height > 0)
+        {
+            return new SeenRegion(
+                name,
+                rect.X / (double)frame.Width,
+                rect.Y / (double)frame.Height,
+                rect.Width / (double)frame.Width,
+                rect.Height / (double)frame.Height);
+        }
+
+        return new SeenRegion(name, left, top, right - left, bottom - top);
+    }
+
     private static IReadOnlyList<SeenRegion> ToRegions(CapturedFrame frame, IReadOnlyList<FoundRegion> regions)
     {
         if (frame.Width <= 0 || frame.Height <= 0) return [];
@@ -942,18 +964,8 @@ public partial class MainWindow : Window
     {
         var regions = new List<SeenRegion>
         {
-            new(
-                "Loot notices",
-                DropRegion.LeftFraction,
-                DropRegion.TopFraction,
-                DropRegion.RightFraction - DropRegion.LeftFraction,
-                DropRegion.BottomFraction - DropRegion.TopFraction),
-            new(
-                "Character name",
-                CharacterNameRegion.Left,
-                CharacterNameRegion.Top,
-                CharacterNameRegion.Right - CharacterNameRegion.Left,
-                CharacterNameRegion.Bottom - CharacterNameRegion.Top),
+            Fraction(frame, "Loot notices", _identity.LootBand, DropRegion.LeftFraction, DropRegion.TopFraction, DropRegion.RightFraction, DropRegion.BottomFraction),
+            Fraction(frame, "Character name", _identity.NameBand, CharacterNameRegion.Left, CharacterNameRegion.Top, CharacterNameRegion.Right, CharacterNameRegion.Bottom),
         };
         var nameAt = 0;
         if (frame.Width > 0 && frame.Height > 0 && _identity.Minimap is { } minimap && !minimap.IsEmpty)

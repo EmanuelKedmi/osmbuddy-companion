@@ -198,7 +198,7 @@ public sealed class BattleRegionWatch
                 ? $"Battle analysis changed ({hash}). Windows OCR read no text in that box."
                 : $"Battle analysis changed ({hash}). " + (fromColumns ? "columns " : "") + string.Join(" | ", lines)
             : $"Battle analysis changed ({hash}), {crop.Bgra.Length} bytes. {Scanning.WindowsOcr.Status}";
-        return new BattleWatchResult
+        return Accept(new BattleWatchResult
         {
             Status = status,
             RegionChanged = true,
@@ -214,7 +214,7 @@ public sealed class BattleRegionWatch
             IsolatedWidth = crop.Width,
             IsolatedHeight = crop.Height,
             ValueCells = cells,
-        };
+        });
     }
 
     private BattleWatchResult Handoff(RegionBitmap crop, string hash, PixelRect window, BattleSight sight)
@@ -255,7 +255,7 @@ public sealed class BattleRegionWatch
             };
         }
 
-        return new BattleWatchResult
+        return Accept(new BattleWatchResult
         {
             Status = done.Lines.Count == 0
                 ? $"Battle analysis changed ({done.Hash}). PaddleOCR read no text in that box."
@@ -271,6 +271,23 @@ public sealed class BattleRegionWatch
             Isolated = done.Isolated,
             IsolatedWidth = done.Width,
             IsolatedHeight = done.Height,
+        });
+    }
+
+    /// <summary>
+    /// A crop that reads as chat or a loot line is not the panel. Drop it so
+    /// the guide does not stay on that spot.
+    /// </summary>
+    private BattleWatchResult Accept(BattleWatchResult result)
+    {
+        if (result.Lines.Count == 0 || result.Window is not { } window) return result;
+        if (BattleWindowFinder.LooksLikePanel(result.Lines)) return result;
+        _track.Dismiss(window);
+        return new BattleWatchResult
+        {
+            Status = "That box is not the battle analysis window.",
+            RegionChanged = false,
+            CaptureOk = result.CaptureOk,
         };
     }
 
