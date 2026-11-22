@@ -1,6 +1,7 @@
-# A feat or fix commit on main creates vMAJOR.MINOR.PATCH.
-# The executable is built here, in the same workflow. A tag created with the
-# default GITHUB_TOKEN does not start a second workflow.
+# A feat or fix commit on main creates the next PATCH only (vX.Y.Z+1).
+# Minor/major never advance unless Sagiv explicitly asks (see docs/version-renumber-1.0.x.md
+# and scripts/patch-only-analyzer.cjs). The executable is built in this workflow.
+# A tag created with the default GITHUB_TOKEN does not start a second workflow.
 name: Release
 on:
   push:
