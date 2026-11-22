@@ -571,11 +571,31 @@
                         </Border>
                         </Grid>
                     </DockPanel>
-                    <TextBlock x:Name="FarmStatus"
-                               Grid.Row="3"
-                               TextWrapping="Wrap"
-                               Foreground="#5C241C"
-                               Text="Training scanner is idle." />
+                    <StackPanel Grid.Row="3">
+                        <Border x:Name="StatOpenBanner"
+                                Background="#F3E6CC"
+                                BorderBrush="#9E342C"
+                                BorderThickness="2"
+                                CornerRadius="8"
+                                Padding="14,12"
+                                Margin="0,0,0,8"
+                                Visibility="Collapsed">
+                            <TextBlock x:Name="StatOpenBannerText"
+                                       Text="Character Stat window (S) detected, updating stats…"
+                                       FontWeight="SemiBold"
+                                       FontSize="15"
+                                       Foreground="#5C241C"
+                                       TextWrapping="Wrap" />
+                        </Border>
+                        <TextBlock x:Name="FarmStatus"
+                                   TextWrapping="Wrap"
+                                   Foreground="#5C241C"
+                                   Text="Training scanner is idle." />
+                        <TextBlock x:Name="CharacterStatus"
+                                   TextWrapping="Wrap"
+                                   Margin="0,6,0,0"
+                                   Foreground="#5C241C" />
+                    </StackPanel>
                 </Grid>
             <Border x:Name="DebugPanel"
                     Grid.Column="1"
@@ -711,22 +731,6 @@
                                     Style="{StaticResource OutlineButton}"
                                     Click="LoadSkillSample_Click" />
                         </StackPanel>
-                        <TextBlock x:Name="CharacterStatus" TextWrapping="Wrap" Foreground="#5C241C" />
-                        <Border x:Name="StatOpenBanner"
-                                Background="#F3E6CC"
-                                BorderBrush="#9E342C"
-                                BorderThickness="1"
-                                CornerRadius="8"
-                                Padding="12,10"
-                                Margin="0,10,0,0"
-                                Visibility="Collapsed">
-                            <TextBlock x:Name="StatOpenBannerText"
-                                       Text="Character Stat window (S) detected, updating stats…"
-                                       FontWeight="SemiBold"
-                                       FontSize="14"
-                                       Foreground="#5C241C"
-                                       TextWrapping="Wrap" />
-                        </Border>
                         <TextBlock Text="STAT-FEED log"
                                    Foreground="#6B5344"
                                    FontSize="12"
