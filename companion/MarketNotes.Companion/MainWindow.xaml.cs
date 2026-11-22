@@ -2253,6 +2253,9 @@ public partial class MainWindow : Window
     private void ShowStatOpenBanner(string message)
     {
         if (StatOpenBanner == null || StatOpenBannerText == null) return;
+        // Banner lives under the training DropGrid above Farm/Character status.
+        if (TrainingPanel != null) TrainingPanel.Visibility = Visibility.Visible;
+        if (FmPanel != null) FmPanel.Visibility = Visibility.Collapsed;
         StatOpenBannerText.Text = message;
         StatOpenBanner.Visibility = Visibility.Visible;
     }
