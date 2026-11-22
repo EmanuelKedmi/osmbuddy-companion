@@ -79,6 +79,7 @@ public partial class MainWindow : Window
     private int _ngmWatchTicks;
     private string? _ngmNote;
     private int _updateCheck;
+    private const int StatFeedUiMaxLines = 80;
 
     public MainWindow()
     {
@@ -104,8 +105,10 @@ public partial class MainWindow : Window
         FarmStatus.Text = "Training scanner is idle.";
         CharacterStatus.Text = "Character scanner is idle.";
         SeenStateBox.Text = WindowsOcr.Status + "\nThe share is stopped.";
+        StatFeedLog.LineWritten += OnStatFeedLine;
         Closed += (_, _) =>
         {
+            StatFeedLog.LineWritten -= OnStatFeedLine;
             StopNgmWatch();
             _ngmRegister?.Stop();
             _updateTimer?.Stop();
@@ -133,6 +136,29 @@ public partial class MainWindow : Window
     {
         var window = new ChangelogWindow { Owner = this };
         window.ShowDialog();
+    }
+
+    private void OnStatFeedLine(string line)
+    {
+        void Append()
+        {
+            if (StatFeedLogBox == null) return;
+            var stamp = DateTimeOffset.Now.ToString("HH:mm:ss");
+            var next = stamp + " " + line;
+            var current = StatFeedLogBox.Text ?? "";
+            if (current.StartsWith("Press S with share on.", StringComparison.Ordinal))
+                current = "";
+            var combined = string.IsNullOrEmpty(current) ? next : current + "\n" + next;
+            var parts = combined.Split('\n');
+            if (parts.Length > StatFeedUiMaxLines)
+                combined = string.Join("\n", parts.AsSpan(parts.Length - StatFeedUiMaxLines).ToArray());
+            StatFeedLogBox.Text = combined;
+            StatFeedLogBox.CaretIndex = StatFeedLogBox.Text.Length;
+            StatFeedLogBox.ScrollToEnd();
+        }
+
+        if (Dispatcher.CheckAccess()) Append();
+        else _ = Dispatcher.BeginInvoke(Append);
     }
 
     private async Task CheckForUpdateAsync()

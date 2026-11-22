@@ -712,6 +712,22 @@
                                     Click="LoadSkillSample_Click" />
                         </StackPanel>
                         <TextBlock x:Name="CharacterStatus" TextWrapping="Wrap" Foreground="#5C241C" />
+                        <TextBlock Text="STAT-FEED log"
+                                   Foreground="#6B5344"
+                                   FontSize="12"
+                                   Margin="0,10,0,4"
+                                   ToolTip="Live Stat (S) → website feed trace. Also written to %LOCALAPPDATA%\MarketNotes.Companion\stat-feed.log" />
+                        <TextBox x:Name="StatFeedLogBox"
+                                 IsReadOnly="True"
+                                 AcceptsReturn="True"
+                                 TextWrapping="Wrap"
+                                 VerticalScrollBarVisibility="Auto"
+                                 MinHeight="140"
+                                 MaxHeight="220"
+                                 FontFamily="Consolas"
+                                 FontSize="12"
+                                 VerticalContentAlignment="Top"
+                                 Text="Press S with share on. [STAT-FEED] lines appear here." />
                     </StackPanel>
                     </ScrollViewer>
                 </DockPanel>

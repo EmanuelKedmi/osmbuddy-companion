@@ -5,13 +5,16 @@ namespace MarketNotes.Companion.Farm;
 
 /// <summary>
 /// Always-on, greppable trace for Stat (S) → /api/character/feed.
-/// Survives with the debug panel closed so a missed website update can be diagnosed.
+/// Writes a file and raises <see cref="LineWritten"/> so the companion UI can show the same lines live.
 /// </summary>
 public static class StatFeedLog
 {
     private static readonly object Gate = new();
     private const int MaxBytes = 1_500_000;
     public const string Prefix = "[STAT-FEED]";
+
+    /// <summary>Fired after each line is formatted (includes the [STAT-FEED] prefix, no timestamp).</summary>
+    public static event Action<string>? LineWritten;
 
     public static string FilePath()
     {
@@ -47,6 +50,15 @@ public static class StatFeedLog
 
         // Also land in the training session log when that sink is writing.
         TrainingSessionLog.Append([line]);
+
+        try
+        {
+            LineWritten?.Invoke(line);
+        }
+        catch
+        {
+            // A UI listener fault must not stop the feed.
+        }
     }
 
     private static void Trim(string path)
