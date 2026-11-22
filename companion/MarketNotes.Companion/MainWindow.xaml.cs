@@ -164,7 +164,7 @@ public partial class MainWindow : Window
     private async Task CheckForUpdateAsync()
     {
         var ticket = Interlocked.Increment(ref _updateCheck);
-        var newer = await CompanionUpdate.NewerVersionAsync(FeedUrlBox.Text, RunningVersion.Label());
+        var newer = await CompanionUpdate.NewerVersionAsync(FarmFeedUrl(), RunningVersion.Label());
         if (ticket != _updateCheck || UpdateButton == null) return;
         if (newer == null)
         {
@@ -179,7 +179,7 @@ public partial class MainWindow : Window
     private async void Update_Click(object sender, RoutedEventArgs e)
     {
         UpdateButton.IsEnabled = false;
-        var staged = await CompanionUpdate.StageAsync(FeedUrlBox.Text);
+        var staged = await CompanionUpdate.StageAsync(FarmFeedUrl());
         if (!staged.Ok)
         {
             StatusText.Text = staged.Message;
@@ -917,7 +917,7 @@ public partial class MainWindow : Window
 
         var (characterId, fallbackName) = CharacterIdentity();
         var characterName = string.IsNullOrWhiteSpace(session.CharacterName) ? fallbackName : session.CharacterName;
-        MirrorLater(FeedUrlBox.Text, new
+        MirrorLater(FarmFeedUrl(), new
         {
             sessionId = session.SessionId(),
             mode = "replace",
@@ -1634,7 +1634,7 @@ public partial class MainWindow : Window
         RenderOverlays();
 
         var (characterId, _) = CharacterIdentity();
-        var mirror = await MirrorAsync(FeedUrlBox.Text, new
+        var mirror = await MirrorAsync(FarmFeedUrl(), new
         {
             sessionId = $"training:{characterId}:{fixture.MapId}",
             mode = "replace",
@@ -1734,7 +1734,7 @@ public partial class MainWindow : Window
         UploadLogsButton.IsEnabled = false;
         try
         {
-            var url = WebsiteAddress.LogsUrl(FeedUrlBox.Text);
+            var url = WebsiteAddress.LogsUrl(FarmFeedUrl());
             var (_, message) = await CompanionLogUpload.PostAsync(
                 url,
                 CompanionLogUpload.Tail(LootOcrLog.FilePath()),
@@ -1774,6 +1774,7 @@ public partial class MainWindow : Window
 #else
         if (url.Length == 0 || WebsiteAddress.IsLoopback(url)) url = WebsiteAddress.LiveFeed;
 #endif
+        url = WebsiteAddress.CanonicalFeedUrl(url);
         FeedUrlBox.Text = url;
         FeedTokenBox.Text = token;
         _savedWebsiteUrl = url;
@@ -1794,7 +1795,14 @@ public partial class MainWindow : Window
     private void PersistWebsiteSettings()
     {
         if (!_uiReady || _loadingWebsite) return;
-        var url = FeedUrlBox.Text.Trim();
+        var url = WebsiteAddress.CanonicalFeedUrl(FeedUrlBox.Text.Trim());
+        if (!string.Equals(FeedUrlBox.Text.Trim(), url, StringComparison.Ordinal))
+        {
+            _loadingWebsite = true;
+            FeedUrlBox.Text = url;
+            _loadingWebsite = false;
+        }
+
         var token = FeedTokenBox.Text.Trim();
         if (url == _savedWebsiteUrl && token == _savedWebsiteToken) return;
         WebsiteSettingsStore.Save(url, token);
@@ -1807,9 +1815,14 @@ public partial class MainWindow : Window
         return FeedTokenBox.Text.Trim();
     }
 
+    private string FarmFeedUrl()
+    {
+        return WebsiteAddress.CanonicalFeedUrl(FeedUrlBox.Text.Trim());
+    }
+
     private string FmUrl()
     {
-        var farm = FeedUrlBox.Text.Trim();
+        var farm = FarmFeedUrl();
         if (farm.Length == 0) return "";
         if (farm.Contains("/api/farm/feed", StringComparison.OrdinalIgnoreCase))
         {
@@ -2168,7 +2181,7 @@ public partial class MainWindow : Window
 
     private string ProfileUrl()
     {
-        var farm = FeedUrlBox.Text.Trim();
+        var farm = FarmFeedUrl();
         if (farm.Length == 0) return "";
         if (farm.Contains("/api/farm/feed", StringComparison.OrdinalIgnoreCase))
         {
@@ -2329,7 +2342,7 @@ public partial class MainWindow : Window
 
     private string CharacterUrl()
     {
-        var farm = FeedUrlBox.Text.Trim();
+        var farm = FarmFeedUrl();
         if (farm.Length == 0) return "";
         if (farm.Contains("/api/farm/feed", StringComparison.OrdinalIgnoreCase))
         {

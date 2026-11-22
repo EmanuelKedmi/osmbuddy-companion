@@ -46,6 +46,41 @@ public static class WebsiteAddress
     }
 
     /// <summary>
+    /// Legacy public host <c>osmbuddy.duckdns.org</c> 308-redirects to
+    /// <see cref="LiveFeed"/>. HttpClient drops the Authorization header on that
+    /// cross-host hop, so the site answers 401 even with a valid token. Rewrite
+    /// saved duckdns URLs to the live host before any feed call.
+    /// </summary>
+    public static string CanonicalFeedUrl(string? url)
+    {
+        var trimmed = (url ?? "").Trim();
+        if (trimmed.Length == 0) return LiveFeed;
+        if (!Uri.TryCreate(trimmed, UriKind.Absolute, out var uri)
+            || (uri.Scheme != "http" && uri.Scheme != "https"))
+        {
+            return trimmed;
+        }
+
+        if (!IsLegacyPublicHost(uri.Host)) return trimmed;
+
+        var live = new Uri(LiveFeed);
+        var path = uri.AbsolutePath;
+        if (string.IsNullOrEmpty(path) || path == "/") path = live.AbsolutePath;
+        var builder = new UriBuilder(live.Scheme, live.Host, live.IsDefaultPort ? -1 : live.Port)
+        {
+            Path = path,
+            Query = uri.Query.TrimStart('?'),
+        };
+        return builder.Uri.AbsoluteUri;
+    }
+
+    public static bool IsLegacyPublicHost(string? host)
+    {
+        if (string.IsNullOrWhiteSpace(host)) return false;
+        return host.Equals("osmbuddy.duckdns.org", StringComparison.OrdinalIgnoreCase);
+    }
+
+    /// <summary>
     /// A GitHub release tag is <c>v1.2.3</c> or <c>1.2.3</c>. Other tags are ignored.
     /// </summary>
     public static string? VersionFromReleaseTag(string? tag)
