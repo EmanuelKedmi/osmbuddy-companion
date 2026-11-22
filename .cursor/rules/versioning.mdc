@@ -1,0 +1,13 @@
+---
+description: Companion version bumps — patch-only unless Sagiv says otherwise
+alwaysApply: true
+---
+
+# Versioning
+
+- Every new feature must progress the companion version (one shippable change → one release).
+- Do **not** stack multiple features into a single version or PR meant to release together.
+- Default bump is **patch only**: the `z` in `x.y.z`.
+- Progressing **minor** (`y`) or **major** (`x`) requires **explicit instruction from Sagiv**. Never bump minor or major on your own — including via `BREAKING CHANGE` / `feat!` commit markers.
+- Prefer one focused `fix:` or `feat:` commit per releaseable change. Leave `<Version>` in the `.csproj` unchanged; semantic-release stamps the tag onto the published exe.
+- `docs:`, `chore:`, and `ci:` commits do not publish a player build.
