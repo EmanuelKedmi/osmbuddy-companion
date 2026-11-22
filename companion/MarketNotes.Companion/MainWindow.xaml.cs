@@ -1834,6 +1834,7 @@ public partial class MainWindow : Window
                 _statSignature = null;
                 _statMirrorPending = null;
                 _statFeedSkipLogged = false;
+                ShowStatOpenBanner("Character Stat window (S) detected, updating stats…");
                 StatFeedLog.Write("open rising-edge force-clear signature; will push feed");
                 TrainingSessionLog.Append(["character stat window opened; forcing website feed"]);
             }
@@ -1911,6 +1912,7 @@ public partial class MainWindow : Window
             {
                 StatFeedLog.Write("close Stat window no longer on frame");
                 TrainingSessionLog.Append(["character stat window closed"]);
+                HideStatOpenBanner();
             }
 
             _statWindowOpen = false;
@@ -2246,6 +2248,19 @@ public partial class MainWindow : Window
         }
 
         CharacterStatus.Text = text.Trim();
+    }
+
+    private void ShowStatOpenBanner(string message)
+    {
+        if (StatOpenBanner == null || StatOpenBannerText == null) return;
+        StatOpenBannerText.Text = message;
+        StatOpenBanner.Visibility = Visibility.Visible;
+    }
+
+    private void HideStatOpenBanner()
+    {
+        if (StatOpenBanner == null) return;
+        StatOpenBanner.Visibility = Visibility.Collapsed;
     }
 
     private static object StatPayload(StatSheet sheet, string? name, bool sample)
