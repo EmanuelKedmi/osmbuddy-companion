@@ -66,6 +66,7 @@ public partial class MainWindow : Window
     private string? _statSignature;
     private string? _statMirrorPending;
     private bool _statWindowOpen;
+    private bool _statFeedSkipLogged;
     private string? _skillSignature;
     private string? _skillMirrorPending;
     private string? _statusSignature;
@@ -1806,24 +1807,41 @@ public partial class MainWindow : Window
             {
                 _statSignature = null;
                 _statMirrorPending = null;
+                _statFeedSkipLogged = false;
+                StatFeedLog.Write("open rising-edge force-clear signature; will push feed");
                 TrainingSessionLog.Append(["character stat window opened; forcing website feed"]);
             }
 
             // Status-plate name is steadier than the OCR name on the Stat window
             // (that crop often drops a letter, e.g. MonkeDKof vs MonkeyDKof).
             var name = CharacterSheetName(watch.Stat.Name);
+            var ocrName = watch.Stat.Name ?? "-";
+            if (opened || name == null)
+            {
+                StatFeedLog.Write(
+                    $"ocr name={ocrName} sheetName={name ?? "-"} lv={Fmt(watch.Stat.Level)} " +
+                    $"str={Fmt(watch.Stat.Str)} dex={Fmt(watch.Stat.Dex)} int={Fmt(watch.Stat.Int)} luk={Fmt(watch.Stat.Luk)} " +
+                    $"branch={watch.Stat.Branch ?? "-"} opened={opened}");
+            }
+
             _statReport = StatWindowText.Describe(watch.Stat, false);
             if (opened) _statReport += " Stat opened — sending to the website.";
             if (name != null && watch.Stat.Name != null
                 && !string.Equals(name, watch.Stat.Name, StringComparison.OrdinalIgnoreCase))
             {
                 _statReport += $" Using status-plate name {name} (window said {watch.Stat.Name}).";
+                if (opened) StatFeedLog.Write($"name-remap window={watch.Stat.Name} → sheet={name}");
             }
 
             _characterSample = false;
             if (name == null)
             {
                 _statReport += " The name was not read, so no character was created.";
+                if (!_statFeedSkipLogged)
+                {
+                    _statFeedSkipLogged = true;
+                    StatFeedLog.Write("skip empty-parse: no character name from plate or Stat window");
+                }
             }
             else
             {
@@ -1835,11 +1853,29 @@ public partial class MainWindow : Window
                 if (signature != _statSignature && signature != _statMirrorPending)
                 {
                     _statMirrorPending = signature;
+                    _statFeedSkipLogged = false;
+                    StatFeedLog.Write(
+                        $"ocr name={ocrName} sheetName={name} lv={Fmt(watch.Stat.Level)} " +
+                        $"str={Fmt(watch.Stat.Str)} dex={Fmt(watch.Stat.Dex)} int={Fmt(watch.Stat.Int)} luk={Fmt(watch.Stat.Luk)} " +
+                        $"branch={watch.Stat.Branch ?? "-"}");
+                    StatFeedLog.Write($"push queued name={name} sig={ShortSig(signature)}");
                     MirrorCharacterLater(CharacterUrl(), watch.Stat, null, name, sample: false, mirrored =>
                     {
                         if (mirrored) _statSignature = signature;
                         if (_statMirrorPending == signature) _statMirrorPending = null;
                     });
+                }
+                else if (opened)
+                {
+                    StatFeedLog.Write($"skip unexpected: rising-edge but signature still locked sig={ShortSig(signature)}");
+                }
+                else if (!_statFeedSkipLogged)
+                {
+                    _statFeedSkipLogged = true;
+                    if (signature == _statMirrorPending)
+                        StatFeedLog.Write($"skip post-in-flight sig={ShortSig(signature)}");
+                    else
+                        StatFeedLog.Write($"skip signature-unchanged sig={ShortSig(signature)} (Stat still open after successful push)");
                 }
             }
         }
@@ -1847,10 +1883,12 @@ public partial class MainWindow : Window
         {
             if (_statWindowOpen)
             {
+                StatFeedLog.Write("close Stat window no longer on frame");
                 TrainingSessionLog.Append(["character stat window closed"]);
             }
 
             _statWindowOpen = false;
+            _statFeedSkipLogged = false;
             // Stat closed: drop the mirror lock so the next open is a fresh edge.
             _statSignature = null;
             _statMirrorPending = null;
@@ -1991,11 +2029,14 @@ public partial class MainWindow : Window
         bool sample,
         Action<bool>? done = null)
     {
+        var kind = stat != null ? "stat" : "skill";
         if (string.IsNullOrWhiteSpace(url))
         {
             var missing = " Website URL is not a farm feed (/api/farm/feed), so the sheet was not sent.";
             if (stat != null) _statReport += missing;
             else _skillReport += missing;
+            if (stat != null)
+                StatFeedLog.Write("skip bad-url: farm feed box empty or not /api/farm/feed (no /api/character/feed)");
             ShowCharacterStatus(null);
             done?.Invoke(false);
             return;
@@ -2003,6 +2044,8 @@ public partial class MainWindow : Window
 
         var token = FeedToken();
         var profileUrl = ProfileUrl();
+        if (stat != null)
+            StatFeedLog.Write($"post-start kind={kind} url={url} hasToken={!string.IsNullOrWhiteSpace(token)} ocrName={ocrName ?? "-"}");
         _ = Task.Run(async () =>
         {
             string note;
@@ -2010,17 +2053,33 @@ public partial class MainWindow : Window
             try
             {
                 var name = await MatchLedgerNameAsync(ocrName, token, profileUrl);
+                if (stat != null && name != null && ocrName != null
+                    && !string.Equals(name, ocrName, StringComparison.OrdinalIgnoreCase))
+                {
+                    StatFeedLog.Write($"ledger-match {ocrName} → {name}");
+                }
+
                 object body = stat != null
                     ? StatPayload(stat, name, sample)
                     : SkillPayload(skill!, name, sample);
-                var (ok, message) = await _feed.PostAsync(url, body, token);
+                var posted = await _feed.PostForBodyAsync(url, body, token);
                 var mapped = name != null && ocrName != null
                     && !string.Equals(name, ocrName, StringComparison.OrdinalIgnoreCase)
                     ? $" Matched ledger name {name}."
                     : "";
-                note = ok ? mapped + " Sent to the website." : " Website copy failed: " + message;
-                mirrored = ok;
-                if (!ok) NoteMirrorFailure(message);
+                note = posted.Ok ? mapped + " Sent to the website." : " Website copy failed: " + posted.Message;
+                mirrored = posted.Ok;
+                if (stat != null)
+                {
+                    var bodySnippet = posted.Body.Length > 160 ? posted.Body[..160] : posted.Body;
+                    bodySnippet = bodySnippet.Replace('\r', ' ').Replace('\n', ' ');
+                    StatFeedLog.Write(
+                        posted.Ok
+                            ? $"post-ok kind={kind} name={name ?? "-"} url={url}"
+                            : $"post-fail kind={kind} name={name ?? "-"} url={url} message={posted.Message} body={bodySnippet}");
+                }
+
+                if (!posted.Ok) NoteMirrorFailure(posted.Message);
                 else
                 {
                     Volatile.Write(ref _mirrorFailed, 0);
@@ -2030,11 +2089,13 @@ public partial class MainWindow : Window
             catch (Exception ex)
             {
                 note = $" Website copy failed ({ex.GetType().Name}: {ex.Message}).";
+                if (stat != null)
+                    StatFeedLog.Write($"post-error kind={kind} url={url} ex={ex.GetType().Name}: {ex.Message}");
                 NoteMirrorFailure(note.Trim());
             }
 
             TrainingSessionLog.Append([
-                $"character {(stat != null ? "stat" : "skill")} mirror {(mirrored ? "ok" : "fail")}: {note.Trim()}"]);
+                $"character {kind} mirror {(mirrored ? "ok" : "fail")}: {note.Trim()}"]);
             await Dispatcher.InvokeAsync(() =>
             {
                 if (stat != null) _statReport += note;
@@ -2043,6 +2104,14 @@ public partial class MainWindow : Window
                 done?.Invoke(mirrored);
             });
         });
+    }
+
+    private static string Fmt(int? value) => value?.ToString() ?? "-";
+
+    private static string ShortSig(string signature)
+    {
+        if (signature.Length <= 48) return signature;
+        return signature[..48] + "…";
     }
 
     private async Task<string?> MatchLedgerNameAsync(string? ocrName, string? token, string profileUrl)
