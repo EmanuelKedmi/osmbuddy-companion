@@ -2106,6 +2106,15 @@ public class ScannerLogicTests
         Assert.Equal("1.0.2", WebsiteAddress.VersionFromReleaseTag("v1.0.2"));
         Assert.Equal("1.0.2", WebsiteAddress.VersionFromReleaseTag("1.0.2"));
         Assert.Null(WebsiteAddress.VersionFromReleaseTag("latest"));
+        Assert.True(WebsiteAddress.IsLegacyPublicHost("osmbuddy.duckdns.org"));
+        Assert.Equal(
+            "https://osmbuddy.apps.grok.bot/api/farm/feed",
+            WebsiteAddress.CanonicalFeedUrl("https://osmbuddy.duckdns.org/api/farm/feed"));
+        Assert.Equal(
+            "https://osmbuddy.apps.grok.bot/api/character/feed",
+            WebsiteAddress.CanonicalFeedUrl("https://osmbuddy.duckdns.org/api/character/feed"));
+        Assert.Equal(WebsiteAddress.LiveFeed, WebsiteAddress.CanonicalFeedUrl(WebsiteAddress.LiveFeed));
+        Assert.Equal(WebsiteAddress.LiveFeed, WebsiteAddress.CanonicalFeedUrl(""));
     }
 
     [Fact]
