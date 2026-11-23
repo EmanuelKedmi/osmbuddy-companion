@@ -440,6 +440,12 @@
             </StackPanel>
 
             <Grid Grid.Row="3" Margin="16,0,16,12">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <!-- Always visible in FM and Training — S banner + character feed status. -->
+                    <RowDefinition Height="140" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
@@ -508,8 +514,6 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
-                        <!-- Fixed strip: Farm/Character/banner text length must not reflow DropGrid. -->
-                        <RowDefinition Height="140" />
                     </Grid.RowDefinitions>
                     <TextBlock Text="Training" FontFamily="Georgia" FontSize="20" Foreground="#5C241C" Margin="0,0,0,8" />
                     <Grid Grid.Row="1" Margin="0,0,0,8">
@@ -577,43 +581,6 @@
                         </Border>
                         </Grid>
                     </DockPanel>
-                    <Border Grid.Row="3"
-                            BorderBrush="#E4D3B8"
-                            BorderThickness="1"
-                            CornerRadius="8"
-                            Background="#FFFBF6"
-                            Padding="10,8"
-                            Margin="0,4,0,0">
-                        <ScrollViewer VerticalScrollBarVisibility="Auto"
-                                      HorizontalScrollBarVisibility="Disabled"
-                                      CanContentScroll="False">
-                            <StackPanel>
-                                <Border x:Name="StatOpenBanner"
-                                        Background="#F3E6CC"
-                                        BorderBrush="#9E342C"
-                                        BorderThickness="2"
-                                        CornerRadius="8"
-                                        Padding="14,12"
-                                        Margin="0,0,0,8"
-                                        Visibility="Collapsed">
-                                    <TextBlock x:Name="StatOpenBannerText"
-                                               Text="Character Stat window (S) detected, updating stats…"
-                                               FontWeight="SemiBold"
-                                               FontSize="15"
-                                               Foreground="#5C241C"
-                                               TextWrapping="Wrap" />
-                                </Border>
-                                <TextBlock x:Name="FarmStatus"
-                                           TextWrapping="Wrap"
-                                           Foreground="#5C241C"
-                                           Text="Training scanner is idle." />
-                                <TextBlock x:Name="CharacterStatus"
-                                           TextWrapping="Wrap"
-                                           Margin="0,6,0,0"
-                                           Foreground="#5C241C" />
-                            </StackPanel>
-                        </ScrollViewer>
-                    </Border>
                 </Grid>
             <Border x:Name="DebugPanel"
                     Grid.Column="1"
@@ -768,6 +735,46 @@
                     </ScrollViewer>
                 </DockPanel>
             </Border>
+            </Grid>
+
+                <Border Grid.Row="1"
+                        BorderBrush="#E4D3B8"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Background="#FFFBF6"
+                        Padding="10,8"
+                        Margin="0,8,0,0">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                                  HorizontalScrollBarVisibility="Disabled"
+                                  CanContentScroll="False">
+                        <StackPanel>
+                            <Border x:Name="StatOpenBanner"
+                                    Background="#F3E6CC"
+                                    BorderBrush="#9E342C"
+                                    BorderThickness="2"
+                                    CornerRadius="8"
+                                    Padding="14,12"
+                                    Margin="0,0,0,8"
+                                    Visibility="Collapsed">
+                                <TextBlock x:Name="StatOpenBannerText"
+                                           Text="Character Stat window (S) detected, updating stats…"
+                                           FontWeight="SemiBold"
+                                           FontSize="15"
+                                           Foreground="#5C241C"
+                                           TextWrapping="Wrap" />
+                            </Border>
+                            <TextBlock x:Name="FarmStatus"
+                                       TextWrapping="Wrap"
+                                       Foreground="#5C241C"
+                                       Text="Training scanner is idle." />
+                            <TextBlock x:Name="CharacterStatus"
+                                       TextWrapping="Wrap"
+                                       Margin="0,6,0,0"
+                                       Foreground="#5C241C"
+                                       Text="Character scanner is idle." />
+                        </StackPanel>
+                    </ScrollViewer>
+                </Border>
             </Grid>
 
         </Grid>
