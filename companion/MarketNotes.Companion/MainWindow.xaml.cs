@@ -66,6 +66,8 @@ public partial class MainWindow : Window
     private string? _statSignature;
     private string? _statMirrorPending;
     private bool _statWindowOpen;
+    private int _statMissingFrames;
+    private const int StatCloseAfterMisses = 10;
     private bool _statFeedSkipLogged;
     private bool _statFeedHadError;
     private long _statFeedRetryAt;
@@ -1901,6 +1903,7 @@ public partial class MainWindow : Window
             // numbers match the last successful post (reopen after equip/unequip).
             var opened = !_statWindowOpen;
             _statWindowOpen = true;
+            _statMissingFrames = 0;
             if (opened)
             {
                 _statSignature = null;
@@ -2004,19 +2007,35 @@ public partial class MainWindow : Window
         }
         else
         {
+            // One missed OCR frame used to hide the banner and clear the feed lock
+            // within ~1s while S was still open (chrome/OCR flicker). Hold open
+            // until several consecutive misses so Sagiv can see the message.
             if (_statWindowOpen)
             {
-                StatFeedLog.Write("close Stat window no longer on frame");
+                _statMissingFrames++;
+                if (_statMissingFrames < StatCloseAfterMisses)
+                {
+                    if (_statMissingFrames == 1)
+                        StatFeedLog.Write($"hold-open miss=1/{StatCloseAfterMisses} (OCR flicker; banner stays)");
+                    ShowCharacterStatus(watch.Status);
+                    // Skip plate-mirror while we still believe S is open.
+                    goto AfterStatBranch;
+                }
+
+                StatFeedLog.Write($"close Stat window after {_statMissingFrames} missed frames");
                 TrainingSessionLog.Append(["character stat window closed"]);
                 HideStatOpenBanner();
+                _statWindowOpen = false;
+                _statMissingFrames = 0;
+                _statFeedSkipLogged = false;
+                _statSignature = null;
+                _statMirrorPending = null;
+                _statFeedHadError = false;
             }
-
-            _statWindowOpen = false;
-            _statFeedSkipLogged = false;
-            // Stat closed: drop the mirror lock so the next open is a fresh edge.
-            _statSignature = null;
-            _statMirrorPending = null;
-            _statFeedHadError = false;
+            else
+            {
+                _statMissingFrames = 0;
+            }
 
             if (_identity.StatusBar is { Succeeded: true } plate)
             {
@@ -2064,6 +2083,8 @@ public partial class MainWindow : Window
                 _characterSample = false;
             }
         }
+
+        AfterStatBranch:
 
         if (watch.Skill != null)
         {
