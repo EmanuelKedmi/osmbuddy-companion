@@ -17,7 +17,7 @@ public static class WindowEnumerator
             _ = NativeMethods.GetWindowText(hwnd, builder, builder.Capacity);
             var title = builder.ToString().Trim();
             if (title.Length == 0) return true;
-            if (title is "Screen share" or "Market Notes Companion" or "Scanner overlay" or "Program Manager") return true;
+            if (title is "Screen share" or "Market Notes Companion" or "Scanner overlay" or "In-game notes" or "Item notes" or "Program Manager") return true;
             NativeMethods.GetWindowThreadProcessId(hwnd, out var ownerPid);
             if (ownerPid == (uint)Environment.ProcessId) return true;
             found.Add(new SharedWindow

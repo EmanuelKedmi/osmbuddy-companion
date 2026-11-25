@@ -122,68 +122,17 @@ public partial class GameOverlayWindow : Window
 
     private static bool TryBounds(ShareSource source, out int x, out int y, out int width, out int height)
     {
-        if (source.Kind == ShareKind.Screen)
+        if (!GameClientBounds.TryGet(source, out var client))
         {
-            x = source.X;
-            y = source.Y;
-            width = source.Width;
-            height = source.Height;
-            return width > 0 && height > 0;
+            x = y = width = height = 0;
+            return false;
         }
 
-        if (NativeMethods.IsWindow(source.WindowHandle) && TryClient(source.WindowHandle, out x, out y, out width, out height))
-        {
-            return true;
-        }
-
-        x = y = width = height = 0;
-        return false;
-    }
-
-    /// <summary>
-    /// The grab is the client, after the title bar and border are removed.
-    /// Region fractions belong on that rectangle. Parking the overlay on
-    /// the whole window draws every box up by the caption.
-    /// </summary>
-    private static bool TryClient(IntPtr hwnd, out int x, out int y, out int width, out int height)
-    {
-        var previous = NativeMethods.SetThreadDpiAwarenessContext(NativeMethods.GetWindowDpiAwarenessContext(hwnd));
-        try
-        {
-            if (NativeMethods.GetClientRect(hwnd, out var client))
-            {
-                var origin = new NativeMethods.Point();
-                var clientWidth = client.Right - client.Left;
-                var clientHeight = client.Bottom - client.Top;
-                if (clientWidth > 0 && clientHeight > 0 && NativeMethods.ClientToScreen(hwnd, ref origin))
-                {
-                    x = origin.X;
-                    y = origin.Y;
-                    width = clientWidth;
-                    height = clientHeight;
-                    return true;
-                }
-            }
-
-            if (NativeMethods.GetWindowRect(hwnd, out var rect))
-            {
-                x = rect.Left;
-                y = rect.Top;
-                width = rect.Right - rect.Left;
-                height = rect.Bottom - rect.Top;
-                return width > 0 && height > 0;
-            }
-        }
-        finally
-        {
-            if (previous != IntPtr.Zero)
-            {
-                NativeMethods.SetThreadDpiAwarenessContext(previous);
-            }
-        }
-
-        x = y = width = height = 0;
-        return false;
+        x = client.X;
+        y = client.Y;
+        width = client.Width;
+        height = client.Height;
+        return true;
     }
 
     [DllImport("user32.dll", EntryPoint = "GetWindowLongPtr")]

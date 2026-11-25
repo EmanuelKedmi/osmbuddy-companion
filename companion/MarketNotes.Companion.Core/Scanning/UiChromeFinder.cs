@@ -799,6 +799,8 @@ public static class UiChromeFinder
         return score;
     }
 
+    public static bool IsChromePixel(byte[] bgra, int stride, int x, int y) => IsFrame(bgra, stride, x, y);
+
     private static bool IsFrame(byte[] bgra, int stride, int x, int y)
     {
         if (!TryPixel(bgra, stride, x, y, out var b, out var g, out var r)) return false;
