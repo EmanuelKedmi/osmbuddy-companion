@@ -68,10 +68,22 @@ public partial class MainWindow : Window
     private string? _statSignature;
     private string? _statMirrorPending;
     private bool _statWindowOpen;
+    private int _statMissingFrames;
+    private const int StatCloseAfterMisses = 10;
+    private bool _statFeedSkipLogged;
+    private bool _statFeedHadError;
+    private long _statFeedRetryAt;
     private string? _skillSignature;
     private string? _skillMirrorPending;
+    private bool _skillFeedHadError;
+    private long _skillFeedRetryAt;
     private string? _statusSignature;
     private string? _statusMirrorPending;
+    private bool _statusFeedHadError;
+    private long _statusFeedRetryAt;
+    private string? _characterFeedNote;
+    private string? _lastFeedFailLog;
+    private long _lastFeedFailLogAt;
     private IReadOnlyList<string> _ledgerNames = [];
     private long _ledgerNamesAt;
     private DispatcherTimer? _ngmWatch;
@@ -80,6 +92,7 @@ public partial class MainWindow : Window
     private int _ngmWatchTicks;
     private string? _ngmNote;
     private int _updateCheck;
+    private const int StatFeedUiMaxLines = 80;
 
     public MainWindow()
     {
@@ -87,7 +100,7 @@ public partial class MainWindow : Window
         _notes.Attach(this);
         _notes.ActivityChanged += SyncNotesButton;
         var version = RunningVersion.Label();
-        VersionLabel.Text = version;
+        VersionButton.Content = version;
         Title = "Companion " + version;
         if (DebugLog.DevBuild) BuildSubtitle.Text = "Old School Maple · dev build, always logging";
         LoadWebsiteSettings();
@@ -108,8 +121,10 @@ public partial class MainWindow : Window
         FarmStatus.Text = "Training scanner is idle.";
         CharacterStatus.Text = "Character scanner is idle.";
         SeenStateBox.Text = WindowsOcr.Status + "\nThe share is stopped.";
+        StatFeedLog.LineWritten += OnStatFeedLine;
         Closed += (_, _) =>
         {
+            StatFeedLog.LineWritten -= OnStatFeedLine;
             StopNgmWatch();
             _ngmRegister?.Stop();
             _updateTimer?.Stop();
@@ -134,10 +149,39 @@ public partial class MainWindow : Window
         }
     }
 
+    private void Version_Click(object sender, RoutedEventArgs e)
+    {
+        var window = new ChangelogWindow { Owner = this };
+        window.ShowDialog();
+    }
+
+    private void OnStatFeedLine(string line)
+    {
+        void Append()
+        {
+            if (StatFeedLogBox == null) return;
+            var stamp = DateTimeOffset.Now.ToString("HH:mm:ss");
+            var next = stamp + " " + line;
+            var current = StatFeedLogBox.Text ?? "";
+            if (current.StartsWith("Press S with share on.", StringComparison.Ordinal))
+                current = "";
+            var combined = string.IsNullOrEmpty(current) ? next : current + "\n" + next;
+            var parts = combined.Split('\n');
+            if (parts.Length > StatFeedUiMaxLines)
+                combined = string.Join("\n", parts.AsSpan(parts.Length - StatFeedUiMaxLines).ToArray());
+            StatFeedLogBox.Text = combined;
+            StatFeedLogBox.CaretIndex = StatFeedLogBox.Text.Length;
+            StatFeedLogBox.ScrollToEnd();
+        }
+
+        if (Dispatcher.CheckAccess()) Append();
+        else _ = Dispatcher.BeginInvoke(Append);
+    }
+
     private async Task CheckForUpdateAsync()
     {
         var ticket = Interlocked.Increment(ref _updateCheck);
-        var newer = await CompanionUpdate.NewerVersionAsync(FeedUrlBox.Text, RunningVersion.Label());
+        var newer = await CompanionUpdate.NewerVersionAsync(FarmFeedUrl(), RunningVersion.Label());
         if (ticket != _updateCheck || UpdateButton == null) return;
         if (newer == null)
         {
@@ -152,7 +196,7 @@ public partial class MainWindow : Window
     private async void Update_Click(object sender, RoutedEventArgs e)
     {
         UpdateButton.IsEnabled = false;
-        var staged = await CompanionUpdate.StageAsync(FeedUrlBox.Text);
+        var staged = await CompanionUpdate.StageAsync(FarmFeedUrl());
         if (!staged.Ok)
         {
             StatusText.Text = staged.Message;
@@ -724,7 +768,10 @@ public partial class MainWindow : Window
         TrainingSessionLog.Append(_watch.DrainTrace());
         if (!battle.RegionChanged)
         {
-            BattleDebugLog.Skipped();
+            var whereBox = battle.Window is { } box
+                ? $" box={box.X},{box.Y} {box.Width}x{box.Height} {battle.Button}"
+                : "";
+            BattleDebugLog.Skipped(battle.Status + whereBox);
         }
         else
         {
@@ -898,7 +945,7 @@ public partial class MainWindow : Window
 
         var (characterId, fallbackName) = CharacterIdentity();
         var characterName = string.IsNullOrWhiteSpace(session.CharacterName) ? fallbackName : session.CharacterName;
-        MirrorLater(FeedUrlBox.Text, new
+        MirrorLater(FarmFeedUrl(), new
         {
             sessionId = session.SessionId(),
             mode = "replace",
@@ -944,6 +991,28 @@ public partial class MainWindow : Window
         return _mirrorNote == null ? line : $"{line} {_mirrorNote}";
     }
 
+    private static SeenRegion Fraction(
+        CapturedFrame frame,
+        string name,
+        PixelRect? box,
+        double left,
+        double top,
+        double right,
+        double bottom)
+    {
+        if (box is { IsEmpty: false } rect && frame.Width > 0 && frame.Height > 0)
+        {
+            return new SeenRegion(
+                name,
+                rect.X / (double)frame.Width,
+                rect.Y / (double)frame.Height,
+                rect.Width / (double)frame.Width,
+                rect.Height / (double)frame.Height);
+        }
+
+        return new SeenRegion(name, left, top, right - left, bottom - top);
+    }
+
     private static IReadOnlyList<SeenRegion> ToRegions(CapturedFrame frame, IReadOnlyList<FoundRegion> regions)
     {
         if (frame.Width <= 0 || frame.Height <= 0) return [];
@@ -959,18 +1028,8 @@ public partial class MainWindow : Window
     {
         var regions = new List<SeenRegion>
         {
-            new(
-                "Loot notices",
-                DropRegion.LeftFraction,
-                DropRegion.TopFraction,
-                DropRegion.RightFraction - DropRegion.LeftFraction,
-                DropRegion.BottomFraction - DropRegion.TopFraction),
-            new(
-                "Character name",
-                CharacterNameRegion.Left,
-                CharacterNameRegion.Top,
-                CharacterNameRegion.Right - CharacterNameRegion.Left,
-                CharacterNameRegion.Bottom - CharacterNameRegion.Top),
+            Fraction(frame, "Loot notices", _identity.LootBand, DropRegion.LeftFraction, DropRegion.TopFraction, DropRegion.RightFraction, DropRegion.BottomFraction),
+            Fraction(frame, "Character name", _identity.NameBand, CharacterNameRegion.Left, CharacterNameRegion.Top, CharacterNameRegion.Right, CharacterNameRegion.Bottom),
         };
         var nameAt = 0;
         if (frame.Width > 0 && frame.Height > 0 && _identity.Minimap is { } minimap && !minimap.IsEmpty)
@@ -1603,7 +1662,7 @@ public partial class MainWindow : Window
         RenderOverlays();
 
         var (characterId, _) = CharacterIdentity();
-        var mirror = await MirrorAsync(FeedUrlBox.Text, new
+        var mirror = await MirrorAsync(FarmFeedUrl(), new
         {
             sessionId = $"training:{characterId}:{fixture.MapId}",
             mode = "replace",
@@ -1671,8 +1730,58 @@ public partial class MainWindow : Window
     private void NoteMirrorFailure(string message)
     {
         Volatile.Write(ref _mirrorFailed, 1);
-        Volatile.Write(ref _nextMirrorAttempt, Environment.TickCount64 + 5000);
-        PublishMirrorNote(message);
+        // Server mailbox faults are not fixed by hammering; back off hard.
+        var delay = IsServerFeedFault(message) ? 60_000 : 15_000;
+        Volatile.Write(ref _nextMirrorAttempt, Environment.TickCount64 + delay);
+        PublishMirrorNote(FormatWebsiteFeedError(message).Trim());
+    }
+
+    /// <summary>
+    /// Website serverless ENOENT on /var/task/data — auth worked; storage did not.
+    /// </summary>
+    private static bool IsServerFeedFault(string? message)
+    {
+        if (string.IsNullOrWhiteSpace(message)) return false;
+        return message.Contains("ENOENT", StringComparison.OrdinalIgnoreCase)
+            || message.Contains("/var/task/data", StringComparison.OrdinalIgnoreCase)
+            || message.Contains(" returned 5", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static string FormatWebsiteFeedError(string? message)
+    {
+        var raw = (message ?? "").Trim();
+        if (IsServerFeedFault(raw))
+        {
+            return " Website hit a server storage error (mailbox). Stats were read here; the site must fix /var/task/data. Retrying slowly.";
+        }
+
+        if (raw.Contains("401", StringComparison.Ordinal)
+            || raw.Contains("Sign in with Discord", StringComparison.OrdinalIgnoreCase)
+            || raw.Contains("companion token", StringComparison.OrdinalIgnoreCase))
+        {
+            return " Website rejected the companion token (401). Re-paste a fresh token from the site.";
+        }
+
+        if (raw.Length == 0) return " Website copy failed.";
+        if (raw.Length > 140) raw = raw[..140] + "…";
+        return " Website copy failed: " + raw;
+    }
+
+    private bool FeedRetryDue(bool hadError, long retryAt) =>
+        hadError && Environment.TickCount64 >= retryAt;
+
+    private void LogFeedFailOnce(string line)
+    {
+        var now = Environment.TickCount64;
+        if (string.Equals(line, _lastFeedFailLog, StringComparison.Ordinal)
+            && now - _lastFeedFailLogAt < 60_000)
+        {
+            return;
+        }
+
+        _lastFeedFailLog = line;
+        _lastFeedFailLogAt = now;
+        TrainingSessionLog.Append([line]);
     }
 
     private void PublishMirrorNote(string? note)
@@ -1719,7 +1828,7 @@ public partial class MainWindow : Window
         UploadLogsButton.IsEnabled = false;
         try
         {
-            var url = WebsiteAddress.LogsUrl(FeedUrlBox.Text);
+            var url = WebsiteAddress.LogsUrl(FarmFeedUrl());
             var (_, message) = await CompanionLogUpload.PostAsync(
                 url,
                 CompanionLogUpload.Tail(LootOcrLog.FilePath()),
@@ -1759,6 +1868,7 @@ public partial class MainWindow : Window
 #else
         if (url.Length == 0 || WebsiteAddress.IsLoopback(url)) url = WebsiteAddress.LiveFeed;
 #endif
+        url = WebsiteAddress.CanonicalFeedUrl(url);
         FeedUrlBox.Text = url;
         FeedTokenBox.Text = token;
         _savedWebsiteUrl = url;
@@ -1779,7 +1889,14 @@ public partial class MainWindow : Window
     private void PersistWebsiteSettings()
     {
         if (!_uiReady || _loadingWebsite) return;
-        var url = FeedUrlBox.Text.Trim();
+        var url = WebsiteAddress.CanonicalFeedUrl(FeedUrlBox.Text.Trim());
+        if (!string.Equals(FeedUrlBox.Text.Trim(), url, StringComparison.Ordinal))
+        {
+            _loadingWebsite = true;
+            FeedUrlBox.Text = url;
+            _loadingWebsite = false;
+        }
+
         var token = FeedTokenBox.Text.Trim();
         if (url == _savedWebsiteUrl && token == _savedWebsiteToken) return;
         WebsiteSettingsStore.Save(url, token);
@@ -1792,9 +1909,14 @@ public partial class MainWindow : Window
         return FeedTokenBox.Text.Trim();
     }
 
+    private string FarmFeedUrl()
+    {
+        return WebsiteAddress.CanonicalFeedUrl(FeedUrlBox.Text.Trim());
+    }
+
     private string FmUrl()
     {
-        var farm = FeedUrlBox.Text.Trim();
+        var farm = FarmFeedUrl();
         if (farm.Length == 0) return "";
         if (farm.Contains("/api/farm/feed", StringComparison.OrdinalIgnoreCase))
         {
@@ -1814,58 +1936,139 @@ public partial class MainWindow : Window
             // numbers match the last successful post (reopen after equip/unequip).
             var opened = !_statWindowOpen;
             _statWindowOpen = true;
+            _statMissingFrames = 0;
             if (opened)
             {
                 _statSignature = null;
                 _statMirrorPending = null;
+                _statFeedSkipLogged = false;
+                _statFeedHadError = false;
+                _statFeedRetryAt = 0;
+                _characterFeedNote = null;
+                ShowStatOpenBanner("Character Stat window (S) detected, updating stats…");
+                StatFeedLog.Write("open rising-edge force-clear signature; will push feed");
                 TrainingSessionLog.Append(["character stat window opened; forcing website feed"]);
             }
 
             // Status-plate name is steadier than the OCR name on the Stat window
             // (that crop often drops a letter, e.g. MonkeDKof vs MonkeyDKof).
             var name = CharacterSheetName(watch.Stat.Name);
+            var ocrName = watch.Stat.Name ?? "-";
+            if (opened || name == null)
+            {
+                StatFeedLog.Write(
+                    $"ocr name={ocrName} sheetName={name ?? "-"} lv={Fmt(watch.Stat.Level)} " +
+                    $"str={Fmt(watch.Stat.Str)} dex={Fmt(watch.Stat.Dex)} int={Fmt(watch.Stat.Int)} luk={Fmt(watch.Stat.Luk)} " +
+                    $"branch={watch.Stat.Branch ?? "-"} opened={opened}");
+            }
+
             _statReport = StatWindowText.Describe(watch.Stat, false);
             if (opened) _statReport += " Stat opened — sending to the website.";
             if (name != null && watch.Stat.Name != null
                 && !string.Equals(name, watch.Stat.Name, StringComparison.OrdinalIgnoreCase))
             {
                 _statReport += $" Using status-plate name {name} (window said {watch.Stat.Name}).";
+                if (opened) StatFeedLog.Write($"name-remap window={watch.Stat.Name} → sheet={name}");
             }
 
             _characterSample = false;
             if (name == null)
             {
                 _statReport += " The name was not read, so no character was created.";
+                if (!_statFeedSkipLogged)
+                {
+                    _statFeedSkipLogged = true;
+                    StatFeedLog.Write("skip empty-parse: no character name from plate or Stat window");
+                }
             }
             else
             {
                 var signature = watch.Stat.Signature(name);
-                // Only lock the signature after a successful POST. A failed
-                // mirror (timeout / 401) used to stick forever and skip retries
-                // while Stat stayed open on the same numbers. Opening S always
-                // clears the lock above so reopen posts immediately.
+                // Lock after success *or* failure so OCR frames cannot re-POST every
+                // tick. Failed posts unlock after backoff (or on rising-edge open).
+                if (FeedRetryDue(_statFeedHadError, _statFeedRetryAt)
+                    && signature == _statSignature)
+                {
+                    _statSignature = null;
+                    _statMirrorPending = null;
+                    _statFeedHadError = false;
+                    _statFeedSkipLogged = false;
+                    StatFeedLog.Write($"retry-after-backoff sig={ShortSig(signature)}");
+                }
+
                 if (signature != _statSignature && signature != _statMirrorPending)
                 {
                     _statMirrorPending = signature;
-                    MirrorCharacterLater(CharacterUrl(), watch.Stat, null, name, sample: false, mirrored =>
+                    _statFeedSkipLogged = false;
+                    StatFeedLog.Write(
+                        $"ocr name={ocrName} sheetName={name} lv={Fmt(watch.Stat.Level)} " +
+                        $"str={Fmt(watch.Stat.Str)} dex={Fmt(watch.Stat.Dex)} int={Fmt(watch.Stat.Int)} luk={Fmt(watch.Stat.Luk)} " +
+                        $"branch={watch.Stat.Branch ?? "-"}");
+                    StatFeedLog.Write($"push queued name={name} sig={ShortSig(signature)}");
+                    MirrorCharacterLater(CharacterUrl(), watch.Stat, null, name, sample: false, (mirrored, failMessage) =>
                     {
-                        if (mirrored) _statSignature = signature;
+                        _statSignature = signature;
                         if (_statMirrorPending == signature) _statMirrorPending = null;
+                        if (mirrored)
+                        {
+                            _statFeedHadError = false;
+                            _statFeedRetryAt = 0;
+                        }
+                        else
+                        {
+                            _statFeedHadError = true;
+                            _statFeedRetryAt = Environment.TickCount64
+                                + (IsServerFeedFault(failMessage) ? 60_000 : 15_000);
+                        }
                     });
+                }
+                else if (opened)
+                {
+                    StatFeedLog.Write($"skip unexpected: rising-edge but signature still locked sig={ShortSig(signature)}");
+                }
+                else if (!_statFeedSkipLogged)
+                {
+                    _statFeedSkipLogged = true;
+                    if (signature == _statMirrorPending)
+                        StatFeedLog.Write($"skip post-in-flight sig={ShortSig(signature)}");
+                    else if (_statFeedHadError)
+                        StatFeedLog.Write($"skip feed-error-backoff sig={ShortSig(signature)}");
+                    else
+                        StatFeedLog.Write($"skip signature-unchanged sig={ShortSig(signature)} (Stat still open after successful push)");
                 }
             }
         }
         else
         {
+            // One missed OCR frame used to hide the banner and clear the feed lock
+            // within ~1s while S was still open (chrome/OCR flicker). Hold open
+            // until several consecutive misses so Sagiv can see the message.
             if (_statWindowOpen)
             {
-                TrainingSessionLog.Append(["character stat window closed"]);
-            }
+                _statMissingFrames++;
+                if (_statMissingFrames < StatCloseAfterMisses)
+                {
+                    if (_statMissingFrames == 1)
+                        StatFeedLog.Write($"hold-open miss=1/{StatCloseAfterMisses} (OCR flicker; banner stays)");
+                    ShowCharacterStatus(watch.Status);
+                    // Skip plate-mirror while we still believe S is open.
+                    goto AfterStatBranch;
+                }
 
-            _statWindowOpen = false;
-            // Stat closed: drop the mirror lock so the next open is a fresh edge.
-            _statSignature = null;
-            _statMirrorPending = null;
+                StatFeedLog.Write($"close Stat window after {_statMissingFrames} missed frames");
+                TrainingSessionLog.Append(["character stat window closed"]);
+                HideStatOpenBanner();
+                _statWindowOpen = false;
+                _statMissingFrames = 0;
+                _statFeedSkipLogged = false;
+                _statSignature = null;
+                _statMirrorPending = null;
+                _statFeedHadError = false;
+            }
+            else
+            {
+                _statMissingFrames = 0;
+            }
 
             if (_identity.StatusBar is { Succeeded: true } plate)
             {
@@ -1880,13 +2083,32 @@ public partial class MainWindow : Window
                 {
                     _statReport += " Open Stat (S) to sync STR/DEX and the rest.";
                     var signature = "status|" + name + "|" + plate.Signature();
+                    if (FeedRetryDue(_statusFeedHadError, _statusFeedRetryAt)
+                        && signature == _statusSignature)
+                    {
+                        _statusSignature = null;
+                        _statusMirrorPending = null;
+                        _statusFeedHadError = false;
+                    }
+
                     if (signature != _statusSignature && signature != _statusMirrorPending)
                     {
                         _statusMirrorPending = signature;
-                        MirrorStatusBarLater(CharacterUrl(), plate, name, mirrored =>
+                        MirrorStatusBarLater(CharacterUrl(), plate, name, (mirrored, failMessage) =>
                         {
-                            if (mirrored) _statusSignature = signature;
+                            _statusSignature = signature;
                             if (_statusMirrorPending == signature) _statusMirrorPending = null;
+                            if (mirrored)
+                            {
+                                _statusFeedHadError = false;
+                                _statusFeedRetryAt = 0;
+                            }
+                            else
+                            {
+                                _statusFeedHadError = true;
+                                _statusFeedRetryAt = Environment.TickCount64
+                                    + (IsServerFeedFault(failMessage) ? 60_000 : 15_000);
+                            }
                         });
                     }
                 }
@@ -1894,6 +2116,8 @@ public partial class MainWindow : Window
                 _characterSample = false;
             }
         }
+
+        AfterStatBranch:
 
         if (watch.Skill != null)
         {
@@ -1907,13 +2131,32 @@ public partial class MainWindow : Window
             else
             {
                 var signature = watch.Skill.Signature(name);
+                if (FeedRetryDue(_skillFeedHadError, _skillFeedRetryAt)
+                    && signature == _skillSignature)
+                {
+                    _skillSignature = null;
+                    _skillMirrorPending = null;
+                    _skillFeedHadError = false;
+                }
+
                 if (signature != _skillSignature && signature != _skillMirrorPending)
                 {
                     _skillMirrorPending = signature;
-                    MirrorCharacterLater(CharacterUrl(), null, watch.Skill, name, sample: false, mirrored =>
+                    MirrorCharacterLater(CharacterUrl(), null, watch.Skill, name, sample: false, (mirrored, failMessage) =>
                     {
-                        if (mirrored) _skillSignature = signature;
+                        _skillSignature = signature;
                         if (_skillMirrorPending == signature) _skillMirrorPending = null;
+                        if (mirrored)
+                        {
+                            _skillFeedHadError = false;
+                            _skillFeedRetryAt = 0;
+                        }
+                        else
+                        {
+                            _skillFeedHadError = true;
+                            _skillFeedRetryAt = Environment.TickCount64
+                                + (IsServerFeedFault(failMessage) ? 60_000 : 15_000);
+                        }
                     });
                 }
             }
@@ -1922,13 +2165,13 @@ public partial class MainWindow : Window
         ShowCharacterStatus(watch.Status);
     }
 
-    private void MirrorStatusBarLater(string url, StatusBarSheet plate, string name, Action<bool>? done = null)
+    private void MirrorStatusBarLater(string url, StatusBarSheet plate, string name, Action<bool, string?>? done = null)
     {
         if (string.IsNullOrWhiteSpace(url))
         {
-            _statReport += " Website URL is not a farm feed (/api/farm/feed), so the plate was not sent.";
+            _characterFeedNote = " Website URL is not a farm feed (/api/farm/feed), so the plate was not sent.";
             ShowCharacterStatus(null);
-            done?.Invoke(false);
+            done?.Invoke(false, "bad-url");
             return;
         }
 
@@ -1937,6 +2180,7 @@ public partial class MainWindow : Window
         _ = Task.Run(async () =>
         {
             string note;
+            string? failMessage = null;
             var mirrored = false;
             try
             {
@@ -1965,27 +2209,34 @@ public partial class MainWindow : Window
                 var mapped = !string.Equals(matched, name, StringComparison.OrdinalIgnoreCase)
                     ? $" Matched ledger name {matched}."
                     : "";
-                note = ok ? mapped + " Sent to the website." : " Website copy failed: " + message;
                 mirrored = ok;
-                if (!ok) NoteMirrorFailure(message);
-                else
+                if (ok)
                 {
+                    note = mapped + " Sent to the website.";
                     Volatile.Write(ref _mirrorFailed, 0);
                     PublishMirrorNote(null);
+                }
+                else
+                {
+                    failMessage = message;
+                    note = FormatWebsiteFeedError(message);
+                    NoteMirrorFailure(message);
                 }
             }
             catch (Exception ex)
             {
-                note = $" Website copy failed ({ex.GetType().Name}: {ex.Message}).";
+                failMessage = ex.Message;
+                note = FormatWebsiteFeedError($"{ex.GetType().Name}: {ex.Message}");
                 NoteMirrorFailure(note.Trim());
             }
 
-            TrainingSessionLog.Append([$"character plate mirror {(mirrored ? "ok" : "fail")}: {note.Trim()}"]);
+            if (mirrored) TrainingSessionLog.Append([$"character plate mirror ok: {note.Trim()}"]);
+            else LogFeedFailOnce($"character plate mirror fail: {note.Trim()}");
             await Dispatcher.InvokeAsync(() =>
             {
-                _statReport += note;
+                _characterFeedNote = note;
                 ShowCharacterStatus(null);
-                done?.Invoke(mirrored);
+                done?.Invoke(mirrored, failMessage);
             });
         });
     }
@@ -2001,60 +2252,96 @@ public partial class MainWindow : Window
         SkillSheet? skill,
         string? ocrName,
         bool sample,
-        Action<bool>? done = null)
+        Action<bool, string?>? done = null)
     {
+        var kind = stat != null ? "stat" : "skill";
         if (string.IsNullOrWhiteSpace(url))
         {
             var missing = " Website URL is not a farm feed (/api/farm/feed), so the sheet was not sent.";
-            if (stat != null) _statReport += missing;
-            else _skillReport += missing;
+            _characterFeedNote = missing;
+            if (stat != null)
+                StatFeedLog.Write("skip bad-url: farm feed box empty or not /api/farm/feed (no /api/character/feed)");
             ShowCharacterStatus(null);
-            done?.Invoke(false);
+            done?.Invoke(false, "bad-url");
             return;
         }
 
         var token = FeedToken();
         var profileUrl = ProfileUrl();
+        if (stat != null)
+            StatFeedLog.Write($"post-start kind={kind} url={url} hasToken={!string.IsNullOrWhiteSpace(token)} ocrName={ocrName ?? "-"}");
         _ = Task.Run(async () =>
         {
             string note;
+            string? failMessage = null;
             var mirrored = false;
             try
             {
                 var name = await MatchLedgerNameAsync(ocrName, token, profileUrl);
+                if (stat != null && name != null && ocrName != null
+                    && !string.Equals(name, ocrName, StringComparison.OrdinalIgnoreCase))
+                {
+                    StatFeedLog.Write($"ledger-match {ocrName} → {name}");
+                }
+
                 object body = stat != null
                     ? StatPayload(stat, name, sample)
                     : SkillPayload(skill!, name, sample);
-                var (ok, message) = await _feed.PostAsync(url, body, token);
+                var posted = await _feed.PostForBodyAsync(url, body, token);
                 var mapped = name != null && ocrName != null
                     && !string.Equals(name, ocrName, StringComparison.OrdinalIgnoreCase)
                     ? $" Matched ledger name {name}."
                     : "";
-                note = ok ? mapped + " Sent to the website." : " Website copy failed: " + message;
-                mirrored = ok;
-                if (!ok) NoteMirrorFailure(message);
-                else
+                mirrored = posted.Ok;
+                if (posted.Ok)
                 {
+                    note = mapped + " Sent to the website.";
                     Volatile.Write(ref _mirrorFailed, 0);
                     PublishMirrorNote(null);
+                }
+                else
+                {
+                    failMessage = posted.Message;
+                    note = FormatWebsiteFeedError(posted.Message);
+                    NoteMirrorFailure(posted.Message);
+                }
+
+                if (stat != null)
+                {
+                    var bodySnippet = posted.Body.Length > 160 ? posted.Body[..160] : posted.Body;
+                    bodySnippet = bodySnippet.Replace('\r', ' ').Replace('\n', ' ');
+                    StatFeedLog.Write(
+                        posted.Ok
+                            ? $"post-ok kind={kind} name={name ?? "-"} url={url}"
+                            : $"post-fail kind={kind} name={name ?? "-"} url={url} message={posted.Message} body={bodySnippet}");
                 }
             }
             catch (Exception ex)
             {
-                note = $" Website copy failed ({ex.GetType().Name}: {ex.Message}).";
+                failMessage = ex.Message;
+                note = FormatWebsiteFeedError($"{ex.GetType().Name}: {ex.Message}");
+                if (stat != null)
+                    StatFeedLog.Write($"post-error kind={kind} url={url} ex={ex.GetType().Name}: {ex.Message}");
                 NoteMirrorFailure(note.Trim());
             }
 
-            TrainingSessionLog.Append([
-                $"character {(stat != null ? "stat" : "skill")} mirror {(mirrored ? "ok" : "fail")}: {note.Trim()}"]);
+            if (mirrored) TrainingSessionLog.Append([$"character {kind} mirror ok: {note.Trim()}"]);
+            else LogFeedFailOnce($"character {kind} mirror fail: {note.Trim()}");
             await Dispatcher.InvokeAsync(() =>
             {
-                if (stat != null) _statReport += note;
-                else _skillReport += note;
+                _characterFeedNote = note;
                 ShowCharacterStatus(null);
-                done?.Invoke(mirrored);
+                done?.Invoke(mirrored, failMessage);
             });
         });
+    }
+
+    private static string Fmt(int? value) => value?.ToString() ?? "-";
+
+    private static string ShortSig(string signature)
+    {
+        if (signature.Length <= 48) return signature;
+        return signature[..48] + "…";
     }
 
     private async Task<string?> MatchLedgerNameAsync(string? ocrName, string? token, string profileUrl)
@@ -2083,7 +2370,7 @@ public partial class MainWindow : Window
 
     private string ProfileUrl()
     {
-        var farm = FeedUrlBox.Text.Trim();
+        var farm = FarmFeedUrl();
         if (farm.Length == 0) return "";
         if (farm.Contains("/api/farm/feed", StringComparison.OrdinalIgnoreCase))
         {
@@ -2156,6 +2443,7 @@ public partial class MainWindow : Window
         var text = "";
         if (_statReport.Length > 0) text += _statReport + "\n";
         if (_skillReport.Length > 0) text += _skillReport + "\n";
+        if (!string.IsNullOrWhiteSpace(_characterFeedNote)) text += _characterFeedNote.Trim() + "\n";
         if (!string.IsNullOrWhiteSpace(live)) text += live;
         if (_characterSample && !string.IsNullOrWhiteSpace(live))
         {
@@ -2163,6 +2451,20 @@ public partial class MainWindow : Window
         }
 
         CharacterStatus.Text = text.Trim();
+    }
+
+    private void ShowStatOpenBanner(string message)
+    {
+        if (StatOpenBanner == null || StatOpenBannerText == null) return;
+        // Shared strip under FM/Training — visible in Free Market and Training.
+        StatOpenBannerText.Text = message;
+        StatOpenBanner.Visibility = Visibility.Visible;
+    }
+
+    private void HideStatOpenBanner()
+    {
+        if (StatOpenBanner == null) return;
+        StatOpenBanner.Visibility = Visibility.Collapsed;
     }
 
     private static object StatPayload(StatSheet sheet, string? name, bool sample)
@@ -2228,7 +2530,7 @@ public partial class MainWindow : Window
 
     private string CharacterUrl()
     {
-        var farm = FeedUrlBox.Text.Trim();
+        var farm = FarmFeedUrl();
         if (farm.Length == 0) return "";
         if (farm.Contains("/api/farm/feed", StringComparison.OrdinalIgnoreCase))
         {

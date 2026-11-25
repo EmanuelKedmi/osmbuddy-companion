@@ -28,7 +28,10 @@ public sealed class TrainingIdentityReader
     public PixelRect? Minimap { get; private set; }
     public PixelRect? MapBand { get; private set; }
     public PixelRect? NameBand { get; private set; }
+    public PixelRect? LootBand { get; private set; }
     public string ChromeNote { get; private set; } = "";
+    private PixelRect? _statusBox;
+    private PixelRect? _levelBox;
 
     public void Reset()
     {
@@ -58,11 +61,10 @@ public sealed class TrainingIdentityReader
 
     private void ReadStatusBar(CapturedFrame frame)
     {
-        var box = StatusBarRegion.Bounds(frame.Width, frame.Height);
-        var lines = ReadBand(frame, box, _statusBand, settled: false, ReadStatus);
+        var lines = ReadBand(frame, _statusBox, _statusBand, settled: false, ReadStatus);
         if (lines == null) return;
         var text = string.Join("\n", lines);
-        var levelBox = StatusBarRegion.LevelBounds(frame.Width, frame.Height);
+        var levelBox = _levelBox ?? StatusBarRegion.LevelBounds(frame.Width, frame.Height);
         var levelCrop = RegionCrop.CropRect(frame, levelBox.X, levelBox.Y, levelBox.Width, levelBox.Height);
         if (levelCrop.Ok && WindowsOcr.IsAvailable)
         {
@@ -107,7 +109,13 @@ public sealed class TrainingIdentityReader
     /// <summary>Minimap title only. The share calls this before choosing a scanner.</summary>
     public void ReadMap(CapturedFrame frame)
     {
-        NameBand = CharacterNameRegion.Bounds(frame.Width, frame.Height);
+        var bar = frame.Bgra.Length == 0 || frame.Height <= 0 || frame.Bgra.Length % frame.Height != 0
+            ? BottomBar.Fallback(frame.Height)
+            : BottomBarFinder.Measure(frame.Bgra, frame.Width, frame.Height, frame.Bgra.Length / frame.Height);
+        NameBand = CharacterNameRegion.Place(frame.Width, frame.Height, bar);
+        LootBand = LootRegion.Place(frame.Width, frame.Height, bar);
+        _statusBox = StatusBarRegion.Place(frame.Width, frame.Height, bar);
+        _levelBox = StatusBarRegion.LevelPlace(frame.Width, frame.Height, bar);
         if (frame.Bgra.Length == 0 || frame.Height <= 0 || frame.Bgra.Length % frame.Height != 0)
         {
             Minimap = null;

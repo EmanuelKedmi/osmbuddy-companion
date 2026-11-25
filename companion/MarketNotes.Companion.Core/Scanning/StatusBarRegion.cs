@@ -23,6 +23,22 @@ public static class StatusBarRegion
     public static PixelRect LevelBounds(int width, int height) =>
         Box(width, height, LevelLeft, LevelTop, LevelRight, LevelBottom);
 
+    public static PixelRect Place(int width, int height, BottomBar bar)
+    {
+        if (!bar.Measured) return Bounds(width, height);
+        return new PixelRect(0, bar.Top, Math.Clamp((int)(width * Right), 1, width), bar.Height);
+    }
+
+    public static PixelRect LevelPlace(int width, int height, BottomBar bar)
+    {
+        if (!bar.Measured) return LevelBounds(width, height);
+        var y = bar.Top + (int)(bar.Height * 0.20);
+        var bottom = bar.Top + (int)(bar.Height * 0.90);
+        if (bottom <= y) bottom = Math.Min(height, y + 1);
+        var right = Math.Clamp((int)Math.Ceiling(width * LevelRight), 1, width);
+        return new PixelRect(0, y, right, bottom - y);
+    }
+
     private static PixelRect Box(int width, int height, double left, double top, double right, double bottom)
     {
         var x = Math.Clamp((int)(width * left), 0, Math.Max(0, width - 1));

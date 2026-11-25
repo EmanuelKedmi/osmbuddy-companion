@@ -76,12 +76,14 @@
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
-                    <TextBlock x:Name="VersionLabel"
-                               VerticalAlignment="Center"
-                               Margin="0,0,12,0"
-                               FontSize="12"
-                               Foreground="#6B5344"
-                               Text="1.0.0" />
+                    <Button x:Name="VersionButton"
+                            Content="1.0.0"
+                            VerticalAlignment="Center"
+                            Margin="0,0,12,0"
+                            ToolTip="Open changelog"
+                            Style="{StaticResource VersionLink}"
+                            shell:WindowChrome.IsHitTestVisibleInChrome="True"
+                            Click="Version_Click" />
                     <Button x:Name="UpdateButton"
                             Content="Update"
                             Visibility="Collapsed"
@@ -299,11 +301,16 @@
             </Border>
 
             <StackPanel Grid.Row="2" Margin="20,0,20,8">
-                <TextBlock x:Name="ShareStatus"
-                           TextWrapping="Wrap"
-                           Foreground="#6B5344"
-                           FontSize="13"
-                           Text="Share is off." />
+                <ScrollViewer Height="40"
+                              VerticalScrollBarVisibility="Auto"
+                              HorizontalScrollBarVisibility="Disabled"
+                              CanContentScroll="False">
+                    <TextBlock x:Name="ShareStatus"
+                               TextWrapping="Wrap"
+                               Foreground="#6B5344"
+                               FontSize="13"
+                               Text="Share is off." />
+                </ScrollViewer>
                 <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                     <StackPanel Margin="0,0,12,0">
                         <Grid Width="200">
@@ -441,6 +448,12 @@
             </StackPanel>
 
             <Grid Grid.Row="3" Margin="16,0,16,12">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <!-- Always visible in FM and Training — S banner + character feed status. -->
+                    <RowDefinition Height="140" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
@@ -509,7 +522,6 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
-                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <TextBlock Text="Training" FontFamily="Georgia" FontSize="20" Foreground="#5C241C" Margin="0,0,0,8" />
                     <Grid Grid.Row="1" Margin="0,0,0,8">
@@ -577,11 +589,6 @@
                         </Border>
                         </Grid>
                     </DockPanel>
-                    <TextBlock x:Name="FarmStatus"
-                               Grid.Row="3"
-                               TextWrapping="Wrap"
-                               Foreground="#5C241C"
-                               Text="Training scanner is idle." />
                 </Grid>
             <Border x:Name="DebugPanel"
                     Grid.Column="1"
@@ -717,11 +724,69 @@
                                     Style="{StaticResource OutlineButton}"
                                     Click="LoadSkillSample_Click" />
                         </StackPanel>
-                        <TextBlock x:Name="CharacterStatus" TextWrapping="Wrap" Foreground="#5C241C" />
+                        <TextBlock Text="STAT-FEED log"
+                                   Foreground="#6B5344"
+                                   FontSize="12"
+                                   Margin="0,10,0,4"
+                                   ToolTip="Live Stat (S) → website feed trace. Also written to %LOCALAPPDATA%\MarketNotes.Companion\stat-feed.log" />
+                        <TextBox x:Name="StatFeedLogBox"
+                                 IsReadOnly="True"
+                                 AcceptsReturn="True"
+                                 TextWrapping="Wrap"
+                                 VerticalScrollBarVisibility="Auto"
+                                 Height="180"
+                                 FontFamily="Consolas"
+                                 FontSize="12"
+                                 VerticalContentAlignment="Top"
+                                 Text="Press S with share on. [STAT-FEED] lines appear here." />
                     </StackPanel>
                     </ScrollViewer>
                 </DockPanel>
             </Border>
+            </Grid>
+
+                <Border Grid.Row="1"
+                        BorderBrush="#E4D3B8"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Background="#FFFBF6"
+                        Padding="10,8"
+                        Margin="0,8,0,0">
+                    <DockPanel>
+                        <!-- Pinned above the scroll area so Farm/Character text cannot bury it. -->
+                        <Border x:Name="StatOpenBanner"
+                                DockPanel.Dock="Top"
+                                Background="#F3E6CC"
+                                BorderBrush="#9E342C"
+                                BorderThickness="2"
+                                CornerRadius="8"
+                                Padding="14,12"
+                                Margin="0,0,0,8"
+                                Visibility="Collapsed">
+                            <TextBlock x:Name="StatOpenBannerText"
+                                       Text="Character Stat window (S) detected, updating stats…"
+                                       FontWeight="SemiBold"
+                                       FontSize="15"
+                                       Foreground="#5C241C"
+                                       TextWrapping="Wrap" />
+                        </Border>
+                        <ScrollViewer VerticalScrollBarVisibility="Auto"
+                                      HorizontalScrollBarVisibility="Disabled"
+                                      CanContentScroll="False">
+                            <StackPanel>
+                                <TextBlock x:Name="FarmStatus"
+                                           TextWrapping="Wrap"
+                                           Foreground="#5C241C"
+                                           Text="Training scanner is idle." />
+                                <TextBlock x:Name="CharacterStatus"
+                                           TextWrapping="Wrap"
+                                           Margin="0,6,0,0"
+                                           Foreground="#5C241C"
+                                           Text="Character scanner is idle." />
+                            </StackPanel>
+                        </ScrollViewer>
+                    </DockPanel>
+                </Border>
             </Grid>
 
         </Grid>

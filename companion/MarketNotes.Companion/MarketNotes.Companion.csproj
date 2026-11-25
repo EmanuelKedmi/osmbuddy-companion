@@ -22,12 +22,38 @@
     <ApplicationIcon>..\..\app\favicon.ico</ApplicationIcon>
     <ApplicationTitle>Market Notes Companion</ApplicationTitle>
     <Description>Screen share for Old School Maple. FM scanner and Training scanner run in this window. The website is not required.</Description>
+    <!--
+      Placeholder only. Release CI passes -p:Version=MAJOR.MINOR.PATCH from the tag.
+      Local builds (no -p:Version) stamp the latest v* tag via StampVersionFromGitTag
+      so the title bar does not stay stuck on 1.0.3.
+    -->
     <Version>1.0.3</Version>
     <IncludeSourceRevisionInInformationalVersion>true</IncludeSourceRevisionInInformationalVersion>
     <Company>Old School Maple Field Notes</Company>
   </PropertyGroup>
 
-  <Target Name="StampGitRevision" BeforeTargets="CoreGenerateAssemblyInfo">
+  <Target Name="StampVersionFromGitTag"
+          BeforeTargets="GenerateAssemblyInfo;GetAssemblyVersion;CoreGenerateAssemblyInfo"
+          Condition="'$(Version)' == '1.0.3' And '$(SkipGitVersion)' != 'true'">
+    <Exec Command="git describe --tags --match v[0-9]* --abbrev=0"
+          WorkingDirectory="$(MSBuildProjectDirectory)"
+          ConsoleToMSBuild="true"
+          IgnoreExitCode="true"
+          StandardOutputImportance="low">
+      <Output TaskParameter="ConsoleOutput" PropertyName="_GitTagRaw" />
+    </Exec>
+    <PropertyGroup>
+      <!-- Match returns "1.2.0" from "v1.2.0"; Groups syntax is unreliable in MSBuild property functions. -->
+      <_GitTag>$([System.Text.RegularExpressions.Regex]::Match($(_GitTagRaw), '\d+\.\d+\.\d+').Value)</_GitTag>
+      <Version Condition="'$(_GitTag)' != ''">$(_GitTag)</Version>
+      <AssemblyVersion Condition="'$(_GitTag)' != ''">$(_GitTag).0</AssemblyVersion>
+      <FileVersion Condition="'$(_GitTag)' != ''">$(_GitTag).0</FileVersion>
+      <InformationalVersion Condition="'$(_GitTag)' != ''">$(_GitTag)</InformationalVersion>
+    </PropertyGroup>
+    <Message Importance="high" Text="Companion Version stamped from git tag: $(Version)" Condition="'$(_GitTag)' != ''" />
+  </Target>
+
+  <Target Name="StampGitRevision" BeforeTargets="CoreGenerateAssemblyInfo" DependsOnTargets="StampVersionFromGitTag">
     <Exec Command="git rev-parse --short=7 HEAD"
           WorkingDirectory="$(MSBuildProjectDirectory)"
           ConsoleToMSBuild="true"
@@ -74,6 +100,7 @@
 
   <ItemGroup>
     <Resource Include="..\..\app\favicon.ico" Link="favicon.ico" />
+    <EmbeddedResource Include="..\..\CHANGELOG.md" LogicalName="MarketNotes.Companion.CHANGELOG.md" />
   </ItemGroup>
 
   <ItemGroup>

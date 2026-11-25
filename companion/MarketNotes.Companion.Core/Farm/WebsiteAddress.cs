@@ -15,6 +15,7 @@ public static class WebsiteAddress
     public const string ReleaseRepository = "EmanuelKedmi/osmbuddy-companion";
     public const string ReleaseAsset = "MarketNotes.Companion.exe";
     public const string ReleaseApiUrl = "https://api.github.com/repos/EmanuelKedmi/osmbuddy-companion/releases/latest";
+    public const string ReleasesApiUrl = "https://api.github.com/repos/EmanuelKedmi/osmbuddy-companion/releases";
     public const string ReleaseDownloadUrl = "https://github.com/EmanuelKedmi/osmbuddy-companion/releases/latest/download/MarketNotes.Companion.exe";
 
     public static string FmUrl(string? feedUrl) => Sibling(feedUrl, "/api/fm");
@@ -54,6 +55,41 @@ public static class WebsiteAddress
     {
         if (string.IsNullOrWhiteSpace(url)) return false;
         return Uri.TryCreate(url.Trim(), UriKind.Absolute, out var uri) && uri.IsLoopback;
+    }
+
+    /// <summary>
+    /// Legacy public host <c>osmbuddy.duckdns.org</c> 308-redirects to
+    /// <see cref="LiveFeed"/>. HttpClient drops the Authorization header on that
+    /// cross-host hop, so the site answers 401 even with a valid token. Rewrite
+    /// saved duckdns URLs to the live host before any feed call.
+    /// </summary>
+    public static string CanonicalFeedUrl(string? url)
+    {
+        var trimmed = (url ?? "").Trim();
+        if (trimmed.Length == 0) return LiveFeed;
+        if (!Uri.TryCreate(trimmed, UriKind.Absolute, out var uri)
+            || (uri.Scheme != "http" && uri.Scheme != "https"))
+        {
+            return trimmed;
+        }
+
+        if (!IsLegacyPublicHost(uri.Host)) return trimmed;
+
+        var live = new Uri(LiveFeed);
+        var path = uri.AbsolutePath;
+        if (string.IsNullOrEmpty(path) || path == "/") path = live.AbsolutePath;
+        var builder = new UriBuilder(live.Scheme, live.Host, live.IsDefaultPort ? -1 : live.Port)
+        {
+            Path = path,
+            Query = uri.Query.TrimStart('?'),
+        };
+        return builder.Uri.AbsoluteUri;
+    }
+
+    public static bool IsLegacyPublicHost(string? host)
+    {
+        if (string.IsNullOrWhiteSpace(host)) return false;
+        return host.Equals("osmbuddy.duckdns.org", StringComparison.OrdinalIgnoreCase);
     }
 
     /// <summary>

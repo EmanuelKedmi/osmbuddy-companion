@@ -16,9 +16,21 @@ public static class DropRegion
 
     public static byte[] Crop(CapturedFrame frame) => CropBitmap(frame).Bgra;
 
+    public static PixelRect Box(CapturedFrame frame)
+    {
+        if (frame.Width <= 0 || frame.Height <= 0 || frame.Bgra.Length == 0 || frame.Height == 0 || frame.Bgra.Length % frame.Height != 0)
+        {
+            return LootRegion.Bounds(Math.Max(1, frame.Width), Math.Max(1, frame.Height));
+        }
+
+        var stride = frame.Bgra.Length / frame.Height;
+        return LootRegion.ForFrame(frame.Bgra, frame.Width, frame.Height, stride);
+    }
+
     public static RegionBitmap CropBitmap(CapturedFrame frame)
     {
-        return RegionCrop.CropBitmap(frame, LeftFraction, TopFraction, RightFraction, BottomFraction);
+        var box = Box(frame);
+        return RegionCrop.CropRect(frame, box.X, box.Y, box.Width, box.Height);
     }
 
     public static string Hash(ReadOnlySpan<byte> pixels)

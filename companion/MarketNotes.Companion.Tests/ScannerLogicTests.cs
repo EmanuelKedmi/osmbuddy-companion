@@ -1053,24 +1053,109 @@ public class ScannerLogicTests
     [Fact]
     public void Battle_window_follows_the_orange_start_button()
     {
-        const int width = 400;
-        const int height = 300;
+        var placed = PaintBattle(640, 420, 280, 36, 16, cancel: false);
+        var window = BattleWindowFinder.Find(placed.Pixels, placed.Width, placed.Height, placed.Width * 4);
+        AssertOnPanel(window, placed);
+        Assert.Equal(BattleButton.Start, BattleWindowFinder.FindHit(placed.Pixels, placed.Width, placed.Height, placed.Width * 4)!.Value.Button);
+    }
+
+    [Fact]
+    public void Battle_window_ignores_a_corner_blob_with_no_title()
+    {
+        const int width = 640;
+        const int height = 420;
         var pixels = new byte[width * height * 4];
-        Fill(pixels, 30, 60, 180);
-        for (var y = 180; y < 192; y++)
+        Fill(pixels, 30, 90, 200);
+        PaintRect(pixels, width, 520, 360, 70, 16, 170, 204, 34);
+        Assert.Null(BattleWindowFinder.Find(pixels, width, height, width * 4));
+    }
+
+    [Fact]
+    public void Battle_window_finds_a_gray_title_bar()
+    {
+        var placed = PaintBattle(640, 420, 280, 36, 16, cancel: true);
+        PaintRect(placed.Pixels, placed.Width, placed.PanelX, placed.PanelY, placed.PanelW, 16, 166, 166, 166);
+        var inkTop = placed.PanelY + 3;
+        for (var col = placed.PanelX + 6; col < placed.PanelX + placed.PanelW - 6; col += 7)
         {
-            for (var x = 300; x < 340; x++)
+            PaintRect(placed.Pixels, placed.Width, col, inkTop, 2, 8, 20, 20, 20);
+        }
+
+        var window = BattleWindowFinder.Find(placed.Pixels, placed.Width, placed.Height, placed.Width * 4);
+        AssertOnPanel(window, placed);
+    }
+
+    [Fact]
+    public void Battle_window_finds_a_panel_on_the_left()
+    {
+        var placed = PaintBattle(640, 420, 24, 40, 16, cancel: true);
+        var window = BattleWindowFinder.Find(placed.Pixels, placed.Width, placed.Height, placed.Width * 4);
+        AssertOnPanel(window, placed);
+    }
+
+    [Fact]
+    public void Battle_read_of_trade_chat_is_not_the_panel()
+    {
+        Assert.False(BattleWindowFinder.LooksLikePanel(["TRADE"]));
+        Assert.False(BattleWindowFinder.LooksLikePanel(["You ha", "TRADE"]));
+        Assert.True(BattleWindowFinder.LooksLikePanel(["Dmg: 2.18M (441/s)", "Mob: 480"]));
+        Assert.True(BattleWindowFinder.LooksLikePanel(["Elapsed", "01:30"]));
+    }
+
+    [Fact]
+    public void Loot_and_name_follow_a_short_status_bar()
+    {
+        const int width = 800;
+        const int height = 400;
+        var pixels = new byte[width * height * 4];
+        for (var y = 0; y < height; y++)
+        {
+            for (var x = 0; x < width; x++)
             {
-                Set(pixels, width, x, y, 230, 140, 40);
+                var scene = y < 368;
+                var r = (byte)(scene ? (x % 2 == 0 ? 30 : 190) : 150);
+                var g = (byte)(scene ? (x % 2 == 0 ? 90 : 40) : 140);
+                var b = (byte)(scene ? (x % 2 == 0 ? 40 : 30) : 130);
+                Set(pixels, width, x, y, r, g, b);
             }
         }
 
-        var window = BattleWindowFinder.Find(pixels, width, height, width * 4);
-        Assert.NotNull(window);
-        Assert.True(window.Value.X < 300);
-        Assert.True(window.Value.Y < 180);
-        Assert.True(window.Value.X + window.Value.Width > 330);
-        Assert.True(window.Value.Y + window.Value.Height > 190);
+        var bar = BottomBarFinder.Measure(pixels, width, height, width * 4);
+        Assert.True(bar.Measured);
+        Assert.InRange(bar.Top, 360, 376);
+        var name = CharacterNameRegion.Place(width, height, bar);
+        var loot = LootRegion.Place(width, height, bar);
+        Assert.True(name.Y >= bar.Top && name.Bottom <= bar.Bottom);
+        Assert.True(loot.Bottom <= bar.Top);
+        Assert.True(loot.Y > height / 2);
+    }
+
+    [Fact]
+    public void Name_and_loot_drop_below_the_chat_field_on_a_tall_window()
+    {
+        const int width = 800;
+        const int height = 1400;
+        var pixels = new byte[width * height * 4];
+        for (var y = 0; y < height; y++)
+        {
+            for (var x = 0; x < width; x++)
+            {
+                byte r = 24, g = 28, b = 22;
+                if (y >= 1288 && y <= 1332) { r = 248; g = 248; b = 248; }
+                else if (y >= 1333) { r = 90; g = 96; b = 102; }
+                Set(pixels, width, x, y, r, g, b);
+            }
+        }
+
+        var bar = BottomBarFinder.Measure(pixels, width, height, width * 4);
+        Assert.True(bar.Measured);
+        Assert.Equal(1333, bar.Top);
+        Assert.Equal(1288, bar.ChromeTop);
+        var name = CharacterNameRegion.Place(width, height, bar);
+        var loot = LootRegion.Place(width, height, bar);
+        Assert.True(name.Y >= bar.Top && name.Bottom <= bar.Bottom);
+        Assert.True(loot.Bottom <= bar.ChromeTop);
+        Assert.True(loot.Bottom > bar.ChromeTop - 8);
     }
 
     [Fact]
@@ -2024,6 +2109,15 @@ public class ScannerLogicTests
         Assert.Equal("1.0.2", WebsiteAddress.VersionFromReleaseTag("v1.0.2"));
         Assert.Equal("1.0.2", WebsiteAddress.VersionFromReleaseTag("1.0.2"));
         Assert.Null(WebsiteAddress.VersionFromReleaseTag("latest"));
+        Assert.True(WebsiteAddress.IsLegacyPublicHost("osmbuddy.duckdns.org"));
+        Assert.Equal(
+            "https://osmbuddy.apps.grok.bot/api/farm/feed",
+            WebsiteAddress.CanonicalFeedUrl("https://osmbuddy.duckdns.org/api/farm/feed"));
+        Assert.Equal(
+            "https://osmbuddy.apps.grok.bot/api/character/feed",
+            WebsiteAddress.CanonicalFeedUrl("https://osmbuddy.duckdns.org/api/character/feed"));
+        Assert.Equal(WebsiteAddress.LiveFeed, WebsiteAddress.CanonicalFeedUrl(WebsiteAddress.LiveFeed));
+        Assert.Equal(WebsiteAddress.LiveFeed, WebsiteAddress.CanonicalFeedUrl(""));
     }
 
     [Fact]
@@ -2147,6 +2241,13 @@ public class ScannerLogicTests
         PaintRect(pixels, width, 8, 30, 88, 40, 70, 160, 62);
         PaintRect(pixels, width, 16, panelY + panelH, 72, 22, 230, 140, 40);
         PaintRect(pixels, width, panelX, panelY, panelW, buttonH, 244, 246, 248);
+        var inkTop = panelY + Math.Max(1, buttonH / 5);
+        var inkH = Math.Max(2, buttonH / 2);
+        for (var col = panelX + 6; col < panelX + panelW - 6; col += 7)
+        {
+            PaintRect(pixels, width, col, inkTop, 2, inkH, 20, 20, 20);
+        }
+
         PaintRect(pixels, width, buttonX, buttonY, buttonW, buttonH, (byte)(cancel ? 170 : 230), (byte)(cancel ? 204 : 140), (byte)(cancel ? 34 : 40));
         var holeY = buttonY + Math.Max(3, buttonH / 5);
         var holeH = Math.Max(2, buttonH / 3);
@@ -2172,7 +2273,6 @@ public class ScannerLogicTests
         Assert.True(box.Y < placed.ButtonY);
         Assert.True(box.X + box.Width >= placed.ButtonX + placed.ButtonW);
         Assert.True(box.Y + box.Height >= placed.ButtonY + placed.ButtonH);
-        Assert.True(box.X > placed.Width / 5);
     }
 
     private static void PaintRect(byte[] pixels, int stridePixels, int x, int y, int width, int height, byte r, byte g, byte b)
