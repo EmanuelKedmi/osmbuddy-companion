@@ -26,6 +26,11 @@
     <None Include="Fixtures\shop-rows-stack-qty.png" CopyToOutputDirectory="PreserveNewest" />
     <None Include="Fixtures\shop-rows-scrolls-qty.png" CopyToOutputDirectory="PreserveNewest" />
     <None Include="Fixtures\shop-rows-ores-qty.png" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="Fixtures\tooltip-diamond-ore.jpg" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="Fixtures\tooltip-power-elixir.png" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="Fixtures\tooltip-khanjar.png" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="Fixtures\tooltip-red-sauna-robe.jpg" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="Fixtures\tooltip-dex-crystal-ore.jpg" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>

@@ -114,6 +114,7 @@
     <Content Include="..\..\data\osm-market-prices.json" Link="fixtures\osm-market-prices.json" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="..\..\data\catalog.json" Link="fixtures\catalog.json" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="..\..\data\item-aliases.json" Link="fixtures\item-aliases.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\..\data\equipment.json" Link="fixtures\equipment.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>

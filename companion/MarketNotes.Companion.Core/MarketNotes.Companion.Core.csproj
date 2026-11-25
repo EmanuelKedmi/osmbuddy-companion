@@ -15,6 +15,7 @@
     <Content Include="..\..\data\osm-market-prices.json" Link="fixtures\osm-market-prices.json" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="..\..\data\catalog.json" Link="fixtures\catalog.json" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="..\..\data\item-aliases.json" Link="fixtures\item-aliases.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\..\data\equipment.json" Link="fixtures\equipment.json" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="..\..\data\fixtures\fm-shop.json" Link="fixtures\fm-shop.json" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="..\..\data\fixtures\training-sample.json" Link="fixtures\training-sample.json" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="..\..\data\fixtures\stat-window.json" Link="fixtures\stat-window.json" CopyToOutputDirectory="PreserveNewest" />

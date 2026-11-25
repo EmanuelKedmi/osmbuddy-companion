@@ -35,6 +35,8 @@ public partial class MainWindow : Window
     private readonly TrainingIdentityReader _identity = new();
     private readonly SheetWindowWatch _sheet = new();
     private readonly GameOverlayWindow _overlay = new();
+    private readonly InGameNotes _notes = new();
+    private bool _notesSync;
     private readonly LootPoolStore _pool = new();
     private DispatcherTimer? _shareTimer;
     private ShareSource? _source;
@@ -95,6 +97,8 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        _notes.Attach(this);
+        _notes.ActivityChanged += SyncNotesButton;
         var version = RunningVersion.Label();
         VersionButton.Content = version;
         Title = "Companion " + version;
@@ -111,6 +115,7 @@ public partial class MainWindow : Window
         }
 
         _uiReady = true;
+        SyncNotesButton();
         ApplyMode(ScannerModeChoice.ForMap(CurrentMapName()));
         StatusText.Text = "FM scanner is idle. " + WindowsOcr.Status;
         FarmStatus.Text = "Training scanner is idle.";
@@ -124,6 +129,7 @@ public partial class MainWindow : Window
             _ngmRegister?.Stop();
             _updateTimer?.Stop();
             PersistWebsiteSettings();
+            _notes.Dispose();
             _overlay.Close();
         };
         if (NgmHijackPreference.IsEnabled()) StartNgmRegisterTimer();
@@ -526,6 +532,8 @@ public partial class MainWindow : Window
             _ngmNote = null;
         }
         _overlay.Place(source);
+        _notes.SetSharing(true);
+        _notes.Place(source);
         SourceDescription.Text = source.Description;
         _shareTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(500) };
         _shareTimer.Tick += (_, _) => ShareTick();
@@ -554,6 +562,7 @@ public partial class MainWindow : Window
         _sheet.Reset();
         ResetFmScan(clearTable: false);
         _overlay.CloseOverlay();
+        _notes.SetSharing(false);
         if (StartShareButton != null) StartShareButton.IsEnabled = true;
         if (StopShareButton != null) StopShareButton.IsEnabled = false;
         if (ShareStatus != null) ShareStatus.Text = status;
@@ -598,6 +607,8 @@ public partial class MainWindow : Window
             if (!_sharing || _source == null) return;
             ShowFrame(frame);
             _overlay.Place(_source);
+            _notes.Place(_source);
+            _notes.NoteFrame(frame);
             _identity.ReadMap(frame);
             if (_identity.ModeMapName.Length > 0) SyncMapBox(_identity.ModeMapName);
             ApplyMode(ScannerModeChoice.ForMap(CurrentMapName()));
@@ -648,6 +659,11 @@ public partial class MainWindow : Window
 
             if (view.ListingsChanged || step.Added.Count > 0 || step.Reset || sold.Count > 0 || ShopMirrorDue())
             {
+                if (view.ListingsChanged || step.Added.Count > 0 || step.Reset || sold.Count > 0)
+                {
+                    _notes.RememberShop(view.Shop, sold, sample: false);
+                }
+
                 UploadShop(sold);
             }
         }
@@ -661,6 +677,7 @@ public partial class MainWindow : Window
                 {
                     _closeSentFor = owner;
                     UploadClose(owner);
+                    _notes.CloseOwner(owner);
                     detail += $"\n{owner}'s shop left the screen. It stays on the site as closed, and its listings are delisted.";
                 }
 
@@ -1772,6 +1789,22 @@ public partial class MainWindow : Window
         void apply() => _mirrorNote = string.IsNullOrWhiteSpace(note) ? null : note.Trim();
         if (Dispatcher.CheckAccess()) apply();
         else Dispatcher.InvokeAsync(apply);
+    }
+
+    private void NotesButton_Click(object sender, RoutedEventArgs e)
+    {
+        if (!_uiReady || _notesSync) return;
+        _notes.Toggle();
+        SyncNotesButton();
+    }
+
+    private void SyncNotesButton()
+    {
+        if (NotesButton == null) return;
+        _notesSync = true;
+        NotesButton.IsChecked = _notes.IsActive;
+        NotesButton.Content = _notes.IsActive ? "Active" : "Notes";
+        _notesSync = false;
     }
 
     private void BugToggle_Changed(object sender, RoutedEventArgs e)

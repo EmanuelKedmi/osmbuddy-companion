@@ -2101,6 +2101,9 @@ public class ScannerLogicTests
         Assert.True(WebsiteAddress.IsLoopback("http://localhost:4317/api/farm/feed"));
         Assert.False(WebsiteAddress.IsLoopback(WebsiteAddress.LiveFeed));
         Assert.Equal("https://osmbuddy.apps.grok.bot/api/companion/logs", WebsiteAddress.LogsUrl(WebsiteAddress.LiveFeed));
+        Assert.Equal("https://osmbuddy.apps.grok.bot/api/fm", WebsiteAddress.FmUrl(WebsiteAddress.LiveFeed));
+        Assert.Equal("http://127.0.0.1:4317/api/fm", WebsiteAddress.FmUrl(WebsiteAddress.DevFeed));
+        Assert.Equal("https://osmbuddy.apps.grok.bot/api/fm?item=DEX%20Crystal%20Ore", WebsiteAddress.FmItemUrl(WebsiteAddress.LiveFeed, "DEX Crystal Ore"));
         Assert.Equal("http://127.0.0.1:4317/api/companion/logs", WebsiteAddress.LogsUrl(WebsiteAddress.DevFeed));
         Assert.Equal("https://github.com/EmanuelKedmi/osmbuddy-companion/releases/latest/download/MarketNotes.Companion.exe", WebsiteAddress.ReleaseDownloadUrl);
         Assert.Equal("1.0.2", WebsiteAddress.VersionFromReleaseTag("v1.0.2"));

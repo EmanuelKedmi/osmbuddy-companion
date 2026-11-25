@@ -1,0 +1,6499 @@
+{
+  "note": "GMS v62 base stats. A dropped equip rolls each positive stat from base minus span to base plus span. Span is the smaller of ceil(base/10) and 5, or 10 for defense, HP, and MP. The base is the average.",
+  "items": {
+    "Abyss Shooter": {
+      "pad": 62
+    },
+    "Adamantium Avarice": {
+      "pad": 22,
+      "luk": 2,
+      "pdd": 3
+    },
+    "Adamantium Guards": {
+      "pad": 18,
+      "luk": 2,
+      "pdd": 2
+    },
+    "Adamantium Igor": {
+      "pad": 14,
+      "luk": 2,
+      "pdd": 2
+    },
+    "Adamantium Knuckle": {
+      "str": 2,
+      "pdd": 16
+    },
+    "Adamantium Legend Shield": {
+      "str": 2,
+      "pdd": 52,
+      "mdd": 25
+    },
+    "Adamantium Tower Shield": {
+      "dex": 2,
+      "pdd": 40
+    },
+    "Aluminum Baseball Bat": {
+      "pad": 48
+    },
+    "Angel Wings": {
+      "pad": 51,
+      "mad": 83
+    },
+    "Angelic Betrayal": {
+      "pad": 85
+    },
+    "Aqua Brace": {
+      "dex": 1,
+      "pdd": 14
+    },
+    "Aqua Golden Circlet": {
+      "int": 2,
+      "luk": 1,
+      "pdd": 24,
+      "mdd": 55
+    },
+    "Aqua Platina": {
+      "str": 2,
+      "dex": 4,
+      "pdd": 75,
+      "mp": 10
+    },
+    "Aqua Platina Pants": {
+      "dex": 2,
+      "acc": 2,
+      "pdd": 60
+    },
+    "Aqua Snowboard": {
+      "pad": 30
+    },
+    "Arc Staff": {
+      "pad": 41,
+      "mad": 60
+    },
+    "Asianic Bow": {
+      "pad": 75
+    },
+    "Axe Pole Arm": {
+      "pad": 57
+    },
+    "Baige Elf Shoes": {
+      "str": 2,
+      "dex": 2,
+      "eva": 1,
+      "pdd": 40
+    },
+    "Balanche": {
+      "pad": 39,
+      "str": 1
+    },
+    "Basic Archer Gloves": {
+      "pdd": 4
+    },
+    "Battle Bow": {
+      "pad": 40
+    },
+    "Battle Crossbow": {
+      "pad": 34
+    },
+    "Battle Hammer": {
+      "pad": 98
+    },
+    "Battle Shield": {
+      "pdd": 35
+    },
+    "Bazlud": {
+      "pad": 55
+    },
+    "Beia Crash": {
+      "pad": 62
+    },
+    "Beige Carribean": {
+      "str": 1,
+      "pdd": 25,
+      "mp": 10
+    },
+    "Beige Lineros": {
+      "str": 5,
+      "dex": 2,
+      "pdd": 75,
+      "mp": 25
+    },
+    "Beige Linnex": {
+      "str": 5,
+      "dex": 2,
+      "pdd": 75,
+      "mp": 25
+    },
+    "Beige Nitty": {
+      "pdd": 5,
+      "mdd": 2
+    },
+    "Beige Patriot": {
+      "str": 2,
+      "dex": 2,
+      "pdd": 45,
+      "mp": 15
+    },
+    "Beige Umbrella": {
+      "pad": 60,
+      "mad": 60
+    },
+    "Bennis Chainpants": {
+      "dex": 1,
+      "pdd": 18
+    },
+    "Bent Judgement": {
+      "pad": 85
+    },
+    "Berzerker": {
+      "pad": 95
+    },
+    "Black Amoria Skirt": {
+      "int": 1,
+      "pdd": 18,
+      "mdd": 14,
+      "mp": 5
+    },
+    "Black Amoria Top": {
+      "int": 3,
+      "pdd": 24,
+      "mdd": 18
+    },
+    "Black Bandana": {
+      "int": 1,
+      "pdd": 8
+    },
+    "Black Basile Boots": {
+      "str": 1,
+      "dex": 3,
+      "pdd": 34
+    },
+    "Black Bennis Chainmail": {
+      "str": 2,
+      "pdd": 22
+    },
+    "Black Bisk": {
+      "str": 1,
+      "dex": 1,
+      "pdd": 28
+    },
+    "Black Blue-Lines Shoes": {
+      "dex": 1,
+      "luk": 1,
+      "pdd": 22,
+      "mp": 5
+    },
+    "Black Dragon Robe": {
+      "dex": 3,
+      "pdd": 52
+    },
+    "Black Duke Barkin Shoes": {
+      "str": 6,
+      "pdd": 58
+    },
+    "Black Gaia Cape": {
+      "pdd": 21,
+      "mdd": 26
+    },
+    "Black Giles Cape": {
+      "pdd": 33,
+      "mdd": 38
+    },
+    "Black Green-Lined Shoes": {
+      "dex": 2,
+      "pdd": 22,
+      "mp": 5
+    },
+    "Black Hunter": {
+      "pdd": 18,
+      "mp": 5
+    },
+    "Black Hunter Boots": {
+      "dex": 1,
+      "pdd": 16
+    },
+    "Black Huntress Armor": {
+      "str": 1,
+      "dex": 1,
+      "pdd": 26
+    },
+    "Black Huntress Pants": {
+      "pdd": 21,
+      "mp": 10
+    },
+    "Black Jangoon Armor": {
+      "str": 3,
+      "pdd": 45,
+      "mp": 10
+    },
+    "Black Jangoon Pants": {
+      "str": 1,
+      "pdd": 36,
+      "mp": 10
+    },
+    "Black Jangoon Skirt": {
+      "str": 1,
+      "pdd": 36,
+      "mp": 10
+    },
+    "Black Jester": {
+      "pdd": 12,
+      "mdd": 40,
+      "hp": 10,
+      "mp": 10
+    },
+    "Black Knucklevest": {
+      "dex": 3,
+      "pdd": 30
+    },
+    "Black Knucklevest Pants": {
+      "luk": 1,
+      "pdd": 24,
+      "hp": 5
+    },
+    "Black Lappy Boots": {
+      "luk": 1,
+      "pdd": 13
+    },
+    "Black Lutia": {
+      "int": 2,
+      "pdd": 12
+    },
+    "Black Magic Cape": {
+      "pdd": 18,
+      "mdd": 23
+    },
+    "Black Magicshoes": {
+      "int": 2,
+      "pdd": 12,
+      "mdd": 5
+    },
+    "Black Mamba": {
+      "pad": 38,
+      "dex": 5,
+      "pdd": 4
+    },
+    "Black Marker": {
+      "dex": 2,
+      "pdd": 12
+    },
+    "Black Markintz": {
+      "str": 5,
+      "eva": 1,
+      "pdd": 52
+    },
+    "Black Maro": {
+      "dex": 3,
+      "pdd": 33
+    },
+    "Black Martial Arts Pants": {
+      "str": 1,
+      "pdd": 28
+    },
+    "Black Metus": {
+      "pad": 90,
+      "eva": 5,
+      "speed": 8
+    },
+    "Black Neos": {
+      "str": 6,
+      "dex": 2,
+      "acc": 2,
+      "pdd": 105
+    },
+    "Black Neos Pants": {
+      "str": 3,
+      "acc": 3,
+      "pdd": 84
+    },
+    "Black Oriental Fury Coat": {
+      "int": 6,
+      "luk": 3,
+      "pdd": 76,
+      "mdd": 38,
+      "mp": 40
+    },
+    "Black Oriental Fury Hat": {
+      "int": 5,
+      "pdd": 48,
+      "mdd": 75,
+      "mp": 30
+    },
+    "Black Pao": {
+      "luk": 1,
+      "pdd": 18
+    },
+    "Black Pao Bottom": {
+      "pdd": 15,
+      "mp": 5
+    },
+    "Black Phoenix Shield": {
+      "pdd": 20,
+      "mdd": 20
+    },
+    "Black Pirate's Bandana": {
+      "str": 3,
+      "dex": 1,
+      "eva": 1,
+      "pdd": 45
+    },
+    "Black Polax Hat": {
+      "str": 4,
+      "dex": 2,
+      "eva": 1,
+      "pdd": 63
+    },
+    "Black Polyfeather Hat": {
+      "dex": 4,
+      "pdd": 39
+    },
+    "Black Red-Lined Shoes": {
+      "luk": 2,
+      "pdd": 22,
+      "mp": 5
+    },
+    "Black Royal Barone": {
+      "str": 5,
+      "dex": 1,
+      "pdd": 65,
+      "hp": 10
+    },
+    "Black Salt Shoes": {
+      "int": 1,
+      "luk": 1,
+      "pdd": 14,
+      "mdd": 6
+    },
+    "Black Scarab": {
+      "pad": 34,
+      "luk": 6,
+      "pdd": 5
+    },
+    "Black Schult": {
+      "str": 1,
+      "dex": 1,
+      "pdd": 24
+    },
+    "Black Seraph Cape": {
+      "pdd": 27,
+      "mdd": 32
+    },
+    "Black Skellduke": {
+      "str": 3,
+      "dex": 4,
+      "pdd": 40
+    },
+    "Black Sneak": {
+      "str": 2,
+      "pdd": 22
+    },
+    "Black Split": {
+      "int": 1,
+      "pdd": 15,
+      "mdd": 10
+    },
+    "Black Split Pants": {
+      "pdd": 12,
+      "mdd": 8,
+      "hp": 5
+    },
+    "Black Split Piece": {
+      "int": 1,
+      "pdd": 15,
+      "mdd": 10
+    },
+    "Black Split Skirt": {
+      "pdd": 12,
+      "mdd": 8,
+      "hp": 5
+    },
+    "Black Steal": {
+      "luk": 2,
+      "pdd": 26
+    },
+    "Black Steal Pants": {
+      "luk": 1,
+      "pdd": 21
+    },
+    "Black Surfboard": {
+      "pad": 64,
+      "str": 2
+    },
+    "Black Tube": {
+      "pad": 65,
+      "eva": 10
+    },
+    "Black Umbrella": {
+      "pad": 85,
+      "mad": 85
+    },
+    "Black Voyson Shoes": {
+      "str": 3,
+      "dex": 1,
+      "eva": 1,
+      "pdd": 40
+    },
+    "Black Windshoes": {
+      "int": 1,
+      "pdd": 9,
+      "mdd": 4
+    },
+    "Black Yellow-Lined Shoes": {
+      "str": 1,
+      "luk": 1,
+      "pdd": 22,
+      "mp": 5
+    },
+    "Blood Avarice": {
+      "pad": 22,
+      "dex": 2,
+      "pdd": 3
+    },
+    "Blood Battle Grieves": {
+      "dex": 1,
+      "pdd": 18
+    },
+    "Blood Camel Boots": {
+      "str": 3,
+      "dex": 1,
+      "pdd": 36
+    },
+    "Blood Chaos Robe": {
+      "int": 4,
+      "pdd": 32,
+      "mdd": 16,
+      "mp": 5
+    },
+    "Blood Dagger": {
+      "pad": 93
+    },
+    "Blood Emperor": {
+      "str": 2,
+      "dex": 4,
+      "pdd": 33,
+      "mp": 20
+    },
+    "Blood Fitted Mail": {
+      "str": 4,
+      "pdd": 60,
+      "mdd": 20,
+      "hp": 5
+    },
+    "Blood Gigantic": {
+      "pad": 30,
+      "dex": 4,
+      "eva": 3
+    },
+    "Blood Larceny": {
+      "dex": 2,
+      "luk": 4,
+      "pdd": 32,
+      "mp": 30
+    },
+    "Blood Moss Boots": {
+      "str": 3,
+      "luk": 1,
+      "pdd": 34
+    },
+    "Blood Nightfox": {
+      "dex": 1,
+      "luk": 3,
+      "pdd": 45,
+      "mp": 15
+    },
+    "Blood Platina Pants": {
+      "str": 2,
+      "acc": 2,
+      "pdd": 60
+    },
+    "Blood Slain": {
+      "pad": 26,
+      "dex": 3,
+      "eva": 2
+    },
+    "Blood Sneak": {
+      "pdd": 22,
+      "hp": 20
+    },
+    "Blood Sneak Pants": {
+      "pdd": 18,
+      "hp": 10
+    },
+    "Blood Valkyrie Skirt": {
+      "str": 3,
+      "dex": 2,
+      "pdd": 76,
+      "mp": 20
+    },
+    "Bloody Mantis": {
+      "dex": 1,
+      "luk": 4,
+      "pdd": 50
+    },
+    "Bloody Mantis Pants": {
+      "luk": 2,
+      "eva": 1,
+      "pdd": 39
+    },
+    "Bloody Platina": {
+      "str": 4,
+      "dex": 2,
+      "pdd": 75,
+      "mp": 10
+    },
+    "Blue Ades": {
+      "str": 6,
+      "dex": 3,
+      "eva": 2,
+      "pdd": 95
+    },
+    "Blue Amoria Skirt": {
+      "luk": 1,
+      "pdd": 18,
+      "mdd": 14,
+      "mp": 5
+    },
+    "Blue Amoria Top": {
+      "luk": 3,
+      "pdd": 24,
+      "mdd": 18
+    },
+    "Blue Anakamoon": {
+      "int": 1,
+      "luk": 5,
+      "pdd": 52,
+      "mdd": 26,
+      "mp": 25
+    },
+    "Blue Anakarune": {
+      "int": 1,
+      "luk": 5,
+      "pdd": 52,
+      "mdd": 26,
+      "mp": 25
+    },
+    "Blue Anelin": {
+      "dex": 4,
+      "luk": 3,
+      "pdd": 37
+    },
+    "Blue Anes": {
+      "str": 6,
+      "dex": 3,
+      "eva": 2,
+      "pdd": 95
+    },
+    "Blue Arcina": {
+      "str": 2,
+      "dex": 5,
+      "pdd": 39,
+      "mp": 20
+    },
+    "Blue Arlic Helmet": {
+      "str": 2,
+      "dex": 3,
+      "eva": 1,
+      "pdd": 57
+    },
+    "Blue Armis": {
+      "str": 4,
+      "dex": 6,
+      "eva": 2,
+      "pdd": 105
+    },
+    "Blue Arnah Shoes": {
+      "str": 1,
+      "dex": 5,
+      "pdd": 58
+    },
+    "Blue Arten": {
+      "int": 2,
+      "pdd": 15
+    },
+    "Blue Arzuna": {
+      "str": 4,
+      "dex": 6,
+      "eva": 2,
+      "pdd": 105
+    },
+    "Blue Avenger": {
+      "dex": 4,
+      "pdd": 40,
+      "mp": 5
+    },
+    "Blue Axe": {
+      "pad": 52
+    },
+    "Blue Bandana": {
+      "str": 1,
+      "pdd": 8
+    },
+    "Blue Battle Empress": {
+      "str": 5,
+      "dex": 3,
+      "acc": 1,
+      "pdd": 132
+    },
+    "Blue Battle Road": {
+      "str": 5,
+      "dex": 3,
+      "acc": 1,
+      "pdd": 132
+    },
+    "Blue Bazura": {
+      "int": 7,
+      "luk": 3,
+      "pdd": 84,
+      "mdd": 42,
+      "mp": 45
+    },
+    "Blue Bennis Chainmail": {
+      "pdd": 22,
+      "mp": 20
+    },
+    "Blue Bone Helm": {
+      "dex": 1,
+      "pdd": 42
+    },
+    "Blue Brace Look": {
+      "str": 3,
+      "pdd": 40,
+      "hp": 10
+    },
+    "Blue Burgler": {
+      "pdd": 24,
+      "mp": 10
+    },
+    "Blue Calaf": {
+      "int": 1,
+      "luk": 4,
+      "pdd": 44,
+      "mdd": 22,
+      "mp": 20
+    },
+    "Blue Calas": {
+      "int": 1,
+      "luk": 4,
+      "pdd": 44,
+      "mdd": 22,
+      "mp": 20
+    },
+    "Blue Carzen Boots": {
+      "str": 1,
+      "dex": 3,
+      "acc": 1,
+      "pdd": 42
+    },
+    "Blue Chaos Robe": {
+      "luk": 4,
+      "pdd": 32,
+      "mdd": 16,
+      "mp": 5
+    },
+    "Blue China": {
+      "str": 1,
+      "luk": 3,
+      "pdd": 42
+    },
+    "Blue China Pants": {
+      "luk": 1,
+      "acc": 1,
+      "pdd": 33
+    },
+    "Blue Choro": {
+      "str": 1,
+      "dex": 5,
+      "pdd": 65,
+      "mp": 20
+    },
+    "Blue Ciara": {
+      "int": 4,
+      "luk": 3,
+      "pdd": 38,
+      "mdd": 12
+    },
+    "Blue Clarity": {
+      "int": 3,
+      "luk": 2,
+      "pdd": 31,
+      "mdd": 8,
+      "mp": 15
+    },
+    "Blue Commodore": {
+      "str": 5,
+      "dex": 2,
+      "acc": 1,
+      "pdd": 95
+    },
+    "Blue Commodore Pants": {
+      "str": 3,
+      "acc": 2,
+      "pdd": 76,
+      "mdd": 6
+    },
+    "Blue Cordon": {
+      "str": 2,
+      "dex": 3,
+      "pdd": 31,
+      "mp": 15
+    },
+    "Blue Counter": {
+      "pad": 57
+    },
+    "Blue Crescent Boots": {
+      "str": 4,
+      "dex": 2,
+      "acc": 1,
+      "pdd": 60
+    },
+    "Blue Crusader Chainmail": {
+      "dex": 4,
+      "pdd": 60,
+      "mdd": 20,
+      "hp": 5
+    },
+    "Blue Czar": {
+      "int": 7,
+      "luk": 4,
+      "pdd": 92,
+      "mdd": 46,
+      "mp": 50
+    },
+    "Blue Den Marine": {
+      "str": 1,
+      "pdd": 24
+    },
+    "Blue Distinction": {
+      "pdd": 27,
+      "mp": 20
+    },
+    "Blue Doros Robe": {
+      "str": 3,
+      "pdd": 24,
+      "mdd": 12
+    },
+    "Blue Dragon": {
+      "dex": 3,
+      "pdd": 40
+    },
+    "Blue Dragon Babuta": {
+      "str": 2,
+      "pdd": 80
+    },
+    "Blue Duke": {
+      "dex": 1,
+      "pdd": 40
+    },
+    "Blue Elf Shoes": {
+      "str": 3,
+      "dex": 1,
+      "eva": 1,
+      "pdd": 40
+    },
+    "Blue Enamel Boots": {
+      "pdd": 10
+    },
+    "Blue Engrit": {
+      "pdd": 52,
+      "mp": 30
+    },
+    "Blue Enigmatic": {
+      "int": 6,
+      "luk": 2,
+      "pdd": 68,
+      "mdd": 34,
+      "mp": 35
+    },
+    "Blue Eyes": {
+      "dex": 2,
+      "pdd": 26
+    },
+    "Blue Fairy Skirt": {
+      "pdd": 16,
+      "mdd": 12,
+      "mp": 10
+    },
+    "Blue Fairy Top": {
+      "pdd": 21,
+      "mdd": 15,
+      "mp": 20
+    },
+    "Blue Falcon": {
+      "str": 3,
+      "dex": 2,
+      "pdd": 51
+    },
+    "Blue Feather Hat": {
+      "pdd": 12
+    },
+    "Blue Flowery Tube": {
+      "pad": 15,
+      "acc": 10
+    },
+    "Blue Gaia Cape": {
+      "pdd": 19,
+      "mdd": 24
+    },
+    "Blue Galaxy": {
+      "int": 3,
+      "luk": 2,
+      "pdd": 42,
+      "mdd": 70
+    },
+    "Blue Goldrunners": {
+      "int": 3,
+      "luk": 1,
+      "pdd": 23,
+      "mdd": 11
+    },
+    "Blue Goldwind Shoes": {
+      "int": 1,
+      "luk": 2,
+      "pdd": 19,
+      "mdd": 9
+    },
+    "Blue Goni Shoes": {
+      "str": 3,
+      "pdd": 28
+    },
+    "Blue Gore Boots": {
+      "str": 2,
+      "dex": 2,
+      "pdd": 34
+    },
+    "Blue Grace Helmet": {
+      "dex": 2,
+      "pdd": 90
+    },
+    "Blue Guiltian": {
+      "pdd": 18,
+      "mdd": 50,
+      "mp": 20
+    },
+    "Blue Guise": {
+      "dex": 1,
+      "pdd": 21
+    },
+    "Blue Halfglove": {
+      "str": 2,
+      "dex": 1,
+      "pdd": 32,
+      "hp": 10
+    },
+    "Blue Hawkeye": {
+      "pdd": 21,
+      "mp": 10
+    },
+    "Blue Hinkel": {
+      "pad": 80,
+      "eva": 1
+    },
+    "Blue Hoflon": {
+      "str": 4,
+      "pdd": 76,
+      "mdd": 25
+    },
+    "Blue Hunter Boots": {
+      "str": 1,
+      "pdd": 16
+    },
+    "Blue Hunter's Armor": {
+      "pdd": 26,
+      "mp": 20
+    },
+    "Blue Hunter's Pants": {
+      "pdd": 21,
+      "mp": 10
+    },
+    "Blue Ice Queen": {
+      "str": 4,
+      "dex": 1,
+      "pdd": 65
+    },
+    "Blue Ice Queen Skirt": {
+      "str": 2,
+      "acc": 1,
+      "pdd": 52
+    },
+    "Blue Infinium Circlet": {
+      "int": 3,
+      "luk": 1,
+      "pdd": 36,
+      "mdd": 65,
+      "mp": 25
+    },
+    "Blue Jangoon Armor": {
+      "str": 3,
+      "pdd": 45,
+      "mp": 10
+    },
+    "Blue Jangoon Shoes": {
+      "str": 2,
+      "pdd": 24,
+      "mp": 20
+    },
+    "Blue Jean Shorts": {
+      "pdd": 2
+    },
+    "Blue Jester": {
+      "pdd": 12,
+      "mdd": 40,
+      "mp": 20
+    },
+    "Blue Jewelry Boots": {
+      "int": 1,
+      "pdd": 7,
+      "mdd": 3
+    },
+    "Blue Katina Boots": {
+      "dex": 4,
+      "luk": 2,
+      "eva": 1,
+      "pdd": 58
+    },
+    "Blue Katinas": {
+      "dex": 7,
+      "luk": 3,
+      "eva": 2,
+      "pdd": 105
+    },
+    "Blue Katte": {
+      "dex": 7,
+      "luk": 3,
+      "eva": 2,
+      "pdd": 105
+    },
+    "Blue Kendo Robe": {
+      "str": 1,
+      "pdd": 36,
+      "hp": 5
+    },
+    "Blue Knucklevest Pants": {
+      "luk": 1,
+      "pdd": 24,
+      "mp": 5
+    },
+    "Blue Korben": {
+      "str": 5,
+      "dex": 3,
+      "pdd": 40,
+      "mp": 15
+    },
+    "Blue Lapiz Sandals": {
+      "mad": 1,
+      "int": 1,
+      "luk": 3,
+      "pdd": 27,
+      "mdd": 13
+    },
+    "Blue Legolia": {
+      "str": 3,
+      "pdd": 30
+    },
+    "Blue Legolia Pants": {
+      "str": 1,
+      "pdd": 24,
+      "mp": 5
+    },
+    "Blue Legolier": {
+      "str": 3,
+      "pdd": 30
+    },
+    "Blue Legolier Pants": {
+      "str": 1,
+      "pdd": 24,
+      "mp": 5
+    },
+    "Blue Lineros": {
+      "str": 5,
+      "dex": 2,
+      "pdd": 75,
+      "mp": 25
+    },
+    "Blue Linnex": {
+      "str": 5,
+      "dex": 2,
+      "pdd": 75,
+      "mp": 25
+    },
+    "Blue Lorin": {
+      "int": 3,
+      "luk": 1,
+      "pdd": 27,
+      "mdd": 6
+    },
+    "Blue Lumati": {
+      "str": 4,
+      "eva": 1,
+      "pdd": 55
+    },
+    "Blue Lutia": {
+      "int": 1,
+      "pdd": 11
+    },
+    "Blue Magic Cape": {
+      "pdd": 16,
+      "mdd": 21
+    },
+    "Blue Magicshoes": {
+      "int": 1,
+      "pdd": 11,
+      "mdd": 5
+    },
+    "Blue Marine": {
+      "pad": 71,
+      "mad": 110
+    },
+    "Blue Maro": {
+      "str": 2,
+      "dex": 1,
+      "pdd": 33
+    },
+    "Blue Matty": {
+      "pdd": 15,
+      "mdd": 45,
+      "mp": 20
+    },
+    "Blue Moon Gloves": {
+      "luk": 1,
+      "pdd": 18
+    },
+    "Blue Moon Pants": {
+      "luk": 1,
+      "acc": 1,
+      "pdd": 33
+    },
+    "Blue Moon Shoes": {
+      "luk": 2,
+      "pdd": 15,
+      "mdd": 7,
+      "mp": 5
+    },
+    "Blue Moonlight": {
+      "int": 1,
+      "luk": 4,
+      "pdd": 36,
+      "mdd": 18
+    },
+    "Blue Morrican": {
+      "pdd": 6
+    },
+    "Blue Mystique": {
+      "dex": 4,
+      "luk": 2,
+      "pdd": 58
+    },
+    "Blue Mystique Pants": {
+      "dex": 2,
+      "eva": 2,
+      "pdd": 45
+    },
+    "Blue Mystique Shoes": {
+      "str": 1,
+      "dex": 3,
+      "eva": 1,
+      "pdd": 40
+    },
+    "Blue Napoleon": {
+      "pdd": 10,
+      "mdd": 15
+    },
+    "Blue Neli Shoes": {
+      "mad": 1,
+      "int": 2,
+      "luk": 3,
+      "pdd": 35,
+      "mdd": 17
+    },
+    "Blue Neos": {
+      "str": 6,
+      "dex": 2,
+      "acc": 2,
+      "pdd": 105
+    },
+    "Blue Neos Pants": {
+      "str": 3,
+      "acc": 3,
+      "pdd": 84
+    },
+    "Blue Nightfox": {
+      "str": 1,
+      "luk": 3,
+      "pdd": 45,
+      "mp": 15
+    },
+    "Blue Nightshift": {
+      "dex": 1,
+      "pdd": 14
+    },
+    "Blue Nightshift Pants": {
+      "pdd": 12,
+      "mp": 5
+    },
+    "Blue Noel": {
+      "int": 1,
+      "pdd": 13
+    },
+    "Blue One-lined T-Shirt": {
+      "pdd": 11
+    },
+    "Blue Oriental Fury Coat": {
+      "int": 3,
+      "luk": 6,
+      "pdd": 76,
+      "mdd": 38,
+      "mp": 40
+    },
+    "Blue Oriental Helmet": {
+      "dex": 1,
+      "pdd": 60
+    },
+    "Blue Orientican": {
+      "str": 1,
+      "dex": 4,
+      "pdd": 65
+    },
+    "Blue Orientican Pants": {
+      "dex": 2,
+      "acc": 1,
+      "pdd": 52
+    },
+    "Blue Pageant": {
+      "str": 3,
+      "dex": 2,
+      "pdd": 46
+    },
+    "Blue Pao": {
+      "dex": 1,
+      "pdd": 18
+    },
+    "Blue Pao Bottom": {
+      "pdd": 15,
+      "mp": 5
+    },
+    "Blue Patriot": {
+      "str": 3,
+      "dex": 1,
+      "pdd": 45,
+      "mp": 15
+    },
+    "Blue Pennance": {
+      "int": 2,
+      "pdd": 19,
+      "mdd": 2,
+      "mp": 15
+    },
+    "Blue Pierre Shoes": {
+      "dex": 2,
+      "pdd": 22,
+      "mp": 5
+    },
+    "Blue Piette Pants": {
+      "str": 1,
+      "pdd": 27,
+      "mp": 10
+    },
+    "Blue Pilfer": {
+      "dex": 2,
+      "pdd": 27
+    },
+    "Blue Pole-Feather Hat": {
+      "pdd": 24,
+      "mp": 10
+    },
+    "Blue Pria": {
+      "str": 6,
+      "dex": 2,
+      "pdd": 85,
+      "mp": 30
+    },
+    "Blue Pris": {
+      "str": 6,
+      "dex": 2,
+      "pdd": 85,
+      "mp": 30
+    },
+    "Blue Qi Pao": {
+      "str": 1,
+      "pdd": 18
+    },
+    "Blue Qi Pao Pants": {
+      "pdd": 15,
+      "mp": 5
+    },
+    "Blue Requiem": {
+      "int": 2,
+      "luk": 5,
+      "pdd": 60,
+      "mdd": 30,
+      "mp": 30
+    },
+    "Blue Requierre": {
+      "int": 2,
+      "luk": 5,
+      "pdd": 60,
+      "mdd": 30,
+      "mp": 30
+    },
+    "Blue Rivers Boots": {
+      "str": 3,
+      "dex": 2,
+      "pdd": 48
+    },
+    "Blue Robin Hat": {
+      "pdd": 15,
+      "hp": 5
+    },
+    "Blue Sage": {
+      "int": 3,
+      "luk": 1,
+      "pdd": 34,
+      "mdd": 9
+    },
+    "Blue Savata": {
+      "pdd": 8
+    },
+    "Blue Scarab": {
+      "pad": 34,
+      "luk": 5,
+      "pdd": 4
+    },
+    "Blue Screamer": {
+      "pad": 90
+    },
+    "Blue Seraph Cape": {
+      "pdd": 25,
+      "mdd": 30
+    },
+    "Blue Seraphis": {
+      "int": 2,
+      "luk": 2,
+      "pdd": 30,
+      "mdd": 60
+    },
+    "Blue Sergeant": {
+      "str": 1,
+      "pdd": 25
+    },
+    "Blue Shouldermail": {
+      "str": 3,
+      "dex": 1,
+      "pdd": 55
+    },
+    "Blue Shouldermail Pants": {
+      "str": 1,
+      "acc": 1,
+      "pdd": 44
+    },
+    "Blue Silky Boots": {
+      "str": 2,
+      "pdd": 19
+    },
+    "Blue Sky": {
+      "str": 2,
+      "pdd": 37
+    },
+    "Blue Sneak": {
+      "dex": 2,
+      "pdd": 22
+    },
+    "Blue Sonata": {
+      "dex": 2,
+      "luk": 1,
+      "pdd": 33
+    },
+    "Blue Split Piece": {
+      "pdd": 15,
+      "mdd": 10,
+      "mp": 10
+    },
+    "Blue Starlight": {
+      "int": 1,
+      "luk": 4,
+      "pdd": 36,
+      "mdd": 18
+    },
+    "Blue Steal": {
+      "str": 2,
+      "pdd": 26
+    },
+    "Blue Steal Pants": {
+      "str": 1,
+      "pdd": 21
+    },
+    "Blue Steel-Tip Boots": {
+      "str": 1,
+      "dex": 2,
+      "pdd": 28
+    },
+    "Blue Studded Pants": {
+      "luk": 2,
+      "eva": 2,
+      "pdd": 45
+    },
+    "Blue Studded Top": {
+      "dex": 2,
+      "luk": 4,
+      "pdd": 58,
+      "mp": 10
+    },
+    "Blue Sun Boat Hat": {
+      "str": 3,
+      "dex": 2,
+      "pdd": 51
+    },
+    "Blue Tai": {
+      "str": 1,
+      "dex": 5,
+      "pdd": 65,
+      "mp": 20
+    },
+    "Blue Valhalla Helmet": {
+      "dex": 3,
+      "pdd": 100
+    },
+    "Blue Varr Shoes": {
+      "int": 4,
+      "luk": 3,
+      "pdd": 39,
+      "mdd": 19
+    },
+    "Blue Varuna": {
+      "int": 6,
+      "luk": 4,
+      "pdd": 84,
+      "mdd": 42,
+      "mp": 45
+    },
+    "Blue White-Lined Boots": {
+      "dex": 1,
+      "luk": 1,
+      "pdd": 19
+    },
+    "Blue Whitebottom Boots": {
+      "pdd": 13,
+      "speed": 3
+    },
+    "Blue Willow": {
+      "dex": 1,
+      "pdd": 18
+    },
+    "Blue Wing Boots": {
+      "str": 3,
+      "dex": 2,
+      "pdd": 46
+    },
+    "Blue Wizard Robe": {
+      "pdd": 28,
+      "mdd": 14,
+      "mp": 30
+    },
+    "Blue-Lined Kismet": {
+      "dex": 4,
+      "eva": 1,
+      "pdd": 55
+    },
+    "Blueberry Lolica Armor": {
+      "pdd": 15
+    },
+    "Bow of Magical Destruction": {
+      "pad": 78,
+      "eva": 1
+    },
+    "Bow-tie (Black)": {
+      "pdd": 12,
+      "mdd": 15
+    },
+    "Bow-tie (Blue)": {
+      "pdd": 5,
+      "mdd": 9
+    },
+    "Bow-tie (Pink)": {
+      "pdd": 9,
+      "mdd": 5
+    },
+    "Bow-tie (Red)": {
+      "pdd": 15,
+      "mdd": 12
+    },
+    "Bow-tie (Yellow)": {
+      "pdd": 5,
+      "mdd": 2
+    },
+    "Bow-tie(Green)": {
+      "pdd": 2,
+      "mdd": 5
+    },
+    "Broadsword": {
+      "pad": 45
+    },
+    "Bronze Aroa Boots": {
+      "pdd": 7
+    },
+    "Bronze Chain Boots": {
+      "dex": 1,
+      "pdd": 16
+    },
+    "Bronze Clench": {
+      "str": 1,
+      "pdd": 23
+    },
+    "Bronze Crusader Helm": {
+      "pdd": 50,
+      "mdd": 20
+    },
+    "Bronze Football Helmet": {
+      "pdd": 20
+    },
+    "Bronze Gigantic": {
+      "pad": 30,
+      "luk": 3,
+      "eva": 2
+    },
+    "Bronze Guardian": {
+      "pad": 20,
+      "luk": 1,
+      "pdd": 1
+    },
+    "Bronze Helmet": {
+      "pdd": 12
+    },
+    "Bronze Husk": {
+      "str": 2,
+      "pdd": 27
+    },
+    "Bronze Identity": {
+      "str": 1,
+      "luk": 3,
+      "pdd": 39
+    },
+    "Bronze Kalkan": {
+      "dex": 2,
+      "pdd": 66
+    },
+    "Bronze Koif": {
+      "pdd": 10
+    },
+    "Bronze Missel": {
+      "pdd": 11
+    },
+    "Bronze Planet": {
+      "pdd": 70
+    },
+    "Bronze Platine": {
+      "str": 2,
+      "dex": 4,
+      "pdd": 75,
+      "mp": 10
+    },
+    "Bronze Platine Pants": {
+      "dex": 2,
+      "acc": 2,
+      "pdd": 60
+    },
+    "Bronze Pow": {
+      "dex": 1,
+      "luk": 1,
+      "pdd": 22
+    },
+    "Bronze Pride": {
+      "pdd": 5,
+      "mdd": 35
+    },
+    "Bronze Rover": {
+      "luk": 2,
+      "pdd": 26
+    },
+    "Bronze Scaler": {
+      "pdd": 12
+    },
+    "Bronze Wolfskin": {
+      "pdd": 8
+    },
+    "Brown Able Skirt": {
+      "pdd": 12,
+      "mp": 5
+    },
+    "Brown Ankle-strap Sandals": {
+      "pdd": 10
+    },
+    "Brown Bamboo Hat": {
+      "luk": 3,
+      "pdd": 15
+    },
+    "Brown Barbee": {
+      "dex": 1,
+      "pdd": 14
+    },
+    "Brown Burgler": {
+      "str": 1,
+      "pdd": 24
+    },
+    "Brown China": {
+      "dex": 1,
+      "luk": 3,
+      "pdd": 42
+    },
+    "Brown China Pants": {
+      "luk": 1,
+      "eva": 1,
+      "pdd": 33
+    },
+    "Brown Choro": {
+      "str": 1,
+      "dex": 5,
+      "pdd": 65,
+      "mp": 20
+    },
+    "Brown Corporal": {
+      "pdd": 20,
+      "mp": 10
+    },
+    "Brown Corporal Pants": {
+      "pdd": 16,
+      "mp": 5
+    },
+    "Brown Cotton Lagger": {
+      "str": 1,
+      "pdd": 20,
+      "mp": 5
+    },
+    "Brown Distinction": {
+      "str": 2,
+      "pdd": 27
+    },
+    "Brown Doroness Robe": {
+      "int": 3,
+      "pdd": 24,
+      "mdd": 12
+    },
+    "Brown Doros Robe": {
+      "int": 3,
+      "pdd": 24,
+      "mdd": 12
+    },
+    "Brown Double Boots": {
+      "str": 2,
+      "dex": 1,
+      "pdd": 28
+    },
+    "Brown Double Marine": {
+      "pdd": 15,
+      "hp": 5
+    },
+    "Brown Duo": {
+      "pdd": 4
+    },
+    "Brown Guiltian": {
+      "int": 1,
+      "luk": 1,
+      "pdd": 18,
+      "mdd": 50
+    },
+    "Brown Guise": {
+      "luk": 1,
+      "pdd": 21
+    },
+    "Brown Hard Leather Boots": {
+      "pdd": 4
+    },
+    "Brown Hard Leather Pants": {
+      "pdd": 15,
+      "hp": 5
+    },
+    "Brown Hawkeye": {
+      "str": 1,
+      "pdd": 21
+    },
+    "Brown High Boots": {
+      "pdd": 12
+    },
+    "Brown Hunter": {
+      "pdd": 18,
+      "mp": 5
+    },
+    "Brown Hunter Boots": {
+      "str": 1,
+      "pdd": 16
+    },
+    "Brown Jack Boots": {
+      "dex": 1,
+      "pdd": 13
+    },
+    "Brown Jangoon Armor": {
+      "str": 3,
+      "pdd": 45,
+      "mp": 10
+    },
+    "Brown Jangoon Pants": {
+      "dex": 1,
+      "pdd": 36,
+      "mp": 10
+    },
+    "Brown Jangoon Shoes": {
+      "dex": 2,
+      "pdd": 24,
+      "mp": 20
+    },
+    "Brown Jangoon Skirt": {
+      "str": 1,
+      "pdd": 36,
+      "mp": 10
+    },
+    "Brown Jester": {
+      "pdd": 12,
+      "mdd": 40,
+      "speed": 5
+    },
+    "Brown Jeweled": {
+      "pdd": 12
+    },
+    "Brown Lagger Cap": {
+      "pdd": 12
+    },
+    "Brown Lagger Slipper": {
+      "pdd": 7
+    },
+    "Brown Lamelle": {
+      "str": 1,
+      "pdd": 25
+    },
+    "Brown Lapiz Sandals": {
+      "mad": 1,
+      "int": 3,
+      "luk": 1,
+      "pdd": 27,
+      "mdd": 13
+    },
+    "Brown Leather Armor Glove": {
+      "pdd": 6
+    },
+    "Brown Leather Krag": {
+      "str": 1,
+      "dex": 1,
+      "eva": 1,
+      "pdd": 22
+    },
+    "Brown Leather Ocean Hat": {
+      "str": 2,
+      "dex": 1,
+      "pdd": 33
+    },
+    "Brown Legolia": {
+      "str": 3,
+      "pdd": 30
+    },
+    "Brown Legolia Pants": {
+      "str": 1,
+      "pdd": 24,
+      "mp": 5
+    },
+    "Brown Legolier": {
+      "str": 3,
+      "pdd": 30
+    },
+    "Brown Legolier Pants": {
+      "str": 1,
+      "pdd": 24,
+      "mp": 5
+    },
+    "Brown Locote Shoes": {
+      "str": 1,
+      "dex": 1,
+      "pdd": 19
+    },
+    "Brown Loosecap": {
+      "pdd": 15,
+      "hp": 5
+    },
+    "Brown Lorin": {
+      "int": 2,
+      "pdd": 26,
+      "mdd": 5
+    },
+    "Brown Marker": {
+      "pdd": 10
+    },
+    "Brown Martial Arts Pants": {
+      "pdd": 28,
+      "mp": 10
+    },
+    "Brown Matty": {
+      "int": 1,
+      "luk": 1,
+      "pdd": 15,
+      "mdd": 45
+    },
+    "Brown Moon": {
+      "dex": 1,
+      "luk": 3,
+      "pdd": 42
+    },
+    "Brown Moon Gloves": {
+      "luk": 3,
+      "eva": 1,
+      "pdd": 20
+    },
+    "Brown Moon Pants": {
+      "luk": 1,
+      "eva": 1,
+      "pdd": 33
+    },
+    "Brown Moonlight": {
+      "int": 4,
+      "luk": 1,
+      "pdd": 36,
+      "mdd": 18
+    },
+    "Brown Nightfox": {
+      "str": 2,
+      "luk": 2,
+      "pdd": 45,
+      "mp": 15
+    },
+    "Brown Nightshift": {
+      "dex": 1,
+      "pdd": 14
+    },
+    "Brown Nightshift Pants": {
+      "pdd": 12,
+      "hp": 5
+    },
+    "Brown Osfa Boots": {
+      "dex": 3,
+      "luk": 2,
+      "eva": 1,
+      "pdd": 52
+    },
+    "Brown Osfa Hat": {
+      "dex": 3,
+      "luk": 2,
+      "eva": 1,
+      "pdd": 57
+    },
+    "Brown Osfa Pants": {
+      "dex": 3,
+      "luk": 2,
+      "pdd": 57
+    },
+    "Brown Osfa Suit": {
+      "dex": 5,
+      "luk": 2,
+      "pdd": 70,
+      "mp": 20
+    },
+    "Brown Paulie Boots": {
+      "dex": 1,
+      "pdd": 16
+    },
+    "Brown Pierre Shoes": {
+      "dex": 2,
+      "pdd": 22,
+      "mp": 5
+    },
+    "Brown Piette": {
+      "dex": 3,
+      "pdd": 34,
+      "mp": 10
+    },
+    "Brown Piette Pants": {
+      "dex": 1,
+      "pdd": 27,
+      "mp": 10
+    },
+    "Brown Piettra": {
+      "str": 3,
+      "pdd": 34,
+      "mp": 10
+    },
+    "Brown Piettra Skirt": {
+      "str": 1,
+      "pdd": 27,
+      "mp": 10
+    },
+    "Brown Pilfer": {
+      "str": 2,
+      "pdd": 27
+    },
+    "Brown Pireta Hat": {
+      "str": 3,
+      "luk": 2,
+      "pdd": 51
+    },
+    "Brown Pitz Bandana": {
+      "pdd": 18,
+      "hp": 5
+    },
+    "Brown Pole-Feather Hat": {
+      "str": 1,
+      "pdd": 24
+    },
+    "Brown Pollard": {
+      "str": 2,
+      "pdd": 35,
+      "mp": 10
+    },
+    "Brown Polyfeather Hat": {
+      "str": 2,
+      "dex": 2,
+      "pdd": 39
+    },
+    "Brown Ramel Skirt": {
+      "pdd": 20,
+      "hp": 5,
+      "mp": 2
+    },
+    "Brown Requiem": {
+      "int": 5,
+      "luk": 2,
+      "pdd": 60,
+      "mdd": 30,
+      "mp": 30
+    },
+    "Brown Requierre": {
+      "int": 5,
+      "luk": 2,
+      "pdd": 60,
+      "mdd": 30,
+      "mp": 30
+    },
+    "Brown Robin Hat": {
+      "pdd": 15,
+      "mp": 5
+    },
+    "Brown Rocky Bandana": {
+      "pdd": 9
+    },
+    "Brown Rocky Suit": {
+      "pdd": 15
+    },
+    "Brown Royce": {
+      "str": 1,
+      "pdd": 20
+    },
+    "Brown Scarab": {
+      "pad": 34,
+      "luk": 4,
+      "pdd": 3
+    },
+    "Brown Skeedy Sandals": {
+      "pdd": 10
+    },
+    "Brown Skullcap": {
+      "pdd": 5
+    },
+    "Brown Sneak": {
+      "luk": 2,
+      "pdd": 22
+    },
+    "Brown Sneak Pants": {
+      "dex": 1,
+      "pdd": 18
+    },
+    "Brown Sonata": {
+      "luk": 3,
+      "pdd": 33
+    },
+    "Brown Starlight": {
+      "int": 1,
+      "luk": 4,
+      "pdd": 36,
+      "mdd": 18
+    },
+    "Brown Steel-Tip Boots": {
+      "str": 3,
+      "pdd": 28
+    },
+    "Brown Studded Pants": {
+      "dex": 2,
+      "eva": 2,
+      "pdd": 45
+    },
+    "Brown Studded Top": {
+      "dex": 4,
+      "luk": 2,
+      "pdd": 58,
+      "mp": 10
+    },
+    "Brown Turk Gally": {
+      "str": 1,
+      "pdd": 30,
+      "mp": 20
+    },
+    "Brown Winter Hat": {
+      "eva": 1,
+      "pdd": 9
+    },
+    "Brown Wooden Krag": {
+      "dex": 1,
+      "pdd": 13
+    },
+    "Brown Woodsman Boots": {
+      "pdd": 7
+    },
+    "Buck": {
+      "pad": 67
+    },
+    "Bullseye Board": {
+      "pad": 78,
+      "acc": 3,
+      "jump": 5
+    },
+    "Burning Hell": {
+      "pad": 58
+    },
+    "Casa Crow": {
+      "pad": 93,
+      "speed": 11
+    },
+    "Cass": {
+      "pad": 45
+    },
+    "Casters": {
+      "pad": 42,
+      "dex": 6,
+      "pdd": 5
+    },
+    "Cat's Eye": {
+      "mdd": 15
+    },
+    "Celestial Earrings": {
+      "mdd": 25
+    },
+    "Chrono": {
+      "pad": 87
+    },
+    "Circle-Winded Staff": {
+      "pad": 30,
+      "mad": 44
+    },
+    "Coconut Knife": {
+      "pad": 35
+    },
+    "Cold Mind": {
+      "pad": 31
+    },
+    "Colonian Axe": {
+      "pad": 97
+    },
+    "Colorful Tube": {
+      "pad": 85,
+      "jump": 10
+    },
+    "Composite Bow": {
+      "pad": 30
+    },
+    "Concerto": {
+      "pad": 74
+    },
+    "Contra Axe": {
+      "pad": 37
+    },
+    "Crescent Polearm": {
+      "pad": 62
+    },
+    "Cromi": {
+      "pad": 39,
+      "mad": 63
+    },
+    "Crystal Flower Earrings": {
+      "mdd": 35
+    },
+    "Crystal Wand": {
+      "pad": 33,
+      "mad": 53
+    },
+    "Cursayer": {
+      "pad": 90
+    },
+    "Cutlus": {
+      "pad": 52
+    },
+    "Daiwa Sword": {
+      "pad": 82,
+      "dex": 2
+    },
+    "Dankke": {
+      "pad": 52
+    },
+    "Dark Ades": {
+      "str": 3,
+      "dex": 6,
+      "eva": 2,
+      "pdd": 95
+    },
+    "Dark Ades Shoes": {
+      "dex": 5,
+      "eva": 1,
+      "pdd": 52
+    },
+    "Dark Anakamoon": {
+      "int": 5,
+      "luk": 1,
+      "pdd": 52,
+      "mdd": 26,
+      "mp": 25
+    },
+    "Dark Anakarune": {
+      "int": 5,
+      "luk": 1,
+      "pdd": 52,
+      "mdd": 26,
+      "mp": 25
+    },
+    "Dark Anelin": {
+      "dex": 3,
+      "luk": 5,
+      "pdd": 40,
+      "mp": 30
+    },
+    "Dark Anes": {
+      "str": 3,
+      "dex": 6,
+      "eva": 2,
+      "pdd": 95
+    },
+    "Dark Arlic Helmet": {
+      "dex": 5,
+      "eva": 1,
+      "pdd": 57
+    },
+    "Dark Arten": {
+      "int": 3,
+      "pdd": 16
+    },
+    "Dark Arund": {
+      "pad": 85,
+      "speed": 10
+    },
+    "Dark Avarice": {
+      "pad": 22,
+      "luk": 3,
+      "pdd": 4
+    },
+    "Dark Avenger": {
+      "luk": 4,
+      "pdd": 40,
+      "mp": 5
+    },
+    "Dark Battle Empress": {
+      "str": 6,
+      "dex": 2,
+      "acc": 1,
+      "pdd": 132
+    },
+    "Dark Battle Road": {
+      "str": 6,
+      "dex": 2,
+      "acc": 1,
+      "pdd": 132
+    },
+    "Dark Bazura": {
+      "int": 3,
+      "luk": 7,
+      "pdd": 84,
+      "mdd": 42,
+      "mp": 45
+    },
+    "Dark Brace": {
+      "dex": 3,
+      "pdd": 16
+    },
+    "Dark Briggon": {
+      "str": 2,
+      "pdd": 15
+    },
+    "Dark Brown Sneak Pants": {
+      "luk": 1,
+      "pdd": 18
+    },
+    "Dark Brown Stealer": {
+      "luk": 2,
+      "pdd": 26
+    },
+    "Dark Brown Stealer Pants": {
+      "luk": 1,
+      "pdd": 21
+    },
+    "Dark Burgler": {
+      "luk": 1,
+      "pdd": 24
+    },
+    "Dark Calaf": {
+      "int": 4,
+      "luk": 1,
+      "pdd": 44,
+      "mdd": 22,
+      "mp": 20
+    },
+    "Dark Calas": {
+      "int": 4,
+      "luk": 1,
+      "pdd": 44,
+      "mdd": 22,
+      "mp": 20
+    },
+    "Dark Canal Hood": {
+      "dex": 3,
+      "luk": 3,
+      "pdd": 63,
+      "mp": 15
+    },
+    "Dark Carzen Boots": {
+      "str": 3,
+      "dex": 1,
+      "acc": 1,
+      "pdd": 42
+    },
+    "Dark Chaos Robe": {
+      "int": 4,
+      "pdd": 32,
+      "mdd": 16,
+      "mp": 5
+    },
+    "Dark Clarity": {
+      "int": 4,
+      "luk": 2,
+      "pdd": 32,
+      "mdd": 9,
+      "mp": 30
+    },
+    "Dark Cleave": {
+      "luk": 3,
+      "pdd": 16
+    },
+    "Dark Clench": {
+      "str": 3,
+      "acc": 2,
+      "pdd": 25
+    },
+    "Dark Commodore": {
+      "str": 5,
+      "dex": 2,
+      "acc": 1,
+      "pdd": 95
+    },
+    "Dark Commodore Pants": {
+      "str": 3,
+      "acc": 2,
+      "pdd": 76,
+      "mdd": 6
+    },
+    "Dark Cordon": {
+      "str": 2,
+      "dex": 4,
+      "pdd": 32,
+      "mp": 30
+    },
+    "Dark Crescent Boots": {
+      "str": 5,
+      "dex": 1,
+      "acc": 1,
+      "pdd": 60
+    },
+    "Dark Crow": {
+      "pad": 93,
+      "dex": 4,
+      "jump": 2
+    },
+    "Dark Crusader Chainmail": {
+      "str": 4,
+      "pdd": 60,
+      "mdd": 20,
+      "hp": 5
+    },
+    "Dark Distinction": {
+      "dex": 2,
+      "pdd": 27
+    },
+    "Dark Dragon Babuta": {
+      "str": 3,
+      "pdd": 80
+    },
+    "Dark Elf Shoes": {
+      "str": 1,
+      "dex": 3,
+      "eva": 1,
+      "pdd": 40
+    },
+    "Dark Emperor": {
+      "str": 4,
+      "dex": 2,
+      "pdd": 33,
+      "mp": 20
+    },
+    "Dark Engrit": {
+      "str": 3,
+      "pdd": 52
+    },
+    "Dark Enigma": {
+      "int": 6,
+      "luk": 2,
+      "pdd": 68,
+      "mdd": 34,
+      "mp": 35
+    },
+    "Dark Enigma Shoes": {
+      "int": 4,
+      "luk": 1,
+      "pdd": 31,
+      "mdd": 15
+    },
+    "Dark Enigmatic": {
+      "int": 6,
+      "luk": 2,
+      "pdd": 68,
+      "mdd": 34,
+      "mp": 35
+    },
+    "Dark Eyes": {
+      "dex": 4,
+      "eva": 1,
+      "pdd": 28
+    },
+    "Dark Falcon": {
+      "dex": 5,
+      "pdd": 51
+    },
+    "Dark Focus": {
+      "str": 2,
+      "dex": 5,
+      "pdd": 36
+    },
+    "Dark Galaxy": {
+      "int": 5,
+      "pdd": 42,
+      "mdd": 70
+    },
+    "Dark Garner": {
+      "str": 1,
+      "dex": 3,
+      "pdd": 24,
+      "mp": 30
+    },
+    "Dark Gigantic": {
+      "pad": 30,
+      "luk": 5,
+      "eva": 4
+    },
+    "Dark Golden Circlet": {
+      "int": 3,
+      "pdd": 24,
+      "mdd": 55
+    },
+    "Dark Grace Helmet": {
+      "str": 4,
+      "pdd": 90
+    },
+    "Dark Guardian": {
+      "pad": 20,
+      "luk": 3,
+      "pdd": 3
+    },
+    "Dark Guiltian": {
+      "luk": 2,
+      "pdd": 18,
+      "mdd": 50
+    },
+    "Dark Guise": {
+      "luk": 1,
+      "pdd": 21
+    },
+    "Dark Hawkeye": {
+      "dex": 1,
+      "pdd": 21
+    },
+    "Dark Hunter's Armor": {
+      "dex": 2,
+      "pdd": 26
+    },
+    "Dark Hunter's Pants": {
+      "dex": 1,
+      "pdd": 21
+    },
+    "Dark Husk": {
+      "str": 4,
+      "acc": 1,
+      "pdd": 29
+    },
+    "Dark Identity": {
+      "luk": 4,
+      "pdd": 39
+    },
+    "Dark Imperial": {
+      "str": 5,
+      "dex": 2,
+      "pdd": 37
+    },
+    "Dark Infinium Circlet": {
+      "int": 4,
+      "pdd": 36,
+      "mdd": 65,
+      "mp": 25
+    },
+    "Dark Katina Boots": {
+      "dex": 2,
+      "luk": 4,
+      "eva": 1,
+      "pdd": 58
+    },
+    "Dark Katinas": {
+      "str": 7,
+      "luk": 3,
+      "eva": 2,
+      "pdd": 105
+    },
+    "Dark Katte": {
+      "dex": 3,
+      "luk": 7,
+      "eva": 2,
+      "pdd": 68
+    },
+    "Dark Knuckle": {
+      "str": 3,
+      "pdd": 17
+    },
+    "Dark Korben": {
+      "str": 5,
+      "dex": 3,
+      "pdd": 41,
+      "mp": 20
+    },
+    "Dark Legolia": {
+      "dex": 3,
+      "pdd": 30
+    },
+    "Dark Legolia Pants": {
+      "dex": 1,
+      "pdd": 24,
+      "mp": 5
+    },
+    "Dark Legolier": {
+      "dex": 3,
+      "pdd": 30
+    },
+    "Dark Legolier Pants": {
+      "dex": 1,
+      "pdd": 24,
+      "mp": 5
+    },
+    "Dark Lineros": {
+      "str": 2,
+      "dex": 5,
+      "pdd": 75,
+      "mp": 25
+    },
+    "Dark Linnex": {
+      "str": 2,
+      "dex": 5,
+      "pdd": 75,
+      "mp": 25
+    },
+    "Dark Lorin": {
+      "int": 4,
+      "luk": 1,
+      "pdd": 28,
+      "mdd": 7
+    },
+    "Dark Lucida": {
+      "str": 6,
+      "dex": 3,
+      "pdd": 105,
+      "mp": 25
+    },
+    "Dark Lucida Skirt": {
+      "str": 4,
+      "dex": 3,
+      "pdd": 84,
+      "mp": 25
+    },
+    "Dark Manute": {
+      "int": 3,
+      "luk": 1,
+      "pdd": 22,
+      "mdd": 3,
+      "mp": 30
+    },
+    "Dark Master Sergeant": {
+      "str": 2,
+      "pdd": 30
+    },
+    "Dark Master Sergeant Kilt": {
+      "str": 1,
+      "pdd": 24
+    },
+    "Dark Matty": {
+      "int": 1,
+      "luk": 2,
+      "pdd": 15,
+      "mdd": 45
+    },
+    "Dark Mesana": {
+      "int": 2,
+      "pdd": 10
+    },
+    "Dark Moon Shoes": {
+      "int": 2,
+      "luk": 1,
+      "pdd": 16,
+      "mdd": 8,
+      "mp": 10
+    },
+    "Dark Moonlight": {
+      "int": 4,
+      "luk": 1,
+      "pdd": 36,
+      "mdd": 18
+    },
+    "Dark Moss Boots": {
+      "dex": 1,
+      "luk": 3,
+      "pdd": 34
+    },
+    "Dark Mystra": {
+      "str": 4,
+      "luk": 3,
+      "pdd": 30,
+      "mp": 25
+    },
+    "Dark Neli Shoes": {
+      "mad": 1,
+      "int": 4,
+      "luk": 1,
+      "pdd": 35,
+      "mdd": 17
+    },
+    "Dark Neschere": {
+      "pad": 98,
+      "speed": 11
+    },
+    "Dark Nightshift": {
+      "luk": 1,
+      "pdd": 14
+    },
+    "Dark Nightshift Pants": {
+      "pdd": 12,
+      "hp": 5
+    },
+    "Dark Nisrock": {
+      "pad": 95,
+      "speed": 11
+    },
+    "Dark Noel": {
+      "int": 2,
+      "pdd": 14
+    },
+    "Dark Orientican": {
+      "str": 4,
+      "dex": 1,
+      "pdd": 65
+    },
+    "Dark Orientican Pants": {
+      "str": 2,
+      "acc": 1,
+      "pdd": 52
+    },
+    "Dark Pachone": {
+      "int": 5,
+      "luk": 2,
+      "pdd": 36,
+      "mdd": 11
+    },
+    "Dark Patriot": {
+      "dex": 4,
+      "pdd": 45,
+      "mp": 15
+    },
+    "Dark Penance": {
+      "int": 3,
+      "pdd": 20,
+      "mdd": 3,
+      "mp": 30
+    },
+    "Dark Piette": {
+      "dex": 3,
+      "pdd": 34,
+      "mp": 10
+    },
+    "Dark Piette Pants": {
+      "dex": 1,
+      "pdd": 27,
+      "mp": 10
+    },
+    "Dark Piettra": {
+      "dex": 3,
+      "pdd": 34,
+      "mp": 10
+    },
+    "Dark Piettra Skirt": {
+      "dex": 1,
+      "pdd": 27,
+      "mp": 10
+    },
+    "Dark Pilfer": {
+      "luk": 2,
+      "pdd": 27
+    },
+    "Dark Pirate Blouse": {
+      "dex": 1,
+      "luk": 5,
+      "pdd": 64,
+      "mp": 15
+    },
+    "Dark Pirate Boots": {
+      "dex": 2,
+      "luk": 3,
+      "pdd": 46
+    },
+    "Dark Pirate Pants": {
+      "dex": 1,
+      "luk": 3,
+      "pdd": 51
+    },
+    "Dark Pirate Skirt": {
+      "dex": 1,
+      "luk": 3,
+      "pdd": 51
+    },
+    "Dark Pirate Top": {
+      "dex": 1,
+      "luk": 5,
+      "pdd": 64,
+      "mp": 15
+    },
+    "Dark Pireta Hat": {
+      "dex": 2,
+      "luk": 3,
+      "pdd": 51
+    },
+    "Dark Pole-Feather Hat": {
+      "dex": 1,
+      "pdd": 24
+    },
+    "Dark Pria": {
+      "str": 2,
+      "dex": 6,
+      "pdd": 85,
+      "mp": 30
+    },
+    "Dark Pris": {
+      "str": 2,
+      "dex": 6,
+      "pdd": 85,
+      "mp": 30
+    },
+    "Dark Raven": {
+      "pad": 88,
+      "speed": 10
+    },
+    "Dark Requiem": {
+      "int": 5,
+      "luk": 2,
+      "pdd": 60,
+      "mdd": 30,
+      "mp": 30
+    },
+    "Dark Requierre": {
+      "int": 5,
+      "luk": 2,
+      "pdd": 60,
+      "mdd": 30,
+      "mp": 30
+    },
+    "Dark Ritual": {
+      "pad": 59,
+      "mad": 90
+    },
+    "Dark Rivers Boots": {
+      "str": 4,
+      "dex": 1,
+      "pdd": 48
+    },
+    "Dark Savata": {
+      "dex": 2,
+      "pdd": 10
+    },
+    "Dark Scorpio": {
+      "dex": 1,
+      "luk": 4,
+      "pdd": 50
+    },
+    "Dark Scorpio Pants": {
+      "luk": 2,
+      "eva": 1,
+      "pdd": 39
+    },
+    "Dark Seraphis": {
+      "int": 4,
+      "pdd": 30,
+      "mdd": 60
+    },
+    "Dark Shadow": {
+      "luk": 3,
+      "pdd": 34,
+      "mp": 10
+    },
+    "Dark Shadow Pants": {
+      "luk": 1,
+      "pdd": 27,
+      "mp": 10
+    },
+    "Dark Shouldermail": {
+      "str": 3,
+      "dex": 1,
+      "pdd": 55
+    },
+    "Dark Shouldermail Pants": {
+      "str": 1,
+      "acc": 1,
+      "pdd": 44
+    },
+    "Dark Silver Stealer": {
+      "dex": 2,
+      "pdd": 26
+    },
+    "Dark Silver Stealer Pants": {
+      "dex": 1,
+      "pdd": 21
+    },
+    "Dark Slain": {
+      "pad": 26,
+      "luk": 4,
+      "eva": 3
+    },
+    "Dark Snowboard": {
+      "pad": 66
+    },
+    "Dark Starlight": {
+      "int": 4,
+      "luk": 1,
+      "pdd": 36,
+      "mdd": 18
+    },
+    "Dark Studded Pants": {
+      "luk": 2,
+      "eva": 2,
+      "pdd": 45
+    },
+    "Dark Studded Top": {
+      "dex": 2,
+      "luk": 4,
+      "pdd": 58,
+      "mp": 10
+    },
+    "Dark Tiberian": {
+      "pdd": 18,
+      "mp": 5
+    },
+    "Dark Trigger": {
+      "str": 1,
+      "dex": 1,
+      "pdd": 21,
+      "mp": 10
+    },
+    "Dark Valhalla Helmet": {
+      "str": 3,
+      "pdd": 100
+    },
+    "Dark Valkyrie": {
+      "str": 5,
+      "dex": 2,
+      "pdd": 95,
+      "mp": 20
+    },
+    "Dark Varr Hat": {
+      "int": 5,
+      "pdd": 52,
+      "mdd": 80,
+      "mp": 40
+    },
+    "Dark Varr Shoes": {
+      "mad": 1,
+      "int": 4,
+      "luk": 2,
+      "pdd": 39,
+      "mdd": 19
+    },
+    "Dark Varuna": {
+      "int": 3,
+      "luk": 7,
+      "pdd": 84,
+      "mdd": 42,
+      "mp": 45
+    },
+    "Dark War Boots": {
+      "str": 2,
+      "pdd": 17
+    },
+    "Dark War Greave": {
+      "str": 4,
+      "dex": 1,
+      "acc": 1,
+      "pdd": 54
+    },
+    "Dark Willow": {
+      "dex": 3,
+      "pdd": 20,
+      "mp": 20
+    },
+    "Dark Wing Boots": {
+      "dex": 5,
+      "pdd": 46
+    },
+    "Dark Wolfskin": {
+      "luk": 2,
+      "pdd": 10
+    },
+    "Deadly Fin": {
+      "pad": 72
+    },
+    "Dellinger Special": {
+      "pad": 18
+    },
+    "Devil's Sunrise": {
+      "pad": 95
+    },
+    "Dimon Wand": {
+      "pad": 69,
+      "mad": 113
+    },
+    "Doombringer": {
+      "pad": 85
+    },
+    "Double Axe": {
+      "pad": 27
+    },
+    "Double Tail Knuckler": {
+      "pad": 26
+    },
+    "Dragon Axe": {
+      "pad": 103
+    },
+    "Dragon Battle Axe": {
+      "pad": 107
+    },
+    "Dragon Carabella": {
+      "pad": 103
+    },
+    "Dragon Chelbird": {
+      "pad": 107
+    },
+    "Dragon Claymore": {
+      "pad": 105
+    },
+    "Dragon Faltizan": {
+      "pad": 107
+    },
+    "Dragon Flame": {
+      "pad": 107
+    },
+    "Dragon Green Sleve": {
+      "pad": 50,
+      "dex": 7,
+      "eva": 7
+    },
+    "Dragon Kanzir": {
+      "pad": 100
+    },
+    "Dragon Khanjar": {
+      "pad": 15,
+      "luk": 2,
+      "pdd": 5,
+      "mdd": 2
+    },
+    "Dragon Kreda": {
+      "pad": 98
+    },
+    "Dragon Mace": {
+      "pad": 103
+    },
+    "Dragon Purple Sleve": {
+      "pad": 50,
+      "luk": 7,
+      "eva": 7
+    },
+    "Dragon Shiner Bow": {
+      "pad": 100,
+      "speed": 11
+    },
+    "Dragon Shiner Cross": {
+      "pad": 103,
+      "speed": 11
+    },
+    "Dragon Slash Claw": {
+      "pad": 78
+    },
+    "Dragon Staff": {
+      "pad": 80,
+      "mad": 125
+    },
+    "Dragon Toenail": {
+      "pad": 55
+    },
+    "Dragon Wand": {
+      "pad": 75,
+      "mad": 123
+    },
+    "Dragon's Tail": {
+      "pad": 85
+    },
+    "Dragonfire Revolver": {
+      "pad": 78
+    },
+    "Eagle Crow": {
+      "pad": 49
+    },
+    "Eclipse": {
+      "pad": 92
+    },
+    "Eloon": {
+      "pad": 42
+    },
+    "Emerald Battle Grieves": {
+      "str": 1,
+      "pdd": 18
+    },
+    "Emerald Dome": {
+      "pdd": 47
+    },
+    "Emerald Earrings": {
+      "mdd": 10
+    },
+    "Emerald Emperor": {
+      "str": 3,
+      "dex": 2,
+      "pdd": 32,
+      "mp": 15
+    },
+    "Emerald Fitted Mail": {
+      "str": 4,
+      "pdd": 60,
+      "mdd": 20,
+      "hp": 5
+    },
+    "Emerald Hildon Boots": {
+      "dex": 3,
+      "pdd": 30
+    },
+    "Emerald War Greave": {
+      "str": 2,
+      "dex": 3,
+      "acc": 1,
+      "pdd": 54
+    },
+    "Emergency Rescue Tube": {
+      "pad": 75,
+      "hp": 150
+    },
+    "Esther Shield": {
+      "int": 1,
+      "pdd": 15,
+      "mdd": 20
+    },
+    "Evil Tale": {
+      "pad": 45,
+      "mad": 73
+    },
+    "Evil Wings": {
+      "pad": 53,
+      "mad": 80
+    },
+    "Eviscerator": {
+      "pad": 102
+    },
+    "Fairfrozen": {
+      "pad": 97
+    },
+    "Fairy Wand": {
+      "pad": 33,
+      "mad": 53
+    },
+    "Field Dagger": {
+      "pad": 30
+    },
+    "Fire Arund": {
+      "pad": 85,
+      "eva": 1
+    },
+    "Fire Raven": {
+      "pad": 88,
+      "eva": 1
+    },
+    "Fireman's Axe": {
+      "pad": 47
+    },
+    "Fish Spear": {
+      "pad": 42,
+      "acc": 5,
+      "speed": 5
+    },
+    "Fishing Pole": {
+      "pad": 67,
+      "acc": 15
+    },
+    "Flame Golden Circlet": {
+      "int": 1,
+      "luk": 2,
+      "pdd": 24,
+      "mdd": 55
+    },
+    "Flaming Katana": {
+      "pad": 65,
+      "mad": 40,
+      "speed": 17
+    },
+    "Fork on a Stick": {
+      "pad": 37
+    },
+    "Forked Dagger": {
+      "pad": 42
+    },
+    "Forked Spear": {
+      "pad": 52
+    },
+    "Fraute": {
+      "pad": 93
+    },
+    "Frying Pan": {
+      "pad": 49,
+      "pdd": 6
+    },
+    "Fury Claw": {
+      "pad": 50
+    },
+    "Fusion Mace": {
+      "pad": 44
+    },
+    "Gaea": {
+      "pad": 88
+    },
+    "Garnier": {
+      "pad": 10
+    },
+    "Gellerhead Shield": {
+      "str": 7,
+      "dex": 3,
+      "eva": 5,
+      "pdd": 84,
+      "mdd": 35
+    },
+    "Gephart": {
+      "pad": 50
+    },
+    "Gigantic Sledge": {
+      "pad": 87
+    },
+    "Gladius": {
+      "pad": 47
+    },
+    "Glowing Whip": {
+      "pad": 70,
+      "speed": 15
+    },
+    "Gold Ancient Shield": {
+      "str": 2,
+      "pdd": 56,
+      "mdd": 20
+    },
+    "Gold Aquila Shield": {
+      "pdd": 64,
+      "mdd": 25
+    },
+    "Gold Arbion": {
+      "luk": 2,
+      "pdd": 14
+    },
+    "Gold Brace": {
+      "dex": 2,
+      "pdd": 15
+    },
+    "Gold Brist": {
+      "str": 3,
+      "acc": 1,
+      "pdd": 21
+    },
+    "Gold Burgernet Helm": {
+      "pdd": 27
+    },
+    "Gold Chain Boots": {
+      "dex": 2,
+      "pdd": 17
+    },
+    "Gold Cleave": {
+      "luk": 2,
+      "pdd": 15
+    },
+    "Gold Double Knife": {
+      "pad": 95
+    },
+    "Gold Dragon": {
+      "str": 3,
+      "pdd": 40
+    },
+    "Gold Drop Earrings": {
+      "mdd": 45
+    },
+    "Gold Earrings": {
+      "mdd": 5
+    },
+    "Gold Emerald Earrings": {
+      "dex": 2,
+      "int": 5,
+      "mdd": 58
+    },
+    "Gold Eyes": {
+      "dex": 3,
+      "eva": 1,
+      "pdd": 27
+    },
+    "Gold Hildon Boots": {
+      "str": 3,
+      "pdd": 30
+    },
+    "Gold Kalkan": {
+      "str": 3,
+      "pdd": 70
+    },
+    "Gold Lapiz Sandals": {
+      "mad": 1,
+      "int": 3,
+      "luk": 1,
+      "pdd": 27,
+      "mdd": 13
+    },
+    "Gold Manute": {
+      "int": 2,
+      "luk": 1,
+      "pdd": 22,
+      "mdd": 3,
+      "mp": 15
+    },
+    "Gold Moon Shoes": {
+      "int": 2,
+      "pdd": 15,
+      "mdd": 7,
+      "mp": 5
+    },
+    "Gold Moss Boots": {
+      "str": 1,
+      "dex": 3,
+      "pdd": 34
+    },
+    "Gold Nordic Helm": {
+      "str": 2,
+      "pdd": 44
+    },
+    "Gold Pow": {
+      "dex": 1,
+      "luk": 3,
+      "pdd": 24,
+      "mp": 30
+    },
+    "Gold Rover": {
+      "luk": 4,
+      "eva": 1,
+      "pdd": 28
+    },
+    "Gold Scaler": {
+      "dex": 2,
+      "pdd": 14
+    },
+    "Gold Sneak": {
+      "dex": 1,
+      "luk": 1,
+      "pdd": 22
+    },
+    "Gold Sneak Pants": {
+      "pdd": 18,
+      "mp": 10
+    },
+    "Gold Surfboard": {
+      "pad": 39,
+      "jump": 5
+    },
+    "Gold Sylvia": {
+      "luk": 2,
+      "pdd": 12
+    },
+    "Gold War Boots": {
+      "dex": 1,
+      "pdd": 16
+    },
+    "Golden Arund": {
+      "pad": 85,
+      "jump": 3
+    },
+    "Golden Crow": {
+      "pad": 78
+    },
+    "Golden Hinkel": {
+      "pad": 80,
+      "speed": 10
+    },
+    "Golden Hook": {
+      "pad": 27
+    },
+    "Golden Mole": {
+      "pad": 72
+    },
+    "Golden Neschere": {
+      "pad": 98,
+      "jump": 3
+    },
+    "Golden Nisrock": {
+      "pad": 95,
+      "jump": 3
+    },
+    "Golden Pride": {
+      "int": 2,
+      "pdd": 9,
+      "mdd": 40
+    },
+    "Golden Raven": {
+      "pad": 88,
+      "jump": 3
+    },
+    "Golden River": {
+      "pad": 80
+    },
+    "Golden Smith Hammer": {
+      "pad": 102
+    },
+    "Great Blue Helmet": {
+      "dex": 1,
+      "pdd": 38
+    },
+    "Great Brown Helmet": {
+      "str": 1,
+      "pdd": 35
+    },
+    "Great Red Helmet": {
+      "pdd": 38,
+      "hp": 10
+    },
+    "Green Able Armor": {
+      "dex": 1,
+      "pdd": 14
+    },
+    "Green Able Armor Skirt": {
+      "pdd": 12,
+      "mp": 5
+    },
+    "Green Ades": {
+      "str": 3,
+      "dex": 6,
+      "eva": 2,
+      "pdd": 95
+    },
+    "Green Ades Shoes": {
+      "str": 1,
+      "dex": 4,
+      "eva": 1,
+      "pdd": 52
+    },
+    "Green Anelin": {
+      "dex": 3,
+      "luk": 4,
+      "pdd": 38
+    },
+    "Green Anes": {
+      "str": 3,
+      "dex": 6,
+      "eva": 2,
+      "pdd": 95
+    },
+    "Green Arcina": {
+      "str": 2,
+      "dex": 6,
+      "pdd": 40,
+      "mp": 30
+    },
+    "Green Arianne": {
+      "pdd": 12,
+      "mdd": 8,
+      "mp": 10
+    },
+    "Green Arianne Skirt": {
+      "pdd": 10,
+      "mdd": 6,
+      "mp": 5
+    },
+    "Green Arlic Helmet": {
+      "str": 1,
+      "dex": 4,
+      "eva": 1,
+      "pdd": 57
+    },
+    "Green Armis": {
+      "str": 6,
+      "dex": 4,
+      "eva": 2,
+      "pdd": 105
+    },
+    "Green Arnah Cap": {
+      "dex": 6,
+      "pdd": 63,
+      "mp": 20
+    },
+    "Green Arnah Shoes": {
+      "dex": 6,
+      "pdd": 58
+    },
+    "Green Arzuna": {
+      "str": 6,
+      "dex": 4,
+      "eva": 2,
+      "pdd": 105
+    },
+    "Green Avelin": {
+      "pdd": 10
+    },
+    "Green Avelin Skirt": {
+      "pdd": 9
+    },
+    "Green Battle Road": {
+      "str": 4,
+      "dex": 4,
+      "acc": 1,
+      "pdd": 132
+    },
+    "Green Bazura": {
+      "int": 4,
+      "luk": 6,
+      "pdd": 84,
+      "mdd": 42,
+      "mp": 45
+    },
+    "Green Bennis Chainmail": {
+      "dex": 2,
+      "pdd": 22
+    },
+    "Green Burgler": {
+      "dex": 1,
+      "pdd": 24
+    },
+    "Green Canal Hood": {
+      "str": 3,
+      "luk": 3,
+      "pdd": 63
+    },
+    "Green China": {
+      "str": 1,
+      "luk": 3,
+      "pdd": 42
+    },
+    "Green China Pants": {
+      "luk": 1,
+      "acc": 1,
+      "pdd": 33
+    },
+    "Green Ciara": {
+      "int": 3,
+      "luk": 3,
+      "pdd": 37,
+      "mdd": 11
+    },
+    "Green Clarity": {
+      "int": 2,
+      "luk": 1,
+      "pdd": 30,
+      "mdd": 7,
+      "mp": 10
+    },
+    "Green Commodore": {
+      "str": 2,
+      "dex": 5,
+      "acc": 1,
+      "pdd": 95
+    },
+    "Green Commodore Pants": {
+      "dex": 3,
+      "acc": 2,
+      "pdd": 76,
+      "mdd": 6
+    },
+    "Green Cordon": {
+      "str": 2,
+      "dex": 3,
+      "pdd": 32,
+      "mp": 15
+    },
+    "Green Crescent Boots": {
+      "str": 2,
+      "dex": 4,
+      "acc": 1,
+      "pdd": 60
+    },
+    "Green Distinction": {
+      "dex": 2,
+      "pdd": 27
+    },
+    "Green Elf Shoes": {
+      "str": 2,
+      "dex": 2,
+      "eva": 1,
+      "pdd": 40
+    },
+    "Green Enigma": {
+      "int": 2,
+      "luk": 6,
+      "pdd": 68,
+      "mdd": 34,
+      "mp": 35
+    },
+    "Green Enigma Shoes": {
+      "int": 2,
+      "luk": 3,
+      "pdd": 31,
+      "mdd": 15
+    },
+    "Green Enigmatic": {
+      "int": 2,
+      "luk": 6,
+      "pdd": 68,
+      "mdd": 34,
+      "mp": 35
+    },
+    "Green Fairy Skirt": {
+      "pdd": 16,
+      "mdd": 12,
+      "hp": 5,
+      "mp": 5
+    },
+    "Green Fairy Top": {
+      "int": 1,
+      "pdd": 21,
+      "mdd": 15,
+      "mp": 10
+    },
+    "Green Falcon": {
+      "str": 1,
+      "dex": 4,
+      "pdd": 51
+    },
+    "Green Focus": {
+      "str": 2,
+      "dex": 4,
+      "pdd": 35
+    },
+    "Green Gaia Cape": {
+      "eva": 5,
+      "pdd": 22,
+      "mdd": 18
+    },
+    "Green Galaxy": {
+      "int": 2,
+      "luk": 3,
+      "pdd": 42,
+      "mdd": 70
+    },
+    "Green Giles Cape": {
+      "pdd": 31,
+      "mdd": 36
+    },
+    "Green Goldrunners": {
+      "int": 2,
+      "luk": 2,
+      "pdd": 23,
+      "mdd": 11
+    },
+    "Green Goldwind Shoes": {
+      "int": 3,
+      "pdd": 19,
+      "mdd": 9
+    },
+    "Green Goni Shoes": {
+      "dex": 3,
+      "pdd": 28
+    },
+    "Green Gore Boots": {
+      "str": 1,
+      "dex": 3,
+      "pdd": 34
+    },
+    "Green Grace Helmet": {
+      "dex": 1,
+      "pdd": 90
+    },
+    "Green Guise": {
+      "luk": 1,
+      "pdd": 21
+    },
+    "Green Hawkeye": {
+      "dex": 1,
+      "pdd": 21
+    },
+    "Green Headband": {
+      "pdd": 5
+    },
+    "Green Hoflon": {
+      "dex": 3,
+      "pdd": 72,
+      "mdd": 25
+    },
+    "Green Hunter": {
+      "pdd": 18,
+      "hp": 5
+    },
+    "Green Hunter Boots": {
+      "dex": 1,
+      "pdd": 16
+    },
+    "Green Huntress Armor": {
+      "dex": 2,
+      "pdd": 26
+    },
+    "Green Huntress Pants": {
+      "dex": 1,
+      "pdd": 21
+    },
+    "Green Hwarang Shirt": {
+      "dex": 2,
+      "pdd": 35
+    },
+    "Green Ice Queen": {
+      "str": 1,
+      "dex": 4,
+      "pdd": 65
+    },
+    "Green Ice Queen Skirt": {
+      "dex": 2,
+      "acc": 1,
+      "pdd": 52
+    },
+    "Green Imperial": {
+      "str": 3,
+      "dex": 1,
+      "pdd": 35
+    },
+    "Green Jester": {
+      "int": 2,
+      "pdd": 12
+    },
+    "Green Katina Boots": {
+      "str": 4,
+      "luk": 2,
+      "eva": 1,
+      "pdd": 58
+    },
+    "Green Knucklevest": {
+      "luk": 3,
+      "pdd": 30
+    },
+    "Green Korben": {
+      "str": 5,
+      "dex": 2,
+      "pdd": 39,
+      "mp": 10
+    },
+    "Green Lagger Halfglove": {
+      "pdd": 4
+    },
+    "Green Lappy Boots": {
+      "luk": 1,
+      "pdd": 13
+    },
+    "Green Larceny": {
+      "dex": 1,
+      "luk": 2,
+      "pdd": 30,
+      "mp": 10
+    },
+    "Green Legolia": {
+      "dex": 3,
+      "pdd": 30
+    },
+    "Green Legolia Pants": {
+      "dex": 1,
+      "pdd": 24,
+      "mp": 5
+    },
+    "Green Legolier": {
+      "dex": 3,
+      "pdd": 30
+    },
+    "Green Legolier Pants": {
+      "dex": 1,
+      "pdd": 24,
+      "mp": 5
+    },
+    "Green Lineros": {
+      "str": 2,
+      "dex": 5,
+      "pdd": 75,
+      "mp": 25
+    },
+    "Green Linnex": {
+      "str": 2,
+      "dex": 5,
+      "pdd": 75,
+      "mp": 25
+    },
+    "Green Loosecap": {
+      "pdd": 15,
+      "mp": 5
+    },
+    "Green Lucida": {
+      "str": 3,
+      "dex": 6,
+      "pdd": 105,
+      "mp": 25
+    },
+    "Green Lucida Skirt": {
+      "str": 3,
+      "dex": 4,
+      "pdd": 84,
+      "mp": 25
+    },
+    "Green Lumati": {
+      "dex": 4,
+      "eva": 1,
+      "pdd": 55
+    },
+    "Green Marker": {
+      "dex": 1,
+      "pdd": 11
+    },
+    "Green Maro": {
+      "dex": 3,
+      "pdd": 33
+    },
+    "Green Matty": {
+      "int": 2,
+      "pdd": 15,
+      "mdd": 45
+    },
+    "Green Mystra": {
+      "str": 3,
+      "luk": 3,
+      "pdd": 33
+    },
+    "Green Napoleon": {
+      "pdd": 10,
+      "mdd": 15
+    },
+    "Green Neli Shoes": {
+      "mad": 1,
+      "int": 3,
+      "luk": 2,
+      "pdd": 35,
+      "mdd": 17
+    },
+    "Green Neos": {
+      "str": 2,
+      "dex": 6,
+      "acc": 2,
+      "pdd": 105
+    },
+    "Green Neos Pants": {
+      "dex": 3,
+      "acc": 3,
+      "pdd": 84
+    },
+    "Green Oriental Fury Coat": {
+      "int": 3,
+      "luk": 6,
+      "pdd": 76,
+      "mdd": 38,
+      "mp": 40
+    },
+    "Green Orientican": {
+      "str": 1,
+      "dex": 4,
+      "pdd": 65
+    },
+    "Green Orientican Pants": {
+      "dex": 2,
+      "acc": 1,
+      "pdd": 52
+    },
+    "Green Osfa Boots": {
+      "str": 3,
+      "luk": 2,
+      "eva": 1,
+      "pdd": 52
+    },
+    "Green Osfa Hat": {
+      "str": 3,
+      "luk": 2,
+      "eva": 1,
+      "pdd": 57
+    },
+    "Green Osfa Pants": {
+      "str": 3,
+      "luk": 2,
+      "pdd": 57
+    },
+    "Green Osfa Suit": {
+      "str": 5,
+      "luk": 2,
+      "pdd": 70,
+      "mp": 20
+    },
+    "Green Patriot": {
+      "str": 1,
+      "dex": 3,
+      "pdd": 45,
+      "mp": 15
+    },
+    "Green Pilfer": {
+      "dex": 2,
+      "pdd": 27
+    },
+    "Green Pirate Blouse": {
+      "dex": 5,
+      "luk": 1,
+      "pdd": 64,
+      "mp": 15
+    },
+    "Green Pirate Boots": {
+      "str": 3,
+      "luk": 2,
+      "pdd": 46
+    },
+    "Green Pirate Pants": {
+      "dex": 3,
+      "luk": 1,
+      "pdd": 51
+    },
+    "Green Pirate Skirt": {
+      "dex": 3,
+      "luk": 1,
+      "pdd": 51
+    },
+    "Green Pirate Top": {
+      "dex": 5,
+      "luk": 1,
+      "pdd": 64,
+      "mp": 15
+    },
+    "Green Pireta Hat": {
+      "dex": 3,
+      "luk": 2,
+      "pdd": 51
+    },
+    "Green Plain Robe": {
+      "pdd": 16,
+      "mdd": 8,
+      "hp": 15
+    },
+    "Green Plasteer": {
+      "str": 4,
+      "eva": 1,
+      "pdd": 55
+    },
+    "Green Pole-Feather Hat": {
+      "dex": 1,
+      "pdd": 24
+    },
+    "Green Pria": {
+      "str": 2,
+      "dex": 6,
+      "pdd": 85,
+      "mp": 30
+    },
+    "Green Pris": {
+      "str": 2,
+      "dex": 6,
+      "pdd": 85,
+      "mp": 30
+    },
+    "Green Robin Hat": {
+      "pdd": 15,
+      "hp": 5
+    },
+    "Green Sage": {
+      "int": 4,
+      "luk": 2,
+      "pdd": 35,
+      "mdd": 10
+    },
+    "Green Scarab": {
+      "pad": 34,
+      "dex": 5,
+      "pdd": 4
+    },
+    "Green Seraph Cape": {
+      "pdd": 25,
+      "mdd": 30
+    },
+    "Green Seraphis": {
+      "int": 3,
+      "luk": 1,
+      "pdd": 30,
+      "mdd": 60
+    },
+    "Green Shivermail": {
+      "dex": 1,
+      "pdd": 18
+    },
+    "Green Shivermail Skirt": {
+      "pdd": 15,
+      "hp": 3,
+      "mp": 2
+    },
+    "Green Silky Boots": {
+      "dex": 2,
+      "pdd": 19
+    },
+    "Green Sonata": {
+      "dex": 3,
+      "pdd": 33
+    },
+    "Green Starlight": {
+      "int": 4,
+      "luk": 1,
+      "pdd": 36,
+      "mdd": 18
+    },
+    "Green Steel-Tip Boots": {
+      "str": 2,
+      "dex": 1,
+      "pdd": 28
+    },
+    "Green Umbrella": {
+      "pad": 12,
+      "mad": 25
+    },
+    "Green Valhalla Helmet": {
+      "str": 2,
+      "pdd": 100
+    },
+    "Green Valkyrie": {
+      "str": 2,
+      "dex": 5,
+      "pdd": 95,
+      "mp": 20
+    },
+    "Green Valkyrie Skirt": {
+      "str": 2,
+      "dex": 3,
+      "pdd": 76,
+      "mp": 20
+    },
+    "Green Varr Hat": {
+      "int": 3,
+      "luk": 4,
+      "pdd": 52,
+      "mdd": 80
+    },
+    "Green Varr Shoes": {
+      "int": 3,
+      "luk": 3,
+      "pdd": 39,
+      "mdd": 19
+    },
+    "Green Varuna": {
+      "int": 4,
+      "luk": 6,
+      "pdd": 84,
+      "mdd": 42,
+      "mp": 45
+    },
+    "Green White-Lined Boots": {
+      "dex": 2,
+      "pdd": 19
+    },
+    "Green Wing Boots": {
+      "str": 1,
+      "dex": 4,
+      "pdd": 46
+    },
+    "Green Wizard Robe": {
+      "pdd": 28,
+      "mdd": 14,
+      "mp": 30
+    },
+    "Grey / Brown Training Pants": {
+      "pdd": 6,
+      "mdd": 4
+    },
+    "Grey / Brown Training Shirt": {
+      "pdd": 7,
+      "mdd": 5
+    },
+    "Grey Able Armor": {
+      "dex": 1,
+      "pdd": 14
+    },
+    "Grey Able Skirt": {
+      "pdd": 12,
+      "mp": 5
+    },
+    "Grey Thick Sweat Pants": {
+      "pdd": 10
+    },
+    "Grey Work Gloves": {
+      "pdd": 3,
+      "mdd": 1
+    },
+    "Gross Jaeger": {
+      "pad": 83
+    },
+    "Half Earrings": {
+      "mdd": 55
+    },
+    "Halfmoon Zamadar": {
+      "pad": 47
+    },
+    "Hall Staff": {
+      "pad": 38,
+      "mad": 55
+    },
+    "Hammer": {
+      "pad": 34
+    },
+    "Hand Axe": {
+      "pad": 17
+    },
+    "Hard Leather Glove": {
+      "pdd": 8
+    },
+    "Hawkhead": {
+      "pad": 77
+    },
+    "Heart Wand": {
+      "pad": 45,
+      "mad": 68,
+      "int": 2,
+      "hp": 50
+    },
+    "Heaven's Gate": {
+      "pad": 90
+    },
+    "Heaven's Justice": {
+      "pad": 88
+    },
+    "Heavy Hammer": {
+      "pad": 54
+    },
+    "Heckler": {
+      "pad": 54
+    },
+    "Helios": {
+      "pad": 92
+    },
+    "Hellslayer": {
+      "pad": 97
+    },
+    "Holy Cross Earrings": {
+      "mdd": 35
+    },
+    "Holy Spear": {
+      "pad": 82
+    },
+    "Horntail Necklace": {
+      "str": 7,
+      "dex": 7,
+      "int": 7,
+      "luk": 7,
+      "eva": 24,
+      "pdd": 108,
+      "mdd": 108
+    },
+    "Hula Hoop": {
+      "pad": 64
+    },
+    "Hunter's Bow": {
+      "pad": 35,
+      "dex": 1
+    },
+    "Ice Jeans": {
+      "pdd": 13,
+      "mp": 3
+    },
+    "Ice Wand": {
+      "pad": 24,
+      "mad": 38
+    },
+    "Infinity's Wrath": {
+      "pad": 66
+    },
+    "Iron Burgernet Helm": {
+      "pdd": 25
+    },
+    "Iron Chain Boots": {
+      "luk": 1,
+      "pdd": 16
+    },
+    "Iron Dagger": {
+      "pad": 40
+    },
+    "Iron Knuckle": {
+      "str": 1,
+      "pdd": 15
+    },
+    "Iron Mace": {
+      "pad": 39
+    },
+    "Ivory Shouldermail": {
+      "str": 1,
+      "dex": 3,
+      "pdd": 55
+    },
+    "Ivory Shouldermail Pants": {
+      "dex": 1,
+      "acc": 1,
+      "pdd": 44
+    },
+    "Jacker": {
+      "pad": 59
+    },
+    "Jean Capris": {
+      "pdd": 5
+    },
+    "Jeweled Katar": {
+      "pad": 67
+    },
+    "Jousting Helmet": {
+      "pdd": 30
+    },
+    "Juno": {
+      "pdd": 3
+    },
+    "Jurgen Wristguard": {
+      "dex": 1,
+      "pdd": 19
+    },
+    "Kage": {
+      "pad": 65,
+      "mad": 100
+    },
+    "Kandine": {
+      "pad": 77,
+      "eva": 3
+    },
+    "Khaki Shadow": {
+      "dex": 3,
+      "pdd": 34,
+      "mp": 10
+    },
+    "Khaki Shadow Pants": {
+      "dex": 1,
+      "pdd": 27,
+      "mp": 10
+    },
+    "Khan": {
+      "pad": 88
+    },
+    "Khanjar": {
+      "pad": 7,
+      "luk": 1,
+      "pdd": 3,
+      "mdd": 1
+    },
+    "King Cent": {
+      "pad": 74
+    },
+    "Knuckle Mace": {
+      "pad": 69
+    },
+    "Korean Fan": {
+      "pad": 50,
+      "acc": 5,
+      "eva": 5
+    },
+    "Leather Arms": {
+      "pad": 22
+    },
+    "Leather Purse": {
+      "pad": 34
+    },
+    "Leather Sandals": {
+      "pdd": 2
+    },
+    "LeFay Jester": {
+      "pdd": 12,
+      "mdd": 40,
+      "hp": 10,
+      "mp": 10
+    },
+    "Lemona": {
+      "pdd": 4
+    },
+    "Leomite": {
+      "pad": 97
+    },
+    "Light Mantis": {
+      "dex": 4,
+      "luk": 1,
+      "pdd": 50
+    },
+    "Light Mantis Pants": {
+      "dex": 2,
+      "eva": 1,
+      "pdd": 39
+    },
+    "Light Purple Umbrella": {
+      "pad": 41,
+      "mad": 39
+    },
+    "Light Scorpio": {
+      "dex": 4,
+      "luk": 1,
+      "pdd": 50
+    },
+    "Light Scorpio Pants": {
+      "dex": 2,
+      "eva": 1,
+      "pdd": 39
+    },
+    "Lightning Earrings": {
+      "mdd": 10
+    },
+    "Lion's Fang": {
+      "pad": 70
+    },
+    "Lionheart": {
+      "pad": 55
+    },
+    "Liu Bei Dagger": {
+      "pad": 69,
+      "luk": 2,
+      "eva": 2
+    },
+    "Lollipop": {
+      "pad": 15
+    },
+    "Long Sword": {
+      "pad": 27
+    },
+    "Lunar Shooter": {
+      "pad": 40
+    },
+    "Mace": {
+      "pad": 34
+    },
+    "Machete": {
+      "pad": 37
+    },
+    "Magicodar": {
+      "pad": 63,
+      "mad": 103,
+      "int": 1
+    },
+    "Maple Asura Dagger": {
+      "pad": 77,
+      "str": 2,
+      "acc": 15,
+      "eva": 20
+    },
+    "Maple Belzet": {
+      "pad": 85,
+      "str": 6,
+      "acc": 35
+    },
+    "Maple Bow": {
+      "pad": 48,
+      "speed": 7
+    },
+    "Maple Claw": {
+      "pad": 20,
+      "eva": 10
+    },
+    "Maple Crossbow": {
+      "pad": 60,
+      "speed": 7
+    },
+    "Maple Crow": {
+      "pad": 52,
+      "speed": 7
+    },
+    "Maple Dark Mate": {
+      "pad": 75,
+      "luk": 1,
+      "acc": 15,
+      "eva": 20
+    },
+    "Maple Demon Axe": {
+      "pad": 85,
+      "str": 4,
+      "acc": 35
+    },
+    "Maple Doom Singer": {
+      "pad": 68,
+      "str": 5,
+      "acc": 30
+    },
+    "Maple Dragon Axe": {
+      "pad": 68,
+      "str": 3,
+      "acc": 30
+    },
+    "Maple Earring": {
+      "mdd": 50,
+      "hp": 25,
+      "mp": 25
+    },
+    "Maple Glory Sword": {
+      "pad": 81,
+      "str": 1,
+      "acc": 35
+    },
+    "Maple Golden Claw": {
+      "pad": 60,
+      "str": 5,
+      "acc": 30,
+      "hp": 100
+    },
+    "Maple Havoc Hammer": {
+      "pad": 81,
+      "str": 1,
+      "acc": 35
+    },
+    "Maple Impaler": {
+      "pad": 65,
+      "str": 1,
+      "acc": 30
+    },
+    "Maple Kandayo": {
+      "pad": 23,
+      "eva": 20
+    },
+    "Maple Kandiva Bow": {
+      "pad": 78,
+      "hp": 100,
+      "speed": 10
+    },
+    "Maple Karstan": {
+      "pad": 85,
+      "str": 3,
+      "acc": 35
+    },
+    "Maple Knuckle": {
+      "pad": 38,
+      "acc": 10
+    },
+    "Maple Lama Staff": {
+      "pad": 39,
+      "mad": 58,
+      "hp": 100,
+      "mp": 50
+    },
+    "Maple Magician shield": {
+      "int": 2,
+      "pdd": 31,
+      "mdd": 51
+    },
+    "Maple Nishada": {
+      "pad": 81,
+      "hp": 100,
+      "speed": 10
+    },
+    "Maple Scorpio": {
+      "pad": 68,
+      "str": 2,
+      "acc": 30
+    },
+    "Maple Shield": {
+      "eva": 1,
+      "pdd": 10,
+      "mdd": 10
+    },
+    "Maple Shine Wand": {
+      "pad": 49,
+      "mad": 80,
+      "int": 1,
+      "hp": 100,
+      "mp": 100
+    },
+    "Maple Skanda": {
+      "pad": 33,
+      "luk": 3,
+      "eva": 25
+    },
+    "Maple Snowboard": {
+      "pad": 85
+    },
+    "Maple Soul Rohen": {
+      "pad": 83,
+      "str": 4,
+      "acc": 35
+    },
+    "Maple Soul Searcher": {
+      "pad": 58,
+      "speed": 7
+    },
+    "Maple Soul Singer": {
+      "pad": 60,
+      "acc": 30
+    },
+    "Maple Soul Spear": {
+      "pad": 85,
+      "str": 2,
+      "acc": 35
+    },
+    "Maple Staff": {
+      "pad": 35,
+      "mad": 48,
+      "hp": 100
+    },
+    "Maple Steel Axe": {
+      "pad": 81,
+      "str": 1,
+      "acc": 35
+    },
+    "Maple Storm Finger": {
+      "pad": 46,
+      "str": 3,
+      "acc": 20
+    },
+    "Maple Sword": {
+      "pad": 48,
+      "acc": 20
+    },
+    "Maple Theif shield": {
+      "luk": 2,
+      "pdd": 40,
+      "mdd": 10
+    },
+    "Maple Wagner": {
+      "pad": 58,
+      "acc": 10,
+      "eva": 15
+    },
+    "Maple Warrior shield": {
+      "str": 2,
+      "pdd": 53,
+      "mdd": 22
+    },
+    "Maple Wisdom Staff": {
+      "pad": 50,
+      "mad": 80,
+      "int": 1,
+      "hp": 150,
+      "mp": 50
+    },
+    "Marine Arund": {
+      "pad": 85,
+      "acc": 1
+    },
+    "Marine Raven": {
+      "pad": 88,
+      "acc": 1
+    },
+    "Marine Shadow": {
+      "luk": 3,
+      "pdd": 34,
+      "mp": 10
+    },
+    "Marine Shadow Pants": {
+      "luk": 1,
+      "pdd": 27,
+      "mp": 10
+    },
+    "Maroon Jangoon Armor": {
+      "str": 3,
+      "pdd": 45,
+      "mp": 10
+    },
+    "Maroon Jangoon Shoes": {
+      "str": 1,
+      "dex": 1,
+      "pdd": 24,
+      "mp": 20
+    },
+    "Maroon Moon": {
+      "dex": 1,
+      "luk": 3,
+      "pdd": 42
+    },
+    "Maroon Moon Pants": {
+      "luk": 1,
+      "eva": 1,
+      "pdd": 33
+    },
+    "Metal Axe": {
+      "pad": 32
+    },
+    "Metal Heart Earrings": {
+      "mdd": 60
+    },
+    "Metal Silver Earrings": {
+      "mdd": 50
+    },
+    "Metal Wand": {
+      "pad": 21,
+      "mad": 33
+    },
+    "Metus": {
+      "pad": 90,
+      "speed": 11
+    },
+    "Mikhail": {
+      "pad": 83
+    },
+    "Misthil Axe": {
+      "pad": 42
+    },
+    "Mithril Battle Grieves": {
+      "dex": 1,
+      "pdd": 18
+    },
+    "Mithril Brist": {
+      "str": 2,
+      "dex": 1,
+      "pdd": 20
+    },
+    "Mithril Buckler": {
+      "pdd": 20
+    },
+    "Mithril Crusader Helm": {
+      "str": 1,
+      "pdd": 52,
+      "mdd": 22
+    },
+    "Mithril Guards": {
+      "pad": 18,
+      "luk": 1,
+      "pdd": 1
+    },
+    "Mithril Hildon Boots": {
+      "str": 1,
+      "dex": 2,
+      "pdd": 30
+    },
+    "Mithril Husk": {
+      "str": 3,
+      "acc": 1,
+      "pdd": 28
+    },
+    "Mithril Maul": {
+      "pad": 52
+    },
+    "Mithril Nordic Helm": {
+      "str": 1,
+      "pdd": 42
+    },
+    "Mithril Planet": {
+      "dex": 1,
+      "pdd": 70
+    },
+    "Mithril Platine": {
+      "str": 4,
+      "dex": 2,
+      "pdd": 75,
+      "mp": 10
+    },
+    "Mithril Platine Pants": {
+      "str": 2,
+      "acc": 2,
+      "pdd": 60
+    },
+    "Mithril Pole Arm": {
+      "pad": 52
+    },
+    "Mithril Scaler": {
+      "dex": 1,
+      "pdd": 13
+    },
+    "Mithril Tower Shield": {
+      "str": 2,
+      "pdd": 40
+    },
+    "Mithril Trigger": {
+      "dex": 1,
+      "pdd": 21,
+      "mp": 10
+    },
+    "Mithril Viking Helm": {
+      "pdd": 25
+    },
+    "Mithril Wand": {
+      "pad": 27,
+      "mad": 43
+    },
+    "Mithril War Boots": {
+      "pdd": 15
+    },
+    "Mithril Wolfskin": {
+      "luk": 1,
+      "pdd": 9
+    },
+    "Moonstar Earrings": {
+      "pdd": 5,
+      "mdd": 27
+    },
+    "Mountain Crossbow": {
+      "pad": 44
+    },
+    "Mr. Rasfelt": {
+      "pad": 49
+    },
+    "Mystic Shield": {
+      "int": 1,
+      "pdd": 10,
+      "mdd": 10
+    },
+    "Nakamaki": {
+      "pad": 57
+    },
+    "Neocora": {
+      "pad": 77
+    },
+    "Neozard": {
+      "pad": 42
+    },
+    "Niam": {
+      "pad": 57
+    },
+    "Nimble Wristguard": {
+      "str": 1,
+      "pdd": 19
+    },
+    "Norman Grip": {
+      "pad": 30
+    },
+    "Oaker Garner": {
+      "str": 1,
+      "dex": 1,
+      "pdd": 22
+    },
+    "Oaker Scorpio": {
+      "dex": 1,
+      "luk": 4,
+      "pdd": 50
+    },
+    "Oaker Scorpio Pants": {
+      "luk": 2,
+      "eva": 1,
+      "pdd": 39
+    },
+    "Oaker Shouldermail": {
+      "str": 1,
+      "dex": 3,
+      "pdd": 55
+    },
+    "Oaker Shouldermail Pants": {
+      "dex": 1,
+      "acc": 1,
+      "pdd": 44
+    },
+    "Ocean Mesana": {
+      "pdd": 8
+    },
+    "Old Bronze Nordic Helm": {
+      "pdd": 55
+    },
+    "Old Mithril Nordic Helm": {
+      "str": 1,
+      "pdd": 55,
+      "mp": 30
+    },
+    "Old Steel Nordic Helm": {
+      "dex": 1,
+      "pdd": 55,
+      "mp": 30
+    },
+    "Old Wisconsin": {
+      "pdd": 8
+    },
+    "Old Wooden Staff": {
+      "pad": 26,
+      "mad": 35
+    },
+    "Olympus": {
+      "pad": 65
+    },
+    "Omega Spear": {
+      "pad": 92
+    },
+    "Orange Calaf": {
+      "int": 4,
+      "luk": 1,
+      "pdd": 44,
+      "mdd": 22,
+      "mp": 20
+    },
+    "Orange Calas": {
+      "int": 4,
+      "luk": 1,
+      "pdd": 44,
+      "mdd": 22,
+      "mp": 20
+    },
+    "Orange Golden Circlet": {
+      "luk": 3,
+      "pdd": 24,
+      "mdd": 55
+    },
+    "Orange Goldrunners": {
+      "int": 3,
+      "luk": 1,
+      "pdd": 23,
+      "mdd": 11
+    },
+    "Orange High Boots": {
+      "pdd": 12
+    },
+    "Orange Lolica Armor": {
+      "pdd": 15
+    },
+    "Orange Split Piece": {
+      "pdd": 15,
+      "mdd": 10,
+      "hp": 10
+    },
+    "Orange Sporty T-Shirt": {
+      "pdd": 11
+    },
+    "Orange Tai": {
+      "str": 5,
+      "dex": 1,
+      "pdd": 65,
+      "mp": 20
+    },
+    "Orange Whitebottom Boots": {
+      "pdd": 13,
+      "speed": 3
+    },
+    "Orihalcon Arbion": {
+      "luk": 1,
+      "pdd": 13
+    },
+    "Orihalcon Camel Boots": {
+      "str": 2,
+      "dex": 2,
+      "pdd": 36
+    },
+    "Orihalcon Hildon Boots": {
+      "str": 2,
+      "dex": 1,
+      "pdd": 30
+    },
+    "Orihalcon Master Sergeant": {
+      "pdd": 30,
+      "hp": 20
+    },
+    "Orihalcon Master Sergeant Kilt": {
+      "str": 1,
+      "pdd": 24
+    },
+    "Orihalcon Missel": {
+      "str": 2,
+      "pdd": 13
+    },
+    "Orihalcon Platine": {
+      "str": 4,
+      "dex": 2,
+      "pdd": 75,
+      "mp": 10
+    },
+    "Orihalcon Platine Pants": {
+      "str": 2,
+      "acc": 2,
+      "pdd": 60
+    },
+    "Orihalcon War Greave": {
+      "str": 3,
+      "dex": 2,
+      "acc": 1,
+      "pdd": 54
+    },
+    "Pan Lid": {
+      "pdd": 10
+    },
+    "Pansy Earrings": {
+      "mdd": 25
+    },
+    "Petal Staff": {
+      "pad": 35,
+      "mad": 50
+    },
+    "Phoenix Wand": {
+      "pad": 57,
+      "mad": 93
+    },
+    "Pinaka": {
+      "pad": 102
+    },
+    "Pink Goldrunners": {
+      "int": 1,
+      "luk": 3,
+      "pdd": 23,
+      "mdd": 11
+    },
+    "Pink Goldwind Shoes": {
+      "luk": 3,
+      "pdd": 19,
+      "mdd": 9
+    },
+    "Pink Jester": {
+      "pdd": 12,
+      "mdd": 40,
+      "hp": 20
+    },
+    "Pink Moon Conehat": {
+      "pdd": 8,
+      "mdd": 20
+    },
+    "Pink Mystique": {
+      "dex": 2,
+      "luk": 4,
+      "pdd": 58
+    },
+    "Pink Mystique Pants": {
+      "luk": 2,
+      "eva": 2,
+      "pdd": 45
+    },
+    "Pink Qi Pao": {
+      "luk": 1,
+      "pdd": 18
+    },
+    "Pink-Flowered Earrings": {
+      "mdd": 40
+    },
+    "Pistol": {
+      "pad": 13
+    },
+    "Plastic Bottle": {
+      "pad": 53,
+      "luk": 3
+    },
+    "Plunger": {
+      "pad": 44
+    },
+    "Pointed Shovel": {
+      "pad": 39
+    },
+    "Pole Arm": {
+      "pad": 32
+    },
+    "Prime Hands": {
+      "pad": 34
+    },
+    "Psycho Claw": {
+      "pad": 58
+    },
+    "Pumpkin Spear": {
+      "pad": 47,
+      "str": 1,
+      "acc": 15
+    },
+    "Purple Arianne": {
+      "int": 1,
+      "pdd": 12,
+      "mdd": 8
+    },
+    "Purple Arianne Skirt": {
+      "pdd": 10,
+      "mdd": 6,
+      "hp": 5
+    },
+    "Purple Avenger": {
+      "luk": 4,
+      "pdd": 40,
+      "mp": 5
+    },
+    "Purple Carzen Boots": {
+      "str": 2,
+      "dex": 2,
+      "acc": 1,
+      "pdd": 42
+    },
+    "Purple Cast Linen": {
+      "str": 3,
+      "dex": 1,
+      "pdd": 39
+    },
+    "Purple Ciara": {
+      "int": 4,
+      "luk": 4,
+      "pdd": 40,
+      "mdd": 13
+    },
+    "Purple Doroness Robe": {
+      "pdd": 24,
+      "mdd": 12,
+      "mp": 30
+    },
+    "Purple Enigma": {
+      "int": 6,
+      "luk": 2,
+      "pdd": 68,
+      "mdd": 34,
+      "mp": 35
+    },
+    "Purple Enigma Shoes": {
+      "int": 3,
+      "luk": 2,
+      "pdd": 31,
+      "mdd": 15
+    },
+    "Purple Fairy Skirt": {
+      "int": 1,
+      "pdd": 16,
+      "mdd": 12
+    },
+    "Purple Fairy Top": {
+      "int": 2,
+      "pdd": 21,
+      "mdd": 15
+    },
+    "Purple Galaxy": {
+      "int": 4,
+      "luk": 1,
+      "pdd": 42,
+      "mdd": 70
+    },
+    "Purple Giles Cape": {
+      "pdd": 31,
+      "mdd": 36
+    },
+    "Purple Goldwind Shoes": {
+      "int": 2,
+      "luk": 1,
+      "pdd": 19,
+      "mdd": 9
+    },
+    "Purple Goni Shoes": {
+      "dex": 1,
+      "luk": 2,
+      "pdd": 28
+    },
+    "Purple Imperial": {
+      "str": 4,
+      "dex": 2,
+      "pdd": 36
+    },
+    "Purple Jewelry Boots": {
+      "int": 1,
+      "pdd": 7,
+      "mdd": 3
+    },
+    "Purple Larceny": {
+      "dex": 2,
+      "luk": 3,
+      "pdd": 31,
+      "mp": 15
+    },
+    "Purple Lucida": {
+      "str": 6,
+      "dex": 3,
+      "pdd": 105,
+      "mp": 25
+    },
+    "Purple Lucida Skirt": {
+      "str": 4,
+      "dex": 3,
+      "pdd": 84,
+      "mp": 25
+    },
+    "Purple Moonlight": {
+      "int": 1,
+      "luk": 4,
+      "pdd": 36,
+      "mdd": 18
+    },
+    "Purple Mystique": {
+      "str": 4,
+      "luk": 2,
+      "pdd": 58
+    },
+    "Purple Mystique Pants": {
+      "str": 2,
+      "eva": 2,
+      "pdd": 45
+    },
+    "Purple Mystique Shoes": {
+      "str": 3,
+      "luk": 1,
+      "eva": 1,
+      "pdd": 40
+    },
+    "Purple Mystra": {
+      "dex": 3,
+      "luk": 3,
+      "pdd": 30
+    },
+    "Purple Nightfox": {
+      "dex": 2,
+      "luk": 2,
+      "pdd": 45,
+      "mp": 15
+    },
+    "Purple Osfa Boots": {
+      "str": 2,
+      "luk": 3,
+      "eva": 1,
+      "pdd": 52
+    },
+    "Purple Osfa Hat": {
+      "str": 2,
+      "luk": 3,
+      "eva": 1,
+      "pdd": 57
+    },
+    "Purple Osfa Pants": {
+      "str": 2,
+      "luk": 3,
+      "pdd": 57
+    },
+    "Purple Osfa Suit": {
+      "str": 2,
+      "luk": 5,
+      "pdd": 70,
+      "mp": 20
+    },
+    "Purple Qi Pao Skirt": {
+      "luk": 1,
+      "pdd": 16
+    },
+    "Purple Salt Shoes": {
+      "luk": 1,
+      "pdd": 13,
+      "mdd": 6,
+      "mp": 10
+    },
+    "Purple Shadow": {
+      "luk": 3,
+      "pdd": 34,
+      "mp": 10
+    },
+    "Purple Shadow Pants": {
+      "luk": 1,
+      "pdd": 27,
+      "mp": 10
+    },
+    "Purple Shivermail": {
+      "pdd": 18,
+      "mp": 10
+    },
+    "Purple Shivermail Skirt": {
+      "pdd": 15,
+      "mp": 5
+    },
+    "Purple Split": {
+      "pdd": 15,
+      "mdd": 10,
+      "mp": 10
+    },
+    "Purple Steal": {
+      "dex": 2,
+      "pdd": 26
+    },
+    "Purple Steal Pants": {
+      "dex": 1,
+      "pdd": 21
+    },
+    "Purple Steel-Tip Boots": {
+      "dex": 3,
+      "pdd": 28
+    },
+    "Purple Tube": {
+      "pad": 55,
+      "mp": 50
+    },
+    "Purple Valkyrie": {
+      "str": 5,
+      "dex": 2,
+      "pdd": 95,
+      "mp": 20
+    },
+    "Purple Valkyrie Skirt": {
+      "str": 3,
+      "dex": 2,
+      "pdd": 76,
+      "mp": 20
+    },
+    "Red / Gold Stealer Pants": {
+      "pdd": 21,
+      "hp": 10
+    },
+    "Red Ades": {
+      "str": 6,
+      "dex": 3,
+      "eva": 2,
+      "pdd": 95
+    },
+    "Red Ades Shoes": {
+      "str": 2,
+      "dex": 3,
+      "eva": 1,
+      "pdd": 52
+    },
+    "Red Amoria Skirt": {
+      "int": 1,
+      "pdd": 18,
+      "mdd": 14,
+      "mp": 5
+    },
+    "Red Amoria Top": {
+      "int": 3,
+      "pdd": 24,
+      "mdd": 18
+    },
+    "Red Anakamoon": {
+      "int": 1,
+      "luk": 5,
+      "pdd": 52,
+      "mdd": 26,
+      "mp": 25
+    },
+    "Red Anakarune": {
+      "int": 1,
+      "luk": 5,
+      "pdd": 52,
+      "mdd": 26,
+      "mp": 25
+    },
+    "Red Anes": {
+      "str": 6,
+      "dex": 3,
+      "eva": 2,
+      "pdd": 95
+    },
+    "Red Apprentice Hat": {
+      "pdd": 5,
+      "mdd": 15
+    },
+    "Red Arcina": {
+      "str": 2,
+      "dex": 4,
+      "pdd": 38,
+      "mp": 10
+    },
+    "Red Arlic Helmet": {
+      "str": 3,
+      "dex": 2,
+      "eva": 1,
+      "pdd": 57
+    },
+    "Red Arnah Cap": {
+      "str": 2,
+      "dex": 4,
+      "pdd": 63,
+      "mp": 20
+    },
+    "Red Arnah Shoes": {
+      "str": 2,
+      "dex": 4,
+      "pdd": 58
+    },
+    "Red Arten": {
+      "int": 1,
+      "pdd": 14
+    },
+    "Red Avenger": {
+      "dex": 4,
+      "pdd": 40,
+      "mp": 5
+    },
+    "Red Bandana": {
+      "acc": 1,
+      "pdd": 8
+    },
+    "Red Barbay": {
+      "str": 4,
+      "pdd": 40,
+      "hp": 10
+    },
+    "Red Battle Empress": {
+      "str": 5,
+      "dex": 3,
+      "acc": 1,
+      "pdd": 132
+    },
+    "Red Battle Road": {
+      "str": 5,
+      "dex": 3,
+      "acc": 1,
+      "pdd": 132
+    },
+    "Red Bazura": {
+      "int": 7,
+      "luk": 3,
+      "pdd": 84,
+      "mdd": 42,
+      "mp": 45
+    },
+    "Red Belly Duke": {
+      "str": 7,
+      "dex": 3,
+      "eva": 2,
+      "pdd": 105
+    },
+    "Red Bennis Chainmail": {
+      "pdd": 22,
+      "hp": 20
+    },
+    "Red Bone Helm": {
+      "pdd": 42,
+      "hp": 10
+    },
+    "Red Brave Hamal": {
+      "str": 3,
+      "dex": 2,
+      "eva": 1,
+      "pdd": 57
+    },
+    "Red Brick": {
+      "pad": 34
+    },
+    "Red Burgler": {
+      "pdd": 24,
+      "hp": 10
+    },
+    "Red Calaf": {
+      "int": 1,
+      "luk": 4,
+      "pdd": 44,
+      "mdd": 22,
+      "mp": 20
+    },
+    "Red Calas": {
+      "int": 1,
+      "luk": 4,
+      "pdd": 44,
+      "mdd": 22,
+      "mp": 20
+    },
+    "Red China": {
+      "dex": 1,
+      "luk": 3,
+      "pdd": 42
+    },
+    "Red China Pants": {
+      "luk": 1,
+      "eva": 1,
+      "pdd": 33
+    },
+    "Red Choro": {
+      "str": 5,
+      "dex": 1,
+      "pdd": 65,
+      "mp": 20
+    },
+    "Red Cleave": {
+      "luk": 1,
+      "pdd": 14
+    },
+    "Red Cloth Pants": {
+      "pdd": 9
+    },
+    "Red Cordon": {
+      "str": 1,
+      "dex": 2,
+      "pdd": 30,
+      "mp": 10
+    },
+    "Red Craven": {
+      "pad": 46,
+      "luk": 6,
+      "pdd": 6
+    },
+    "Red Cross Earrings": {
+      "mdd": 5
+    },
+    "Red Cross Shield": {
+      "pdd": 30
+    },
+    "Red Distinction": {
+      "pdd": 27,
+      "hp": 20
+    },
+    "Red Doroness Robe": {
+      "pdd": 24,
+      "mdd": 12,
+      "hp": 30
+    },
+    "Red Dragon Babuta": {
+      "dex": 2,
+      "pdd": 80
+    },
+    "Red Duke": {
+      "pdd": 40,
+      "hp": 10
+    },
+    "Red Enamel Boots": {
+      "pdd": 10
+    },
+    "Red Engrit": {
+      "pdd": 52,
+      "hp": 30
+    },
+    "Red Falcon": {
+      "str": 2,
+      "dex": 3,
+      "pdd": 51
+    },
+    "Red Flowery Tube": {
+      "pad": 40,
+      "speed": 10
+    },
+    "Red Focus": {
+      "str": 1,
+      "dex": 3,
+      "pdd": 34
+    },
+    "Red Gaia Cape": {
+      "pdd": 19,
+      "mdd": 24
+    },
+    "Red Gold Stealer": {
+      "pdd": 26,
+      "hp": 20
+    },
+    "Red Goni Shoes": {
+      "luk": 3,
+      "pdd": 28
+    },
+    "Red Gore Boots": {
+      "str": 3,
+      "dex": 1,
+      "pdd": 34
+    },
+    "Red Grace Helmet": {
+      "str": 2,
+      "pdd": 90
+    },
+    "Red Guiltian": {
+      "pdd": 18,
+      "mdd": 50,
+      "hp": 20
+    },
+    "Red Hinkel": {
+      "pad": 80,
+      "acc": 1
+    },
+    "Red Hunter": {
+      "pdd": 18,
+      "hp": 5
+    },
+    "Red Hunter Boots": {
+      "dex": 1,
+      "pdd": 16
+    },
+    "Red Hunter's Armor": {
+      "pdd": 26,
+      "hp": 20
+    },
+    "Red Hunter's Pants": {
+      "pdd": 21,
+      "hp": 10
+    },
+    "Red Huntress Armor": {
+      "pdd": 26,
+      "mp": 20
+    },
+    "Red Huntress Pants": {
+      "pdd": 21,
+      "hp": 10
+    },
+    "Red Hwarang Shirt": {
+      "pdd": 35,
+      "hp": 20
+    },
+    "Red Ice Queen": {
+      "str": 4,
+      "dex": 1,
+      "pdd": 65
+    },
+    "Red Ice Queen Skirt": {
+      "str": 2,
+      "acc": 1,
+      "pdd": 52
+    },
+    "Red Infinium Circlet": {
+      "int": 2,
+      "luk": 2,
+      "pdd": 36,
+      "mdd": 65,
+      "mp": 25
+    },
+    "Red Jack Boots": {
+      "dex": 1,
+      "pdd": 13
+    },
+    "Red Jangoon Armor": {
+      "dex": 3,
+      "pdd": 45,
+      "mp": 10
+    },
+    "Red Jangoon Skirt": {
+      "dex": 1,
+      "pdd": 36,
+      "mp": 10
+    },
+    "Red Justice Cape": {
+      "pdd": 13,
+      "mdd": 18
+    },
+    "Red Katana": {
+      "pad": 83
+    },
+    "Red Katina Boots": {
+      "str": 2,
+      "luk": 4,
+      "eva": 1,
+      "pdd": 58
+    },
+    "Red Katinas": {
+      "dex": 3,
+      "luk": 7,
+      "eva": 2,
+      "pdd": 105
+    },
+    "Red Katte": {
+      "dex": 3,
+      "luk": 7,
+      "eva": 2,
+      "pdd": 105
+    },
+    "Red Kendo Robe": {
+      "pdd": 36,
+      "hp": 15
+    },
+    "Red Knucklevest": {
+      "dex": 1,
+      "luk": 2,
+      "pdd": 30
+    },
+    "Red Knucklevest Pants": {
+      "dex": 1,
+      "pdd": 24,
+      "mp": 5
+    },
+    "Red Lapiz Sandals": {
+      "mad": 1,
+      "int": 2,
+      "luk": 2,
+      "pdd": 27,
+      "mdd": 13
+    },
+    "Red Lappy Boots": {
+      "luk": 1,
+      "pdd": 13
+    },
+    "Red Legolia": {
+      "dex": 3,
+      "pdd": 30
+    },
+    "Red Legolia Pants": {
+      "dex": 1,
+      "pdd": 24,
+      "mp": 5
+    },
+    "Red Legolier": {
+      "dex": 3,
+      "pdd": 30
+    },
+    "Red Legolier Pants": {
+      "dex": 1,
+      "pdd": 24,
+      "mp": 5
+    },
+    "Red Loosecap": {
+      "pdd": 15,
+      "hp": 5
+    },
+    "Red Lumati": {
+      "dex": 4,
+      "eva": 1,
+      "pdd": 55
+    },
+    "Red Lutia": {
+      "pdd": 10
+    },
+    "Red Magic Cape": {
+      "pdd": 16,
+      "mdd": 21
+    },
+    "Red Magicshoes": {
+      "int": 1,
+      "pdd": 11,
+      "mdd": 5
+    },
+    "Red Marker": {
+      "int": 2,
+      "pdd": 7
+    },
+    "Red Maro": {
+      "str": 1,
+      "dex": 2,
+      "pdd": 33
+    },
+    "Red Martial Arts Pants": {
+      "pdd": 28,
+      "hp": 10
+    },
+    "Red Martier": {
+      "str": 2,
+      "dex": 4,
+      "pdd": 36
+    },
+    "Red Matty": {
+      "pdd": 15,
+      "mdd": 45,
+      "hp": 20
+    },
+    "Red Misty": {
+      "pdd": 27,
+      "hp": 20
+    },
+    "Red Moon": {
+      "str": 1,
+      "luk": 3,
+      "pdd": 42
+    },
+    "Red Moon Gloves": {
+      "dex": 1,
+      "luk": 2,
+      "pdd": 19
+    },
+    "Red Moon Pants": {
+      "luk": 1,
+      "acc": 1,
+      "pdd": 33
+    },
+    "Red Moon Shoes": {
+      "luk": 2,
+      "pdd": 15,
+      "mdd": 7,
+      "mp": 5
+    },
+    "Red Moonlight": {
+      "int": 4,
+      "luk": 1,
+      "pdd": 36,
+      "mdd": 18
+    },
+    "Red Mystique": {
+      "dex": 2,
+      "luk": 4,
+      "pdd": 58
+    },
+    "Red Mystique Pants": {
+      "luk": 2,
+      "eva": 2,
+      "pdd": 45
+    },
+    "Red Mystique Shoes": {
+      "dex": 1,
+      "luk": 3,
+      "eva": 1,
+      "pdd": 40
+    },
+    "Red Napoleon": {
+      "pdd": 10,
+      "mdd": 15
+    },
+    "Red Neli Shoes": {
+      "mad": 1,
+      "int": 3,
+      "luk": 2,
+      "pdd": 35,
+      "mdd": 17
+    },
+    "Red Nightshift": {
+      "luk": 1,
+      "pdd": 14
+    },
+    "Red Nightshift Pants": {
+      "pdd": 12,
+      "hp": 5
+    },
+    "Red Ninja Sandals": {
+      "pdd": 7
+    },
+    "Red Noel": {
+      "pdd": 12
+    },
+    "Red Oriental Fury Coat": {
+      "int": 6,
+      "luk": 3,
+      "pdd": 76,
+      "mdd": 38,
+      "mp": 40
+    },
+    "Red Oriental Fury Hat": {
+      "int": 4,
+      "luk": 2,
+      "pdd": 48,
+      "mdd": 75
+    },
+    "Red Oriental Helmet": {
+      "str": 1,
+      "pdd": 60
+    },
+    "Red Orientican": {
+      "str": 4,
+      "dex": 1,
+      "pdd": 65
+    },
+    "Red Orientican Pants": {
+      "str": 2,
+      "acc": 1,
+      "pdd": 52
+    },
+    "Red Osfa Boots": {
+      "dex": 2,
+      "luk": 3,
+      "eva": 1,
+      "pdd": 52
+    },
+    "Red Osfa Hat": {
+      "dex": 2,
+      "luk": 3,
+      "eva": 1,
+      "pdd": 57
+    },
+    "Red Osfa Pants": {
+      "dex": 2,
+      "luk": 3,
+      "pdd": 57
+    },
+    "Red Osfa Suit": {
+      "dex": 2,
+      "luk": 5,
+      "pdd": 70,
+      "mp": 20
+    },
+    "Red Pao": {
+      "str": 1,
+      "pdd": 18
+    },
+    "Red Pao Bottom": {
+      "pdd": 15,
+      "hp": 5
+    },
+    "Red Pennance": {
+      "int": 1,
+      "pdd": 18,
+      "mdd": 1
+    },
+    "Red Pierre Shoes": {
+      "str": 2,
+      "pdd": 22,
+      "mp": 5
+    },
+    "Red Pilfer": {
+      "luk": 2,
+      "pdd": 27
+    },
+    "Red Pirate Blouse": {
+      "dex": 1,
+      "luk": 5,
+      "pdd": 64,
+      "mp": 15
+    },
+    "Red Pirate Boots": {
+      "dex": 3,
+      "luk": 2,
+      "pdd": 46
+    },
+    "Red Pirate Pants": {
+      "dex": 1,
+      "luk": 3,
+      "pdd": 51
+    },
+    "Red Pirate Skirt": {
+      "dex": 1,
+      "luk": 3,
+      "pdd": 51
+    },
+    "Red Pirate Top": {
+      "dex": 1,
+      "luk": 5,
+      "pdd": 64,
+      "mp": 15
+    },
+    "Red Pireta Hat": {
+      "str": 2,
+      "luk": 3,
+      "pdd": 51
+    },
+    "Red Pole-Feather Hat": {
+      "pdd": 24,
+      "hp": 10
+    },
+    "Red Polyfeather Hat": {
+      "str": 3,
+      "dex": 1,
+      "pdd": 39
+    },
+    "Red Pria": {
+      "str": 6,
+      "dex": 2,
+      "pdd": 85,
+      "mp": 30
+    },
+    "Red Pris": {
+      "str": 6,
+      "dex": 2,
+      "pdd": 85,
+      "mp": 30
+    },
+    "Red Requiem": {
+      "int": 2,
+      "luk": 5,
+      "pdd": 60,
+      "mdd": 30,
+      "mp": 30
+    },
+    "Red Requierre": {
+      "int": 2,
+      "luk": 5,
+      "pdd": 60,
+      "mdd": 30,
+      "mp": 30
+    },
+    "Red Rivers Boots": {
+      "str": 2,
+      "dex": 3,
+      "pdd": 48
+    },
+    "Red Sage": {
+      "int": 4,
+      "luk": 2,
+      "pdd": 35,
+      "mdd": 10
+    },
+    "Red Salt Shoes": {
+      "int": 1,
+      "pdd": 13,
+      "mdd": 6,
+      "mp": 10
+    },
+    "Red Savata": {
+      "dex": 1,
+      "pdd": 9
+    },
+    "Red Seraph Cape": {
+      "pdd": 25,
+      "mdd": 30
+    },
+    "Red Seraphis": {
+      "int": 2,
+      "luk": 2,
+      "pdd": 30,
+      "mdd": 60
+    },
+    "Red Shadow": {
+      "dex": 3,
+      "pdd": 34,
+      "mp": 10
+    },
+    "Red Shadow Pants": {
+      "dex": 1,
+      "pdd": 27,
+      "mp": 10
+    },
+    "Red Shark": {
+      "pdd": 30,
+      "hp": 20
+    },
+    "Red Shivermail": {
+      "pdd": 18,
+      "hp": 10
+    },
+    "Red Shivermail Skirt": {
+      "pdd": 15,
+      "hp": 5
+    },
+    "Red Shouldermail": {
+      "str": 3,
+      "dex": 1,
+      "pdd": 55
+    },
+    "Red Shouldermail Pants": {
+      "str": 1,
+      "acc": 1,
+      "pdd": 44
+    },
+    "Red Silky Boots": {
+      "str": 1,
+      "dex": 1,
+      "pdd": 19
+    },
+    "Red Sneakers": {
+      "pdd": 16
+    },
+    "Red Sonata": {
+      "dex": 1,
+      "luk": 2,
+      "pdd": 33
+    },
+    "Red Starlight": {
+      "int": 4,
+      "luk": 1,
+      "pdd": 36,
+      "mdd": 18
+    },
+    "Red Starry Bandana": {
+      "pdd": 18
+    },
+    "Red Steal": {
+      "pdd": 26,
+      "hp": 20
+    },
+    "Red Steal Pants": {
+      "pdd": 21,
+      "hp": 10
+    },
+    "Red Tai": {
+      "str": 1,
+      "dex": 5,
+      "pdd": 65,
+      "mp": 20
+    },
+    "Red Thief Hood": {
+      "pdd": 12
+    },
+    "Red Tiberian": {
+      "pdd": 18,
+      "hp": 5
+    },
+    "Red Umbrella": {
+      "pad": 73,
+      "jump": 3
+    },
+    "Red Varr Shoes": {
+      "int": 3,
+      "luk": 3,
+      "pdd": 39,
+      "mdd": 19
+    },
+    "Red Viper": {
+      "pad": 50
+    },
+    "Red Viska": {
+      "str": 5,
+      "dex": 2,
+      "pdd": 75,
+      "hp": 10
+    },
+    "Red Whip": {
+      "pad": 48,
+      "speed": 15
+    },
+    "Red White-Lined Boots": {
+      "luk": 2,
+      "pdd": 19
+    },
+    "Red Willow": {
+      "dex": 2,
+      "pdd": 19,
+      "mp": 10
+    },
+    "Red Wing Boots": {
+      "str": 2,
+      "dex": 3,
+      "pdd": 46
+    },
+    "Red Wizardry Hat": {
+      "pdd": 5,
+      "mdd": 25
+    },
+    "Red-Hearted Earrings": {
+      "mdd": 30
+    },
+    "Red-Lined Kismet": {
+      "str": 4,
+      "eva": 1,
+      "pdd": 55
+    },
+    "Red-Striped T-Shirt": {
+      "pdd": 11
+    },
+    "Redemption": {
+      "pad": 87,
+      "acc": 3
+    },
+    "Reef Claw": {
+      "pad": 45
+    },
+    "Rookie Pants": {
+      "pdd": 12
+    },
+    "Rose Earrings": {
+      "mdd": 70
+    },
+    "Rower": {
+      "pad": 68
+    },
+    "Ruin Hammer": {
+      "pad": 93
+    },
+    "Ryden": {
+      "pad": 45,
+      "dex": 2
+    },
+    "Sabretooth": {
+      "pad": 62
+    },
+    "Sai": {
+      "pad": 65
+    },
+    "Sapphire Camel Boots": {
+      "str": 1,
+      "dex": 3,
+      "pdd": 36
+    },
+    "Sapphire Clench": {
+      "str": 2,
+      "acc": 1,
+      "pdd": 24
+    },
+    "Sapphire Earrings": {
+      "mdd": 15
+    },
+    "Sapphire Emperor": {
+      "str": 2,
+      "dex": 1,
+      "pdd": 31,
+      "mp": 10
+    },
+    "Sapphire Fitted Mail": {
+      "dex": 4,
+      "pdd": 60,
+      "mdd": 20,
+      "hp": 5
+    },
+    "Sapphire Gigantic": {
+      "pad": 30,
+      "luk": 4,
+      "eva": 3
+    },
+    "Sapphire Slain": {
+      "pad": 26,
+      "luk": 3,
+      "eva": 2
+    },
+    "Scimitar": {
+      "pad": 50
+    },
+    "Sephia Garner": {
+      "str": 1,
+      "dex": 2,
+      "pdd": 23,
+      "mp": 15
+    },
+    "Serpent's Coil": {
+      "pad": 75
+    },
+    "Serpent's Tongue": {
+      "pad": 72
+    },
+    "Shinkita": {
+      "pad": 62
+    },
+    "Shooting Star": {
+      "pad": 36
+    },
+    "Silver / Black Stealer Pants": {
+      "pdd": 21,
+      "mp": 10
+    },
+    "Silver Ancient Shield": {
+      "dex": 2,
+      "pdd": 56,
+      "mdd": 20
+    },
+    "Silver Aquila Shield": {
+      "pdd": 62,
+      "mdd": 25
+    },
+    "Silver Battle Grieves": {
+      "str": 1,
+      "pdd": 18
+    },
+    "Silver Black Stealer": {
+      "dex": 1,
+      "luk": 1,
+      "pdd": 26
+    },
+    "Silver Chain Boots": {
+      "luk": 1,
+      "pdd": 16
+    },
+    "Silver Crow": {
+      "pad": 59
+    },
+    "Silver Crusader Helm": {
+      "str": 2,
+      "pdd": 54,
+      "mdd": 24
+    },
+    "Silver Fitted Mail": {
+      "dex": 4,
+      "pdd": 60,
+      "mdd": 20,
+      "hp": 5
+    },
+    "Silver Grace Helmet": {
+      "str": 3,
+      "pdd": 90
+    },
+    "Silver Guardian": {
+      "pad": 20,
+      "luk": 2,
+      "pdd": 2
+    },
+    "Silver Identity": {
+      "dex": 1,
+      "luk": 3,
+      "pdd": 39
+    },
+    "Silver Kalkan": {
+      "str": 3,
+      "pdd": 68
+    },
+    "Silver Leather Hoodwear": {
+      "str": 1,
+      "pdd": 14
+    },
+    "Silver Legend Shield": {
+      "dex": 2,
+      "pdd": 52,
+      "mdd": 25
+    },
+    "Silver Maiden": {
+      "pad": 38
+    },
+    "Silver Master Sergeant": {
+      "pdd": 30,
+      "mp": 20
+    },
+    "Silver Master Sergeant Kilt": {
+      "dex": 1,
+      "pdd": 24
+    },
+    "Silver Planet": {
+      "str": 1,
+      "pdd": 70
+    },
+    "Silver Rover": {
+      "luk": 3,
+      "eva": 1,
+      "pdd": 27
+    },
+    "Silver Snowboard": {
+      "pad": 42
+    },
+    "Silver Sylvia": {
+      "luk": 1,
+      "pdd": 11
+    },
+    "Silver War Boots": {
+      "dex": 1,
+      "pdd": 16
+    },
+    "Silver Windshoes": {
+      "int": 1,
+      "pdd": 9,
+      "mdd": 4
+    },
+    "Skull Earrings": {
+      "mdd": 30
+    },
+    "Skull Shield": {
+      "pdd": 50
+    },
+    "Sky Blue Starry Bandana": {
+      "pdd": 18
+    },
+    "Sky Blue Umbrella": {
+      "pad": 15,
+      "mad": 15
+    },
+    "Sky Shark": {
+      "pdd": 30,
+      "speed": 7
+    },
+    "Sky Shark Skirt": {
+      "pdd": 24,
+      "speed": 5
+    },
+    "Sky Sneak": {
+      "dex": 2,
+      "pdd": 22
+    },
+    "Sky Sneak Pants": {
+      "dex": 1,
+      "pdd": 18
+    },
+    "Skylar": {
+      "pad": 82
+    },
+    "Sledgehammer": {
+      "pad": 57
+    },
+    "Snail's Eye": {
+      "mdd": 15,
+      "speed": 2,
+      "jump": 3
+    },
+    "Spear": {
+      "pad": 32
+    },
+    "Star Earrings": {
+      "mdd": 10
+    },
+    "Steal Pow": {
+      "dex": 1,
+      "luk": 2,
+      "pdd": 22,
+      "mp": 15
+    },
+    "Steel Ancient Shield": {
+      "pdd": 56,
+      "mdd": 20
+    },
+    "Steel Aquila Shield": {
+      "pdd": 60,
+      "mdd": 25
+    },
+    "Steel Arbion": {
+      "pdd": 12
+    },
+    "Steel Avarice": {
+      "pad": 22,
+      "luk": 1,
+      "pdd": 2
+    },
+    "Steel Briggon": {
+      "pdd": 13
+    },
+    "Steel Brist": {
+      "str": 1,
+      "pdd": 19
+    },
+    "Steel Corporal": {
+      "pdd": 20,
+      "hp": 10
+    },
+    "Steel Corporal Pants": {
+      "pdd": 16,
+      "hp": 5
+    },
+    "Steel Fingerless Gloves": {
+      "pdd": 5
+    },
+    "Steel Fitted Mail": {
+      "acc": 1,
+      "pdd": 28,
+      "hp": 5
+    },
+    "Steel Knuckler": {
+      "pad": 18
+    },
+    "Steel Manute": {
+      "int": 1,
+      "luk": 1,
+      "pdd": 22,
+      "mdd": 3
+    },
+    "Steel Missel": {
+      "str": 1,
+      "pdd": 12
+    },
+    "Steel Nordic Helm": {
+      "pdd": 40
+    },
+    "Steel Pride": {
+      "int": 1,
+      "pdd": 7,
+      "mdd": 38
+    },
+    "Steel Sergeant Kilt": {
+      "pdd": 20,
+      "hp": 5
+    },
+    "Steel Sharp Helm": {
+      "pdd": 22
+    },
+    "Steel Shield": {
+      "pdd": 15
+    },
+    "Steel Slain": {
+      "pad": 26,
+      "luk": 2,
+      "eva": 1
+    },
+    "Steel Sylvia": {
+      "pdd": 10
+    },
+    "Steel Tower Shield": {
+      "pdd": 40
+    },
+    "Steel Trigger": {
+      "str": 1,
+      "pdd": 21,
+      "mp": 10
+    },
+    "Steelno": {
+      "pad": 66
+    },
+    "Stinger": {
+      "pad": 37
+    },
+    "Stolen Fence": {
+      "pdd": 5
+    },
+    "Strawberry Earrings": {
+      "mdd": 65
+    },
+    "Surfboard": {
+      "pad": 48,
+      "jump": 5
+    },
+    "Sword": {
+      "pad": 17
+    },
+    "Tamus": {
+      "pad": 77
+    },
+    "Tavar": {
+      "pad": 102
+    },
+    "The Beheader": {
+      "pad": 100
+    },
+    "The Blessing": {
+      "pad": 82
+    },
+    "The Judgement": {
+      "pad": 83
+    },
+    "The Morningstar": {
+      "pad": 92
+    },
+    "The Nine Dragons": {
+      "pad": 72
+    },
+    "The Peacemaker": {
+      "pad": 70
+    },
+    "The Rising": {
+      "pad": 72
+    },
+    "The Shining": {
+      "pad": 82
+    },
+    "Thorns": {
+      "pad": 47,
+      "mad": 70
+    },
+    "Titan": {
+      "pad": 62
+    },
+    "Tne Negotiator": {
+      "pad": 22
+    },
+    "Tomahawk": {
+      "pad": 98
+    },
+    "Traus": {
+      "pad": 57
+    },
+    "Triangular Zamadar": {
+      "pad": 27
+    },
+    "Two-Handed Axe": {
+      "pad": 47
+    },
+    "Two-Handed Sword": {
+      "pad": 40
+    },
+    "Umber Mantis": {
+      "dex": 1,
+      "luk": 4,
+      "pdd": 50
+    },
+    "Umber Mantis Pants": {
+      "luk": 2,
+      "eva": 1,
+      "pdd": 39
+    },
+    "Umber Shouldermail": {
+      "str": 3,
+      "dex": 1,
+      "pdd": 55
+    },
+    "Umber Shouldermail Pants": {
+      "str": 1,
+      "acc": 1,
+      "pdd": 44
+    },
+    "Undershirt": {
+      "pdd": 3
+    },
+    "Varkit": {
+      "pad": 88,
+      "eva": 4
+    },
+    "Vaulter 2000": {
+      "pad": 55
+    },
+    "Venon": {
+      "pdd": 7
+    },
+    "Vifennis": {
+      "pad": 93
+    },
+    "Viking Sword": {
+      "pad": 37
+    },
+    "Violet Platina": {
+      "str": 4,
+      "dex": 2,
+      "pdd": 75,
+      "mp": 10
+    },
+    "Violet Platina Pants": {
+      "str": 2,
+      "acc": 2,
+      "pdd": 60
+    },
+    "War Hammer": {
+      "pad": 49
+    },
+    "White Anakamoon": {
+      "int": 5,
+      "luk": 1,
+      "pdd": 52,
+      "mdd": 26,
+      "mp": 25
+    },
+    "White Anakarune": {
+      "int": 5,
+      "luk": 1,
+      "pdd": 52,
+      "mdd": 26,
+      "mp": 25
+    },
+    "White Bandana": {
+      "pdd": 8
+    },
+    "White Calaf": {
+      "int": 4,
+      "luk": 1,
+      "pdd": 44,
+      "mdd": 22,
+      "mp": 20
+    },
+    "White Calas": {
+      "int": 4,
+      "luk": 1,
+      "pdd": 44,
+      "mdd": 22,
+      "mp": 20
+    },
+    "White Chaos Robe": {
+      "luk": 4,
+      "pdd": 32,
+      "mdd": 16,
+      "mp": 5
+    },
+    "White Crusader Chainmail": {
+      "str": 4,
+      "pdd": 60,
+      "mdd": 20,
+      "hp": 5
+    },
+    "White Doros Robe": {
+      "int": 3,
+      "pdd": 24,
+      "mdd": 12
+    },
+    "White Fangz": {
+      "pad": 70
+    },
+    "White Fingerless Gloves": {
+      "pdd": 9
+    },
+    "White Gaia Cape": {
+      "pdd": 19,
+      "mdd": 24
+    },
+    "White Gomushin": {
+      "pdd": 4,
+      "speed": 2
+    },
+    "White Guiltian": {
+      "mad": 2,
+      "pdd": 18,
+      "mdd": 50
+    },
+    "White Jangoon Pants": {
+      "str": 1,
+      "pdd": 36,
+      "mp": 10
+    },
+    "White Justice Cape": {
+      "pdd": 13,
+      "mdd": 18
+    },
+    "White Magic Cape": {
+      "pdd": 16,
+      "mdd": 21
+    },
+    "White Magicshoes": {
+      "int": 1,
+      "pdd": 11,
+      "mdd": 5
+    },
+    "White Marquini": {
+      "str": 6,
+      "dex": 3,
+      "eva": 2,
+      "pdd": 95
+    },
+    "White Martial Arts Pants": {
+      "dex": 1,
+      "pdd": 28
+    },
+    "White Martial Arts Shorts": {
+      "dex": 1,
+      "pdd": 32,
+      "hp": 5
+    },
+    "White Napoleon": {
+      "pdd": 10,
+      "mdd": 15
+    },
+    "White Neschere": {
+      "pad": 98,
+      "eva": 1
+    },
+    "White Nightfox": {
+      "dex": 1,
+      "luk": 3,
+      "pdd": 45,
+      "mp": 15
+    },
+    "White Nisrock": {
+      "pad": 95,
+      "eva": 1
+    },
+    "White Oceania Cap": {
+      "str": 1,
+      "pdd": 21
+    },
+    "White Piette": {
+      "str": 3,
+      "pdd": 34,
+      "mp": 10
+    },
+    "White Piettra": {
+      "dex": 3,
+      "pdd": 34,
+      "mp": 10
+    },
+    "White Piettra Skirt": {
+      "dex": 1,
+      "pdd": 27,
+      "mp": 10
+    },
+    "White Pioneer": {
+      "str": 6,
+      "dex": 2,
+      "pdd": 85,
+      "hp": 15
+    },
+    "White Polyfeather Hat": {
+      "str": 1,
+      "dex": 3,
+      "pdd": 39
+    },
+    "White Seraph Cape": {
+      "pdd": 25,
+      "mdd": 30
+    },
+    "White Seraphis": {
+      "int": 4,
+      "pdd": 30,
+      "mdd": 60
+    },
+    "White Split Pants": {
+      "pdd": 12,
+      "mdd": 8,
+      "mp": 5
+    },
+    "White Split Skirt": {
+      "pdd": 12,
+      "mdd": 8,
+      "mp": 5
+    },
+    "White Tubetop": {
+      "pdd": 3
+    },
+    "White Undershirt": {
+      "pdd": 3
+    },
+    "White Valentine Rose": {
+      "pad": 49
+    },
+    "White Wizard Robe": {
+      "int": 3,
+      "pdd": 28,
+      "mdd": 14
+    },
+    "Wizard Staff": {
+      "pad": 29,
+      "mad": 40
+    },
+    "Wizard Wand": {
+      "pad": 30,
+      "mad": 48
+    },
+    "Wooden Baseball Bat": {
+      "pad": 20
+    },
+    "Wooden Club": {
+      "pad": 19
+    },
+    "Wooden Legend Shield": {
+      "pdd": 52,
+      "mdd": 20
+    },
+    "Wooden Mallet": {
+      "pad": 32
+    },
+    "Wooden Samurai Sword": {
+      "pad": 35
+    },
+    "Wooden Staff": {
+      "pad": 20,
+      "mad": 25
+    },
+    "Wooden Sword": {
+      "pad": 30
+    },
+    "Work Gloves": {
+      "pdd": 2
+    },
+    "Yellow Able Armor": {
+      "dex": 1,
+      "pdd": 14
+    },
+    "Yellow Arianne": {
+      "pdd": 12,
+      "mdd": 10,
+      "speed": 3
+    },
+    "Yellow Arianne Skirt": {
+      "pdd": 10,
+      "mdd": 6,
+      "mp": 5
+    },
+    "Yellow Avelin": {
+      "pdd": 10
+    },
+    "Yellow Avelin Skirt": {
+      "pdd": 9
+    },
+    "Yellow Battle Empress": {
+      "str": 4,
+      "dex": 4,
+      "acc": 1,
+      "pdd": 132
+    },
+    "Yellow Briggon": {
+      "str": 1,
+      "pdd": 14
+    },
+    "Yellow Doros Robe": {
+      "pdd": 24,
+      "mdd": 12,
+      "mp": 30
+    },
+    "Yellow Duke": {
+      "str": 1,
+      "pdd": 40
+    },
+    "Yellow Engrit": {
+      "dex": 3,
+      "pdd": 52
+    },
+    "Yellow Jangoon Armor": {
+      "dex": 3,
+      "pdd": 45,
+      "mp": 10
+    },
+    "Yellow Metal Gear": {
+      "dex": 1,
+      "pdd": 12
+    },
+    "Yellow Pierre Shoes": {
+      "str": 1,
+      "dex": 1,
+      "pdd": 22,
+      "mp": 5
+    },
+    "Yellow Starry Bandana": {
+      "pdd": 18
+    },
+    "Yellow T-Shirt": {
+      "pdd": 3
+    },
+    "Yellow Tartis": {
+      "pdd": 10
+    },
+    "Yellow Umbrella": {
+      "pad": 52,
+      "mad": 52
+    },
+    "Yellow Windshoes": {
+      "int": 1,
+      "pdd": 9,
+      "mdd": 4
+    },
+    "Zakum Helmet (1)": {
+      "str": 15,
+      "dex": 15,
+      "int": 15,
+      "luk": 15,
+      "acc": 20,
+      "eva": 20,
+      "pdd": 150,
+      "mdd": 150
+    },
+    "Zakum Helmet (2)": {
+      "str": 4,
+      "dex": 4,
+      "int": 4,
+      "luk": 4,
+      "acc": 4,
+      "eva": 4,
+      "pdd": 79,
+      "mdd": 42
+    },
+    "Zakum Helmet (3)": {
+      "str": 6,
+      "dex": 6,
+      "int": 6,
+      "luk": 6,
+      "acc": 6,
+      "eva": 6,
+      "pdd": 88,
+      "mdd": 51
+    },
+    "Zard": {
+      "pad": 60
+    },
+    "Zeco": {
+      "pad": 62
+    },
+    "Zedbug": {
+      "pad": 102
+    },
+    "\uba54\uc774\ud50c \uac74": {
+      "pad": 36,
+      "eva": 10
+    },
+    "\uba54\uc774\ud50c \uc2a4\ud1b0 \ud53c\uc2a4\ud1a8": {
+      "pad": 44,
+      "dex": 3,
+      "eva": 20
+    },
+    "\uba54\uc774\ud50c \uce90\ub17c \uc288\ud130": {
+      "pad": 60,
+      "dex": 5,
+      "eva": 25,
+      "hp": 100
+    }
+  }
+}

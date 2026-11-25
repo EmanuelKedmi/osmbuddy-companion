@@ -23,6 +23,16 @@ Windows Graphics Capture (`Windows.Graphics.Capture`, the API Discord and Teams 
 
 The live preview is the surface for overlays. FM hover prices sit on the shop rows in that preview. Training kills, time, and loot rates sit on the preview and in the training panel.
 
+## In-game notes
+
+Ctrl+Shift+M, or the Notes button, opens a small panel on the game window. The same key, or the panel's Close button, puts the panel away. The Notes button says Active while any section is selected, and it keeps saying that after the panel is closed. The panel is a window parked on the client. It is not drawn into the game, and it does not read process memory.
+
+While a section is selected, the companion looks for the client's item tooltip near the pointer, whether or not the panel is open. It finds the tooltip by the solid pale square behind the item icon, which looks the same over any background, inside the tooltip's translucent navy. The item name is the tooltip's title line. The card stays closed until that name has settled, then opens beside the tooltip, on the right when it fits and on the left when the right edge would leave the client. Listing and sale prices can fill in after the card is already open.
+
+The card is a stack of sections. Price trend shows the database price, the median listing and the median sale for the hovered item from the website, and the low, the latest, and the high from shops this companion has read. The middle half of the prices is the bulk. A price in the top or bottom quarter is left out when it is at least 5× away from that bulk, so a 20,000,000 or 500,000,000 tag counts only when most prices are near it. Active shops says how many shops still have it, and the card expands to the owner, the place, and the price. Gear rolls lists the min, the average, and the max of each stat on a dropped equip. The base stat is the average. A positive stat rolls evenly down and up by the smaller of one tenth of that base, rounded up, and 5, or 10 for defense, HP, and MP. A scroll or a use item has no rolls. The panel's checkboxes turn sections on and off.
+
+Shop rows the FM scanner reads, and sales it marks, are the prices stored for that trend. They are written to `%LocalAppData%/MarketNotes.Companion/hover-market.json`. Sample rows are not stored. A shop that leaves the screen is no longer active. Its earlier prices stay on the trend.
+
 ## Modes
 
 There is no FM / training switch. Every frame, the companion reads the map name from the minimap title. A Free Market map runs the FM scanner. Any other map, including a blank or unknown name, runs the Training scanner. Changing maps stops the other scanner immediately. The choice is not saved.

@@ -18,6 +18,18 @@ public static class WebsiteAddress
     public const string ReleasesApiUrl = "https://api.github.com/repos/EmanuelKedmi/osmbuddy-companion/releases";
     public const string ReleaseDownloadUrl = "https://github.com/EmanuelKedmi/osmbuddy-companion/releases/latest/download/MarketNotes.Companion.exe";
 
+    public static string FmUrl(string? feedUrl) => Sibling(feedUrl, "/api/fm");
+
+    /// <summary>One item's listings and sales. The rest of the scan stays on the server.</summary>
+    public static string FmItemUrl(string? feedUrl, string item)
+    {
+        var builder = new UriBuilder(FmUrl(feedUrl))
+        {
+            Query = "item=" + Uri.EscapeDataString(item.Trim()),
+        };
+        return builder.Uri.AbsoluteUri;
+    }
+
     public static string LogsUrl(string? feedUrl) => Sibling(feedUrl, "/api/companion/logs");
 
     public static string VersionUrl(string? feedUrl) => Sibling(feedUrl, "/api/companion/version");

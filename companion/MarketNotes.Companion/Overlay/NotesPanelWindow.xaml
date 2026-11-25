@@ -1,0 +1,47 @@
+<Window x:Class="MarketNotes.Companion.Overlay.NotesPanelWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="In-game notes"
+        Width="280"
+        SizeToContent="Height"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ShowInTaskbar="False"
+        ShowActivated="False"
+        Topmost="True"
+        ResizeMode="NoResize"
+        FontFamily="Segoe UI"
+        FontSize="13">
+    <Border Background="#F2F7F1E4"
+            BorderBrush="#C4A15A"
+            BorderThickness="1"
+            CornerRadius="8"
+            Padding="12">
+        <StackPanel>
+            <Grid Margin="0,0,0,8">
+                <TextBlock Text="Notes"
+                           FontFamily="Georgia"
+                           FontSize="16"
+                           Foreground="#5C241C"
+                           VerticalAlignment="Center" />
+                <Button x:Name="CloseButton"
+                        Content="Close"
+                        HorizontalAlignment="Right"
+                        Padding="10,3"
+                        Style="{StaticResource OutlineButton}"
+                        Click="Close_Click" />
+            </Grid>
+            <TextBlock Text="Point at an item. The card appears once the item name is read, and prices follow. Closing this menu leaves the card on. Ctrl+Shift+M closes this."
+                       TextWrapping="Wrap"
+                       Foreground="#6B5344"
+                       Margin="0,0,0,8" />
+            <TextBlock x:Name="StatusText"
+                       Text="Move onto an item."
+                       TextWrapping="Wrap"
+                       Foreground="#5C241C"
+                       Margin="0,0,0,8" />
+            <StackPanel x:Name="OptionsHost" />
+        </StackPanel>
+    </Border>
+</Window>
