@@ -26,7 +26,6 @@ jobs:
         id: semantic
         with:
           semantic_version: 25
-          skip_npm_plugin: true
           branches: |
             ['main']
         env:
