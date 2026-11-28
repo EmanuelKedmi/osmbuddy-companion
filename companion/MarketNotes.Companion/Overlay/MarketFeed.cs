@@ -51,7 +51,9 @@ public sealed class MarketFeed
         try
         {
             var saved = WebsiteSettingsStore.Load();
-            var feed = string.IsNullOrWhiteSpace(saved.Url) ? WebsiteAddress.LiveFeed : saved.Url;
+            // Same duckdns → grok.bot rewrite as the FM/training feeds, so a
+            // saved legacy host does not 308-drop the bearer on the item call.
+            var feed = WebsiteAddress.CanonicalFeedUrl(saved.Url);
             var (ok, _, body) = await _http.GetAsync(WebsiteAddress.FmItemUrl(feed, key), saved.Token);
             if (ok && body.Length > 0)
             {

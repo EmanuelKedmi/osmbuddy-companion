@@ -55,8 +55,11 @@ jobs:
           }
           if ($version -notmatch '^\d+\.\d+\.\d+$') { throw "Release version must be MAJOR.MINOR.PATCH." }
           "version=$version" >> $env:GITHUB_OUTPUT
+      # IncludeAllContentForSelfExtract ships fixtures/catalog.json (and the other
+      # Content JSON) inside the single-file exe. Without it, the release asset is
+      # only the exe and PriceCatalog cannot resolve NPC / Discord quotes on hover.
       - name: Publish the single-file executable
-        run: dotnet publish companion/MarketNotes.Companion/MarketNotes.Companion.csproj -c Release -r win-x64 --self-contained true -p:DevBuild=false -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true -p:DebugType=none -p:DebugSymbols=false -p:Version=${{ steps.version.outputs.version }}
+        run: dotnet publish companion/MarketNotes.Companion/MarketNotes.Companion.csproj -c Release -r win-x64 --self-contained true -p:DevBuild=false -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:IncludeAllContentForSelfExtract=true -p:EnableCompressionInSingleFile=true -p:DebugType=none -p:DebugSymbols=false -p:Version=${{ steps.version.outputs.version }}
       - name: Stage the release asset
         shell: pwsh
         run: |

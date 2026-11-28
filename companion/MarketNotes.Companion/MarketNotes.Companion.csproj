@@ -103,6 +103,15 @@
     <EmbeddedResource Include="..\..\CHANGELOG.md" LogicalName="MarketNotes.Companion.CHANGELOG.md" />
   </ItemGroup>
 
+  <!--
+    PriceCatalog and sample loaders read these as fixtures/*.json beside the app.
+    A PublishSingleFile release must set IncludeAllContentForSelfExtract so the
+    GitHub exe still unpacks them; uploading only the exe leaves NPC prices empty.
+  -->
+  <PropertyGroup Condition="'$(PublishSingleFile)' == 'true'">
+    <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
+  </PropertyGroup>
+
   <ItemGroup>
     <Content Include="..\..\data\fixtures\drop-notices.json" Link="fixtures\drop-notices.json" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="..\..\data\fixtures\fm-shop.json" Link="fixtures\fm-shop.json" CopyToOutputDirectory="PreserveNewest" />
