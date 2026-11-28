@@ -590,160 +590,162 @@
                         </Grid>
                     </DockPanel>
                 </Grid>
-            <Border x:Name="DebugPanel"
-                    Grid.Column="1"
-                    Visibility="Collapsed"
-                    Width="340"
-                    Margin="12,0,0,0"
-                    Background="#FFFBF6"
-                    BorderBrush="#E4D3B8"
-                    BorderThickness="1"
-                    CornerRadius="12"
-                    Padding="12">
-                <DockPanel>
-                    <TextBlock DockPanel.Dock="Top" Text="Debug" FontFamily="Georgia" FontSize="18" Foreground="#5C241C" />
-                    <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="0,4,0,8" Foreground="#6B5344" FontSize="12"
-                               Text="While this panel is open, loot reads and visit changes are kept on this PC. Upload logs sends that text to the website. Paste a companion token first." />
-                    <Button x:Name="UploadLogsButton"
-                            DockPanel.Dock="Top"
-                            Content="Upload logs"
-                            Style="{StaticResource OutlineButton}"
-                            HorizontalAlignment="Left"
-                            Margin="0,0,0,8"
-                            Click="UploadLogs_Click" />
-                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-                    <StackPanel>
-                        <TextBlock Text="Battle isolation" Foreground="#6B5344" FontSize="12" />
-                        <Border Height="96"
-                                Margin="0,2,0,4"
-                                Background="#FFFFFF"
-                                BorderBrush="#E4D3B8"
-                                BorderThickness="1"
-                                CornerRadius="6"
-                                ClipToBounds="True"
-                                Cursor="Hand"
-                                ToolTip="Isolated battle panel only. Click to enlarge this crop."
-                                MouseLeftButtonUp="BattleEnlarge_Click">
-                            <Grid>
-                                <TextBlock x:Name="DebugBattleIsolationHint"
-                                           Margin="8"
-                                           Text="Waiting for a changed window"
-                                           TextWrapping="Wrap"
-                                           TextAlignment="Center"
-                                           VerticalAlignment="Center"
-                                           Foreground="#6B5344"
-                                           FontSize="11" />
-                                <Image x:Name="DebugBattleIsolationImage"
-                                       Stretch="Uniform"
-                                       RenderOptions.BitmapScalingMode="NearestNeighbor" />
-                            </Grid>
-                        </Border>
-                        <WrapPanel x:Name="DebugBattleValueCells" Margin="0,0,0,6" Visibility="Collapsed" />
-                        <TextBlock Text="Loot isolation" Foreground="#6B5344" FontSize="12" />
-                        <Border Height="72"
-                                Margin="0,2,0,4"
-                                Background="#241910"
-                                BorderBrush="#E4D3B8"
-                                BorderThickness="1"
-                                CornerRadius="6"
-                                ClipToBounds="True"
-                                Cursor="Hand"
-                                ToolTip="Isolated loot corner only. Click to enlarge this crop."
-                                MouseLeftButtonUp="LootEnlarge_Click">
-                            <Grid>
-                                <TextBlock x:Name="DebugLootIsolationHint"
-                                           Margin="8"
-                                           Text="Waiting for a changed crop"
-                                           TextWrapping="Wrap"
-                                           TextAlignment="Center"
-                                           VerticalAlignment="Center"
-                                           Foreground="#F7F1E4"
-                                           FontSize="11" />
-                                <Image x:Name="DebugLootIsolationImage"
-                                       Stretch="Uniform"
-                                       RenderOptions.BitmapScalingMode="NearestNeighbor" />
-                            </Grid>
-                        </Border>
-                        <TextBlock TextWrapping="Wrap"
-                                   Margin="0,0,0,10"
-                                   Foreground="#6B5344"
-                                   FontSize="11"
-                                   Text="Enlarge shows that crop only. battle.png and loot.png in %LOCALAPPDATA%\MarketNotes.Companion\preview are the same crops, overwritten when a crop changes." />
-                        <TextBlock x:Name="SourceDescription"
-                                   TextWrapping="Wrap"
-                                   Margin="0,0,0,8"
-                                   Foreground="#6B5344"
-                                   Text="Choose a window. The list shows the title and the process." />
-                        <TextBlock Text="Seen state" Foreground="#6B5344" FontSize="12" Margin="0,0,0,4" />
-                        <TextBox x:Name="SeenStateBox"
-                                 IsReadOnly="True"
-                                 AcceptsReturn="True"
-                                 TextWrapping="Wrap"
-                                 VerticalScrollBarVisibility="Auto"
-                                 MinHeight="160"
-                                 FontFamily="Consolas"
-                                 FontSize="12"
-                                 VerticalContentAlignment="Top" />
-                        <TextBlock Text="Scanner log" Foreground="#6B5344" FontSize="12" Margin="0,8,0,4" />
-                        <TextBlock x:Name="StatusText" TextWrapping="Wrap" Foreground="#5C241C" />
-                        <StackPanel Margin="0,10,0,0">
-                            <Button Content="Load FM sample"
-                                    Style="{StaticResource OutlineButton}"
-                                    HorizontalAlignment="Left"
-                                    Margin="0,0,0,8"
-                                    Click="LoadFmSample_Click" />
-                            <Button Content="Send training sample"
-                                    Style="{StaticResource OutlineButton}"
-                                    HorizontalAlignment="Left"
-                                    Click="SendTrainingSample_Click" />
-                        </StackPanel>
-                        <Grid Margin="0,10,0,0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <StackPanel Margin="0,0,8,0">
-                                <TextBlock Text="Fallback kills" Foreground="#6B5344" FontSize="12" Margin="0,0,0,4" />
-                                <TextBox x:Name="FarmKillsBox" Text="0" ToolTip="Used only when a battle window was read and it had no kill count." />
+                </Grid>
+
+                <Border x:Name="DebugPanel"
+                        Grid.Column="1"
+                        Visibility="Collapsed"
+                        Width="340"
+                        Margin="12,0,0,0"
+                        Background="#FFFBF6"
+                        BorderBrush="#E4D3B8"
+                        BorderThickness="1"
+                        CornerRadius="12"
+                        Padding="12">
+                    <DockPanel>
+                        <TextBlock DockPanel.Dock="Top" Text="Debug" FontFamily="Georgia" FontSize="18" Foreground="#5C241C" />
+                        <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="0,4,0,8" Foreground="#6B5344" FontSize="12"
+                                   Text="While this panel is open, loot reads and visit changes are kept on this PC. Upload logs sends that text to the website. Paste a companion token first." />
+                        <Button x:Name="UploadLogsButton"
+                                DockPanel.Dock="Top"
+                                Content="Upload logs"
+                                Style="{StaticResource OutlineButton}"
+                                HorizontalAlignment="Left"
+                                Margin="0,0,0,8"
+                                Click="UploadLogs_Click" />
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                        <StackPanel>
+                            <TextBlock Text="Battle isolation" Foreground="#6B5344" FontSize="12" />
+                            <Border Height="96"
+                                    Margin="0,2,0,4"
+                                    Background="#FFFFFF"
+                                    BorderBrush="#E4D3B8"
+                                    BorderThickness="1"
+                                    CornerRadius="6"
+                                    ClipToBounds="True"
+                                    Cursor="Hand"
+                                    ToolTip="Isolated battle panel only. Click to enlarge this crop."
+                                    MouseLeftButtonUp="BattleEnlarge_Click">
+                                <Grid>
+                                    <TextBlock x:Name="DebugBattleIsolationHint"
+                                               Margin="8"
+                                               Text="Waiting for a changed window"
+                                               TextWrapping="Wrap"
+                                               TextAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               Foreground="#6B5344"
+                                               FontSize="11" />
+                                    <Image x:Name="DebugBattleIsolationImage"
+                                           Stretch="Uniform"
+                                           RenderOptions.BitmapScalingMode="NearestNeighbor" />
+                                </Grid>
+                            </Border>
+                            <WrapPanel x:Name="DebugBattleValueCells" Margin="0,0,0,6" Visibility="Collapsed" />
+                            <TextBlock Text="Loot isolation" Foreground="#6B5344" FontSize="12" />
+                            <Border Height="72"
+                                    Margin="0,2,0,4"
+                                    Background="#241910"
+                                    BorderBrush="#E4D3B8"
+                                    BorderThickness="1"
+                                    CornerRadius="6"
+                                    ClipToBounds="True"
+                                    Cursor="Hand"
+                                    ToolTip="Isolated loot corner only. Click to enlarge this crop."
+                                    MouseLeftButtonUp="LootEnlarge_Click">
+                                <Grid>
+                                    <TextBlock x:Name="DebugLootIsolationHint"
+                                               Margin="8"
+                                               Text="Waiting for a changed crop"
+                                               TextWrapping="Wrap"
+                                               TextAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               Foreground="#F7F1E4"
+                                               FontSize="11" />
+                                    <Image x:Name="DebugLootIsolationImage"
+                                           Stretch="Uniform"
+                                           RenderOptions.BitmapScalingMode="NearestNeighbor" />
+                                </Grid>
+                            </Border>
+                            <TextBlock TextWrapping="Wrap"
+                                       Margin="0,0,0,10"
+                                       Foreground="#6B5344"
+                                       FontSize="11"
+                                       Text="Enlarge shows that crop only. battle.png and loot.png in %LOCALAPPDATA%\MarketNotes.Companion\preview are the same crops, overwritten when a crop changes." />
+                            <TextBlock x:Name="SourceDescription"
+                                       TextWrapping="Wrap"
+                                       Margin="0,0,0,8"
+                                       Foreground="#6B5344"
+                                       Text="Choose a window. The list shows the title and the process." />
+                            <TextBlock Text="Seen state" Foreground="#6B5344" FontSize="12" Margin="0,0,0,4" />
+                            <TextBox x:Name="SeenStateBox"
+                                     IsReadOnly="True"
+                                     AcceptsReturn="True"
+                                     TextWrapping="Wrap"
+                                     VerticalScrollBarVisibility="Auto"
+                                     MinHeight="160"
+                                     FontFamily="Consolas"
+                                     FontSize="12"
+                                     VerticalContentAlignment="Top" />
+                            <TextBlock Text="Scanner log" Foreground="#6B5344" FontSize="12" Margin="0,8,0,4" />
+                            <TextBlock x:Name="StatusText" TextWrapping="Wrap" Foreground="#5C241C" />
+                            <StackPanel Margin="0,10,0,0">
+                                <Button Content="Load FM sample"
+                                        Style="{StaticResource OutlineButton}"
+                                        HorizontalAlignment="Left"
+                                        Margin="0,0,0,8"
+                                        Click="LoadFmSample_Click" />
+                                <Button Content="Send training sample"
+                                        Style="{StaticResource OutlineButton}"
+                                        HorizontalAlignment="Left"
+                                        Click="SendTrainingSample_Click" />
                             </StackPanel>
-                            <StackPanel Grid.Column="1" Margin="8,0,0,0">
-                                <TextBlock Text="Fallback minutes" Foreground="#6B5344" FontSize="12" Margin="0,0,0,4" />
-                                <TextBox x:Name="FarmMinutesBox" Text="0" ToolTip="Used only when a battle window was read and it had no time." />
+                            <Grid Margin="0,10,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Margin="0,0,8,0">
+                                    <TextBlock Text="Fallback kills" Foreground="#6B5344" FontSize="12" Margin="0,0,0,4" />
+                                    <TextBox x:Name="FarmKillsBox" Text="0" ToolTip="Used only when a battle window was read and it had no kill count." />
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" Margin="8,0,0,0">
+                                    <TextBlock Text="Fallback minutes" Foreground="#6B5344" FontSize="12" Margin="0,0,0,4" />
+                                    <TextBox x:Name="FarmMinutesBox" Text="0" ToolTip="Used only when a battle window was read and it had no time." />
+                                </StackPanel>
+                            </Grid>
+                            <TextBox x:Name="CharacterIdBox" Visibility="Collapsed" />
+                            <TextBlock Text="Character scanner" FontFamily="Georgia" FontSize="18" Foreground="#5C241C" Margin="0,12,0,0" />
+                            <TextBlock TextWrapping="Wrap" Foreground="#6B5344" Margin="0,4,0,8"
+                                       Text="Runs on the same share. A readable stat window or skill window fills the character sheet. A frame that cannot be read adds nothing." />
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                                <Button Content="Load stat sample"
+                                        Style="{StaticResource OutlineButton}"
+                                        Margin="0,0,8,0"
+                                        Click="LoadStatSample_Click" />
+                                <Button Content="Load skill sample"
+                                        Style="{StaticResource OutlineButton}"
+                                        Click="LoadSkillSample_Click" />
                             </StackPanel>
-                        </Grid>
-                        <TextBox x:Name="CharacterIdBox" Visibility="Collapsed" />
-                        <TextBlock Text="Character scanner" FontFamily="Georgia" FontSize="18" Foreground="#5C241C" Margin="0,12,0,0" />
-                        <TextBlock TextWrapping="Wrap" Foreground="#6B5344" Margin="0,4,0,8"
-                                   Text="Runs on the same share. A readable stat window or skill window fills the character sheet. A frame that cannot be read adds nothing." />
-                        <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
-                            <Button Content="Load stat sample"
-                                    Style="{StaticResource OutlineButton}"
-                                    Margin="0,0,8,0"
-                                    Click="LoadStatSample_Click" />
-                            <Button Content="Load skill sample"
-                                    Style="{StaticResource OutlineButton}"
-                                    Click="LoadSkillSample_Click" />
+                            <TextBlock Text="STAT-FEED log"
+                                       Foreground="#6B5344"
+                                       FontSize="12"
+                                       Margin="0,10,0,4"
+                                       ToolTip="Live Stat (S) → website feed trace. Also written to %LOCALAPPDATA%\MarketNotes.Companion\stat-feed.log" />
+                            <TextBox x:Name="StatFeedLogBox"
+                                     IsReadOnly="True"
+                                     AcceptsReturn="True"
+                                     TextWrapping="Wrap"
+                                     VerticalScrollBarVisibility="Auto"
+                                     Height="180"
+                                     FontFamily="Consolas"
+                                     FontSize="12"
+                                     VerticalContentAlignment="Top"
+                                     Text="Press S with share on. [STAT-FEED] lines appear here." />
                         </StackPanel>
-                        <TextBlock Text="STAT-FEED log"
-                                   Foreground="#6B5344"
-                                   FontSize="12"
-                                   Margin="0,10,0,4"
-                                   ToolTip="Live Stat (S) → website feed trace. Also written to %LOCALAPPDATA%\MarketNotes.Companion\stat-feed.log" />
-                        <TextBox x:Name="StatFeedLogBox"
-                                 IsReadOnly="True"
-                                 AcceptsReturn="True"
-                                 TextWrapping="Wrap"
-                                 VerticalScrollBarVisibility="Auto"
-                                 Height="180"
-                                 FontFamily="Consolas"
-                                 FontSize="12"
-                                 VerticalContentAlignment="Top"
-                                 Text="Press S with share on. [STAT-FEED] lines appear here." />
-                    </StackPanel>
-                    </ScrollViewer>
-                </DockPanel>
-            </Border>
-            </Grid>
+                        </ScrollViewer>
+                    </DockPanel>
+                </Border>
+                </Grid>
 
                 <Border Grid.Row="1"
                         BorderBrush="#E4D3B8"
